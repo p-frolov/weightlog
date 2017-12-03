@@ -1,0 +1,2 @@
+# weightlog
+Training log system
