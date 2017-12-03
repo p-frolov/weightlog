@@ -4,6 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth.models import User
 
+# about user
+# https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
+
 
 class Training(models.Model):
     """Тренировка"""
