@@ -17,17 +17,20 @@ python manage.py createsuperuser
 
 ``` sh
 python manage.py runserver
-http://127.0.0.1:8000/api/rest/
 ```
+- http://localhost:8000/admin/
+- http://localhost:8000/
+- http://localhost:8000/api/rest/
 
 # Fixtures (test data)
 
 ``` sh
 python manage.py loaddata testdata.json
 python manage.py runserver
-http://127.0.0.1:8000/api/rest/
-Login testuser:user12345
 ```
+
+- http://127.0.0.1:8000/api/rest/
+- Login testuser:user12345
 
 # Deploy
 
