@@ -1,0 +1,7 @@
+{% extends 'wglog_html/base.html' %}
+
+{% block content %}
+    Hello {{ user.username }}
+    <br>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}

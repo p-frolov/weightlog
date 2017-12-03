@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Wheight log{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'wglog_html/css/common.css' %}" />
+    <script type="text/javascript" src="{% static 'wglog_html/js/common.js' %}"></script>
+</head>
+<body>
+{% block content %} {% endblock %}
+</body>
+</html>
