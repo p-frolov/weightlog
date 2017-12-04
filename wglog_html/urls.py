@@ -22,6 +22,16 @@ auth_patterns = [
     ),
 
     url(r'^register/$', views.register, name='register'),
+    url(
+        r'^register/activation_sent/$',
+        views.register_activation_sent,
+        name='register_activation_sent'
+    ),
+    url(
+        r'^register/activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.register_activate,
+        name='register_activate'
+    ),
 
     url(
         r'^password_change/$',
