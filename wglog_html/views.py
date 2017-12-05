@@ -26,6 +26,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            # todo: move to parent logic
             user.is_active = False
             form.save()
             current_site = get_current_site(request)
@@ -58,6 +59,7 @@ def register_activate(request, uidb64, token):
         user = None
 
     if user is not None and account_activation_token.check_token(user, token):
+        # todo: move to parent logic user.confirm()
         user.is_active = True
         user.profile.email_confirmed = True
         user.save()
