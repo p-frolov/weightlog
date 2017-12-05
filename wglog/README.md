@@ -8,14 +8,14 @@ todo: .venv
 
 # Setup
 
-``` sh
+```bash
 python manage.py migrate
 python manage.py createsuperuser
 ```
 
 # Run
 
-``` sh
+```bash
 python manage.py runserver
 ```
 - http://localhost:8000/admin/
@@ -24,13 +24,19 @@ python manage.py runserver
 
 # Fixtures (test data)
 
-``` sh
+```bash
 python manage.py loaddata testdata.json
 python manage.py runserver
 ```
 
 - http://127.0.0.1:8000/api/rest/
 - Login testuser:user12345
+
+## Tests
+
+```bash
+python manage.py test wglog wglog_html wglog_rest
+```
 
 # Deploy
 
