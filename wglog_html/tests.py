@@ -5,11 +5,11 @@ from django.test import TestCase, override_settings
 from django.core.urlresolvers import reverse, resolve
 from django.core import mail
 
-from django.contrib import auth
 from django.contrib.auth.models import AnonymousUser
 from rest_framework import status
 
 from wglog.models import User
+from wglog.tests import AuthTestCaseMixin
 
 
 class SmokeTestCase(TestCase):
@@ -20,7 +20,6 @@ class SmokeTestCase(TestCase):
             self.client.get(reverse('index')),
             reverse('login') + '?next=/'
         )
-    # 'Cannot open "index" page'
 
     def test_auth(self):
 
@@ -36,7 +35,7 @@ class SmokeTestCase(TestCase):
             ('password_reset_complete', status.HTTP_200_OK),
         ]
         for page, status_code in page2status:
-            # https://docs.python.org/3/library/unittest.html#distinguishing-test-iterations-using-subtests
+            # todo: https://docs.python.org/3/library/unittest.html#distinguishing-test-iterations-using-subtests
             self.assertEqual(self.client.get(reverse(page)).status_code,
                              status_code, 'Cannot open "{}" page'.format(page))
 
@@ -63,18 +62,7 @@ class SmokeTestCase(TestCase):
         )
 
 
-class CurrentUserTestCaseMixin:
-    """ Requires django.contrib.auth, integrates to django.test.TestCase"""
-    @property
-    def _current_user(self):
-        return auth.get_user(self.client)
-
-
-class LoginTestCase(CurrentUserTestCaseMixin, TestCase):
-
-    @property
-    def _current_user(self):
-        return auth.get_user(self.client)
+class LoginTestCase(AuthTestCaseMixin, TestCase):
 
     def setUp(self):
         self._testuser = User.objects.create_user(
@@ -92,7 +80,7 @@ class LoginTestCase(CurrentUserTestCaseMixin, TestCase):
         self.assertEqual(no_user_resp.status_code,
                          status.HTTP_200_OK, 'Non-existent user login')
 
-        self.assertIsInstance(self._current_user,
+        self.assertIsInstance(self.current_user,
                               AnonymousUser, 'Not anonymous after bad login')
 
         testuser_resp = self.client.post(reverse('login'), {
@@ -103,17 +91,17 @@ class LoginTestCase(CurrentUserTestCaseMixin, TestCase):
         self.assertEqual(testuser_resp.status_code,
                          status.HTTP_302_FOUND, 'Login does not work')
 
-        self.assertEqual(self._current_user.pk,
+        self.assertEqual(self.current_user.pk,
                          self._testuser.pk, 'Test user and current user does not much')
 
         logout_resp = self.client.get(reverse('logout'))
         self.assertEqual(logout_resp.status_code,
                          status.HTTP_302_FOUND, 'Cannot logout')
-        self.assertIsInstance(self._current_user,
+        self.assertIsInstance(self.current_user,
                               AnonymousUser, 'Not anonymous after logout')
 
 
-class RegistrationTestCase(CurrentUserTestCaseMixin, TestCase):
+class RegistrationTestCase(AuthTestCaseMixin, TestCase):
 
     @override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend')
     def test_registration(self):
@@ -153,5 +141,7 @@ class RegistrationTestCase(CurrentUserTestCaseMixin, TestCase):
         self.assertTrue(user.is_active, 'User can be active')
         self.assertTrue(user.profile.email_confirmed, 'User must be confirmed by email')
 
-        self.assertEqual(self._current_user.pk,
+        self.assertEqual(self.current_user.pk,
                          user.pk, 'Registered user and current user does not much')
+
+# todo: tests for password_change password_reset
