@@ -15,8 +15,9 @@ class AssertTestCaseMixin:
     __slots__ = ()
 
     def assertStatusCode(self, response, expected_code):
-        err_msg = 'Wrong status for: "{}"'.format(
-            response.request.get('PATH_INFO', "key error: request['PATH_INFO']")
+        err_msg = 'Wrong status for: "{}", body: {}'.format(
+            response.request.get('PATH_INFO', "key error: request['PATH_INFO']"),
+            response.data
         )
         self.assertEqual(response.status_code, expected_code, err_msg)
 
