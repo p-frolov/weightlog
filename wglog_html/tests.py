@@ -39,6 +39,8 @@ class SmokeTestCase(TestCase):
             self.assertEqual(self.client.get(reverse(page)).status_code,
                              status_code, 'Cannot open "{}" page'.format(page))
 
+        # todo: self.assertTemplateUsed(): check on our custom templates
+
         self.assertEqual(
 
             self.client.get(
