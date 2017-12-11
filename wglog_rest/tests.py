@@ -5,8 +5,23 @@ from django.core.urlresolvers import reverse
 
 from rest_framework import status
 
-from wglog.models import User
 from wglog.tests import AuthTestCaseMixin, AssertTestCaseMixin
+
+
+class RestAppTestCaseMixin:
+    __slots__ = ()
+
+    def get_trainings_json(self):
+        assert isinstance(self, TestCase)
+        # todo: check status
+        return self.client.get(reverse('training-list')).json()
+
+    def get_sets_json(self, training_id):
+        assert isinstance(self, TestCase)
+        # todo: check status
+        return self.client.get(
+            reverse('set-list-bytraining', kwargs={'training_id': training_id})
+        ).json()
 
 
 class SmokeTestCase(TestCase):
@@ -34,13 +49,10 @@ class SmokeTestCase(TestCase):
             'Cannot open "set-detail" url'
         )
 
-# https://docs.djangoproject.com/en/1.11/topics/testing/tools/#fixture-loading
-
 
 class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
-    fixtures = ['testdata']
 
-    # todo: check permissions
+    fixtures = ['testdata']
 
     def setUp(self):
         err_msg = 'Cannot login by user from fixture'
@@ -94,15 +106,91 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         self.assertEqual(json_detail['id'], set_id)
 
 
-class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
+class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
+
+    fixtures = ['testdata']
+
+    def setUp(self):
+        self._fixtures_cred = dict(username='testuser', password='user12345')
+        self._new_cred = dict(username='testperm', password='user54321')
+        self._user = self.create_user(**self._new_cred)
+
+    def test(self):
+
+        self.assertTrue(
+            self.client.login(**self._fixtures_cred),
+            'Cannot login by fixture user'
+        )
+        trainings = self.get_trainings_json()
+        self.assertTrue(len(trainings), 'Empty trainings list from fixtures')
+        training = trainings[0]
+        sets = self.get_sets_json(training['id'])
+        self.assertTrue(len(sets), 'Empty sets list from fixtures')
+        set_ = sets[0]
+
+        self.assertTrue(
+            self.client.login(**self._new_cred),
+            'Cannot login by new user'
+        )
+
+        # TRAININGS
+
+        self.assertFalse(
+            len(self.get_trainings_json()),
+            'Trainings list must be empty for new user'
+        )
+        self.assertStatusCode(
+            self.client.get(reverse('training-detail', kwargs={'pk': training['id']})),
+            status.HTTP_404_NOT_FOUND
+        )
+        self.assertStatusCode(
+            self.client.put(
+                reverse('training-detail', kwargs={'pk': training['id']}),
+                data=json.dumps({'name': 'name'}),
+                content_type='application/json'
+            ),
+            status.HTTP_404_NOT_FOUND
+        )
+        self.assertStatusCode(
+            self.client.delete(reverse('training-detail', kwargs={'pk': training['id']})),
+            status.HTTP_404_NOT_FOUND
+        )
+
+        # SETS
+        self.assertStatusCode(
+            self.client.get(reverse('set-list-bytraining', kwargs={'training_id': training['id']})),
+            status.HTTP_404_NOT_FOUND
+        )
+        self.assertStatusCode(
+            self.client.post(
+                reverse('set-list-bytraining', kwargs={'training_id': training['id']}),
+                data={'weight': 35, 'reps': 10}
+            ),
+            status.HTTP_404_NOT_FOUND
+        )
+        self.assertStatusCode(
+            self.client.get(reverse('set-detail', kwargs={'pk': set_['id']})),
+            status.HTTP_404_NOT_FOUND
+        )
+        self.assertStatusCode(
+            self.client.put(
+                reverse('set-detail', kwargs={'pk': set_['id']}),
+                data=json.dumps({'weight': 55, 'reps': 7}),
+                content_type='application/json'
+            ),
+            status.HTTP_404_NOT_FOUND
+        )
+        self.assertStatusCode(
+            self.client.delete(reverse('set-detail', kwargs={'pk': set_['id']})),
+            status.HTTP_404_NOT_FOUND
+        )
+
+
+class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
 
     def setUp(self):
         credentials = dict(username='testchanges', password='user12345')
-        # todo: extract flags
-        user = User.objects.create_user(**credentials, is_active=True)
-        user.profile.email_confirmed = True
-        user.save()
-        self._user = user
+        self._user = self.create_user(**credentials)
         assert self.client.login(**credentials), 'Cannot login'
 
     def test_training(self):
@@ -123,7 +211,7 @@ class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         training_id = created_json['id']
 
         # check from list resopnse
-        trainings = self._get_trainings_json()
+        trainings = self.get_trainings_json()
         self.assertEqual(len(trainings), 1, 'Trainings count')
         self.assertEqual(trainings[0]['id'], training_id)
         self.assertEqual(trainings[0]['name'], training_name)
@@ -143,14 +231,14 @@ class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         self.assertEqual(updated_json['name'], training_name2)
 
         # check from list response
-        self.assertEqual(self._get_trainings_json()[0]['name'], training_name2)
+        self.assertEqual(self.get_trainings_json()[0]['name'], training_name2)
 
         # DELETE
 
         delete_resp = self.client.delete(reverse('training-detail', kwargs={'pk': training_id}))
         self.assertStatusCode(delete_resp, status.HTTP_204_NO_CONTENT)
 
-        self.assertEqual(len(self._get_trainings_json()), 0, 'Trainings must be empty')
+        self.assertEqual(len(self.get_trainings_json()), 0, 'Trainings must be empty')
 
     def test_set(self):
         """Sets: create, update, delete"""
@@ -164,7 +252,7 @@ class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
 
         training_id = training_resp.json()['id']
         self.assertEqual(
-            len(self._get_sets_json(training_id)),
+            len(self.get_sets_json(training_id)),
             0,
             'Sets must be empty'
         )
@@ -180,7 +268,7 @@ class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         self.assertEqual(created_json['weight'], 35)
         self.assertEqual(created_json['reps'], 10)
 
-        sets = self._get_sets_json(training_id)
+        sets = self.get_sets_json(training_id)
         self.assertEqual(len(sets), 1)
         self.assertEqual(sets[0]['weight'], 35)
         self.assertEqual(sets[0]['reps'], 10)
@@ -202,7 +290,7 @@ class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         self.assertEqual(updated_json['reps'], 7)
 
         # check from list
-        sets_updated = self._get_sets_json(training_id)
+        sets_updated = self.get_sets_json(training_id)
         self.assertEqual(len(sets_updated), 1)
         self.assertEqual(sets_updated[0]['weight'], 55)
         self.assertEqual(sets_updated[0]['reps'], 7)
@@ -214,15 +302,5 @@ class RestChangesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         )
         self.assertStatusCode(delete_resp, status.HTTP_204_NO_CONTENT)
 
-        sets_deleted = self._get_sets_json(training_id)
+        sets_deleted = self.get_sets_json(training_id)
         self.assertEqual(len(sets_deleted), 0, "Sets must be empty after deleting")
-
-    def _get_trainings_json(self):
-        # todo: check status
-        return self.client.get(reverse('training-list')).json()
-
-    def _get_sets_json(self, training_id):
-        # todo: check status
-        return self.client.get(
-            reverse('set-list-bytraining', kwargs={'training_id': training_id})
-        ).json()
