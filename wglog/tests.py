@@ -1,4 +1,7 @@
+from django.test import TestCase
 from django.contrib import auth
+
+from .models import User
 
 
 class AuthTestCaseMixin:
@@ -7,7 +10,17 @@ class AuthTestCaseMixin:
 
     @property
     def current_user(self):
+        assert isinstance(self, TestCase)
         return auth.get_user(self.client)
+
+    def create_user(self, username, password):
+        """Returns created test user"""
+        # todo: extract flags
+        user = User.objects.create_user(username=username,
+                                        password=password, is_active=True)
+        user.profile.email_confirmed = True
+        user.save()
+        return user
 
 
 class AssertTestCaseMixin:
@@ -15,6 +28,7 @@ class AssertTestCaseMixin:
     __slots__ = ()
 
     def assertStatusCode(self, response, expected_code):
+        assert isinstance(self, TestCase)
         err_msg = 'Wrong status for: "{}", body: {}'.format(
             response.request.get('PATH_INFO', "key error: request['PATH_INFO']"),
             response.data
@@ -23,6 +37,7 @@ class AssertTestCaseMixin:
 
     def assertAllEqualsByField(self, list_: list, value, lookup_field='id', msg=''):
         """All fields in list of dictionary equals value"""
+        assert isinstance(self, TestCase)
         if list_:
             self.assertTrue(lookup_field in list_[0].keys(),
                             'No "{}" in dicts of list'.format(lookup_field))
@@ -37,6 +52,7 @@ class AssertTestCaseMixin:
         )
 
     def assertSetContainsSet(self, set_: set, expected: set, msg=""):
+        assert isinstance(self, TestCase)
         self.assertTrue(expected <= set_, '{}Missed: ({})'.format(
             msg + ' ' if msg else '',
             expected - set_
