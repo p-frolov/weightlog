@@ -6,7 +6,7 @@ from wglog.models import Training, Set
 class TrainingSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name='training-detail', read_only=True)
     sets_url = serializers.HyperlinkedIdentityField(
-        view_name='set-list-bytraining',
+        view_name='training-set-list',
         lookup_field='id',
         lookup_url_kwarg='training_id',
         read_only=True

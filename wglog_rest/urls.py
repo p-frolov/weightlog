@@ -7,8 +7,8 @@ from . import views
 rest_api_patterns = [
     url(r'^trainings/$', views.TrainingsList.as_view(), name='training-list'),
     url(r'^trainings/(?P<pk>[0-9]+)/$', views.TrainingDetail.as_view(), name='training-detail'),
+    url(r'^trainings/(?P<training_id>[0-9]+)/sets/$', views.SetsList.as_view(), name='training-set-list'),
 
-    url(r'^sets/training/(?P<training_id>[0-9]+)/$', views.SetsList.as_view(), name='set-list-bytraining'),
     url(r'^sets/(?P<pk>[0-9]+)$', views.SetDetail.as_view(), name='set-detail'),
 ]
 

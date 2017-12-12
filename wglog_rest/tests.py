@@ -20,7 +20,7 @@ class RestAppTestCaseMixin:
         assert isinstance(self, TestCase)
         # todo: check status
         return self.client.get(
-            reverse('set-list-bytraining', kwargs={'training_id': training_id})
+            reverse('training-set-list', kwargs={'training_id': training_id})
         ).json()
 
 
@@ -38,9 +38,9 @@ class SmokeTestCase(TestCase):
 
     def test_sets(self):
         self.assertEqual(
-            self.client.get(reverse('set-list-bytraining', kwargs={'training_id': '1'})).status_code,
+            self.client.get(reverse('training-set-list', kwargs={'training_id': '1'})).status_code,
             403,
-            'Cannot open "set-list-bytraining" url'
+            'Cannot open "training-set-list" url'
         )
 
         self.assertEqual(
@@ -83,7 +83,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
     def test_sets_get(self):
         training_id = 36
         resp = self.client.get(
-            reverse('set-list-bytraining', kwargs={'training_id': training_id})
+            reverse('training-set-list', kwargs={'training_id': training_id})
         )
         self.assertStatusCode(resp, status.HTTP_200_OK)
         json_list = resp.json()
@@ -158,12 +158,12 @@ class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTes
 
         # SETS
         self.assertStatusCode(
-            self.client.get(reverse('set-list-bytraining', kwargs={'training_id': training['id']})),
+            self.client.get(reverse('training-set-list', kwargs={'training_id': training['id']})),
             status.HTTP_404_NOT_FOUND
         )
         self.assertStatusCode(
             self.client.post(
-                reverse('set-list-bytraining', kwargs={'training_id': training['id']}),
+                reverse('training-set-list', kwargs={'training_id': training['id']}),
                 data={'weight': 35, 'reps': 10}
             ),
             status.HTTP_404_NOT_FOUND
@@ -260,7 +260,7 @@ class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCas
         # CREATE
 
         create_resp = self.client.post(
-            reverse('set-list-bytraining', kwargs={'training_id': training_id}),
+            reverse('training-set-list', kwargs={'training_id': training_id}),
             data={'weight': 35, 'reps': 10}
         )
         self.assertStatusCode(create_resp, status.HTTP_201_CREATED)
