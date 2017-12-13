@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Wheight log{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'wglog_html/js/lib/bootstrap-3.3.7/css/bootstrap.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'wglog_html/css/common.css' %}" />#}
+
+    {% block head %}
+        <script type="text/javascript">console.error("You can define requirejs app!")</script>
+    {% endblock %}
+
+</head>
+<body>
+{% block content %} {% endblock %}
+</body>
+</html>
