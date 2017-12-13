@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from wglog.models import Training, Set
+from wglog.models import Training, Set, User
 
 
 class TrainingSerializer(serializers.ModelSerializer):
@@ -39,3 +39,11 @@ class SetSerializer(serializers.ModelSerializer):
                   'training_id',  # training_id for saving
                   'url', 'training_url')
         read_only_fields = ('created_at',)
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'first_name', 'last_name', 'email')
+        read_only_fields = ('username', 'email')

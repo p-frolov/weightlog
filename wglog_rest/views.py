@@ -7,7 +7,7 @@ from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
 
 from wglog.models import Training, Set
-from .serializers import TrainingSerializer, SetSerializer
+from .serializers import TrainingSerializer, SetSerializer, UserSerializer
 
 
 @api_view(['GET'])
@@ -147,3 +147,14 @@ class SetDetail(APIView):
     def delete(self, request, pk, format=None):
         self._get_set(request, pk).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserDetail(APIView):
+    """User info"""
+
+    def get(self, request, pk, format=None):
+        """pk - int or 'me'"""
+        if pk != 'me':
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)

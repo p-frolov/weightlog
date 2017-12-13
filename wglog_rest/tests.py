@@ -24,7 +24,7 @@ class RestAppTestCaseMixin:
         ).json()
 
 
-class SmokeTestCase(TestCase):
+class SmokeTestCase(AssertTestCaseMixin, TestCase):
 
     def test_trainings(self):
         self.assertEqual(self.client.get(reverse('training-list')).status_code,
@@ -47,6 +47,31 @@ class SmokeTestCase(TestCase):
             self.client.get(reverse('set-detail', kwargs={'pk': '1'})).status_code,
             403,
             'Cannot open "set-detail" url'
+        )
+
+    def test_user(self):
+        self.assertStatusCode(
+            self.client.get(reverse('user-detail', kwargs={'pk': 'me'})),
+            status.HTTP_403_FORBIDDEN
+        )
+
+        self.assertStatusCode(
+            self.client.get(reverse('user-detail', kwargs={'pk': 123})),
+            status.HTTP_403_FORBIDDEN
+        )
+
+        self.assertStatusCode(
+            self.client.put(
+                reverse('user-detail', kwargs={'pk': 123}),
+                data=json.dumps({'username': 'name'}),
+                content_type='application/json'
+            ),
+            status.HTTP_403_FORBIDDEN
+        )
+
+        self.assertStatusCode(
+            self.client.delete(reverse('user-detail', kwargs={'pk': 123})),
+            status.HTTP_403_FORBIDDEN
         )
 
 
@@ -73,10 +98,10 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         resp = self.client.get(reverse('training-detail', kwargs={'pk': id_}))
         self.assertStatusCode(resp, status.HTTP_200_OK)
         json_detail = resp.json()
-        self.assertSetContainsSet(
+        self.assertGreaterEqual(
             set(json_detail.keys()),
             {'id', 'date', 'name', 'sets'},
-            'Training keys.'
+            'Training: missed fields'
         )
         self.assertEqual(json_detail['id'], id_)
 
@@ -98,12 +123,39 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         )
         self.assertStatusCode(resp, status.HTTP_200_OK)
         json_detail = resp.json()
-        self.assertSetContainsSet(
+        self.assertGreaterEqual(
             set(json_detail.keys()),
             {'id', 'weight', 'reps', 'created_at'},
-            'Set keys.'
+            'Set: missed fields'
         )
         self.assertEqual(json_detail['id'], set_id)
+
+    def test_user_get(self):
+        current_user_resp = self.client.get(
+            reverse('user-detail', kwargs={'pk': 'me'})
+        )
+        self.assertStatusCode(current_user_resp, status.HTTP_200_OK)
+        json_detail = current_user_resp.json()
+        self.assertEquals(
+            set(json_detail.keys()),
+            {'id', 'username', 'first_name', 'last_name', 'email'},
+            'Users fields does not much.'
+        )
+
+        me_id = json_detail['id']
+        self.assertStatusCode(
+            self.client.put(
+                reverse('user-detail', kwargs={'pk': me_id}),
+                data=json.dumps({'username': 'name'}),
+                content_type='application/json'
+            ),
+            status.HTTP_405_METHOD_NOT_ALLOWED
+        )
+
+        self.assertStatusCode(
+            self.client.delete(reverse('user-detail', kwargs={'pk': me_id})),
+            status.HTTP_405_METHOD_NOT_ALLOWED
+        )
 
 
 class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):

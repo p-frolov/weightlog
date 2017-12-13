@@ -50,10 +50,3 @@ class AssertTestCaseMixin:
                 [item[lookup_field] for item in list_ if item[lookup_field] != value]
             )
         )
-
-    def assertSetContainsSet(self, set_: set, expected: set, msg=""):
-        assert isinstance(self, TestCase)
-        self.assertTrue(expected <= set_, '{}Missed: ({})'.format(
-            msg + ' ' if msg else '',
-            expected - set_
-        ))
