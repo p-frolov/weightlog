@@ -2,76 +2,85 @@
 {% load static %}
 
 {% block head %}
-    <script type="text/javascript" src="{% static 'wglog_html/js/index.js' %}"></script>
+  <script type="text/javascript" src="{% static 'wglog_html/js/index.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <form class="form-inline">
-            <div class="form-group">
-                <select class="form-control" name="name">
-                    <option>жим</option>
-                    <option>тяга</option>
-                    <option>присед</option>
-                </select>
-            </div>
-{#            <div class="input-group">#}
-{#                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>#}
-{#                <input type="text" class="form-control" name="note" placeholder="заметка">#}
-{#            </div>#}
-            <div class="form-group">
-                <input type="date" class="form-control" name="date">
-            </div>
-        </form>
-    </div>
+<div data-bind="visible: currentTraining() === undefined"
+     class="panel panel-default" style="display: none;">
+  <div class="panel-body">
+      <div class="form-group">
+        <select class="form-control" name="name">
+          <option>жим</option>
+          <option>тяга</option>
+          <option>присед</option>
+        </select>
+        <button class="btn">Начать</button>
+      </div>
+  </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <form class="form-inline">
-            <div class="input-group">
-                <span class="input-group-addon">кг</span>
-                <input type="text" class="form-control" name="weight">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">разы</span>
-                <input type="text" class="form-control" name="reps">
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Добавить</button>
-            </div>
-        </form>
-
-        <br>
-
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>Вес</th>
-                        <th>Повторы</th>
-                        <th>Объем</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>35</td>
-                        <td>12</td>
-                        <td>420</td>
-                        <td>Х</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div data-bind="visible: startedTrainings().length > 0 && currentTraining() === undefined "
+     class="panel panel-default" style="display: none;">
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table">
+        <tbody data-bind="foreach: startedTrainings">
+          <tr>
+            <td data-bind="text: date"></td>
+            <td data-bind="text: name"></td>
+            <td>summary</td>
+            <td data-bind="text: total_weight"></td>
+            <td><i class="glyphicon glyphicon-remove"></i></td>
+            <td><i class="glyphicon glyphicon-play"></i></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="panel-footer">
-        Всего: <span>4850</span> кг
+  </div>
+</div>
+
+<div data-bind="visible: currentTraining() !== undefined"
+     class="panel panel-default" style="display: none;">
+  <div class="panel-body">
+    <!-- ko with: currentTraining -->
+    <span data-bind="text: name"></span>
+    <!-- /ko -->
+    <div class="form-inline">
+      <div class="input-group">
+        <span class="input-group-addon">кг</span>
+        <input type="text" class="form-control" name="weight">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">разы</span>
+        <input type="text" class="form-control" name="reps">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn"><i class="glyphicon glyphicon-plus"></i> Добавить</button>
+      </div>
     </div>
+
+    <br>
+
+    <div class="table-responsive">
+      <table class="table">
+        <!-- ko with: currentTraining -->
+        <tbody data-bind="foreach: sets">
+          <tr>
+            <td data-bind="text: weight">35</td>
+            <td data-bind="text: reps">12</td>
+            <td>420</td>
+            <td>Х</td>
+          </tr>
+        </tbody>
+        <!-- /ko -->
+      </table>
+    </div>
+  </div>
+  <div class="panel-footer">
+    Всего: <span>4850</span> кг
+  </div>
 </div>
 
 {% endblock %}

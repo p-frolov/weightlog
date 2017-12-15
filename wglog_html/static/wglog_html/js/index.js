@@ -4,27 +4,34 @@
 
 initRestClient();
 
-_.extend(app, {
-    training: undefined
-});
-
-var TrainingPageModel = function (app) {
-    this.username = ko.observable(app.currentUser.username());
-    this.training = ko.observable();
+var TrainingPageModel = function () {
+    this.currentUser = ko.observable();
+    this.startedTrainings = ko.observableArray();
+    this.currentTraining = ko.observable();
+    // this.currentSets = ko.observableArray();
 };
 
+var pageModel = new TrainingPageModel();
+
 var $currentUserDeferred = $.wgclient.users.read('me');
+var $startedTrainingsDeferred = $.wgclient.trainings.read({status:'st'});
 
 $currentUserDeferred.done(function (data) {
-    app.currentUser = new User(data);
+    pageModel.currentUser(new User(data));
+});
+
+$startedTrainingsDeferred.done(function (data) {
+    _.each(data, function (training_json) {
+        pageModel.startedTrainings.push(
+            new Training(training_json)
+        );
+    });
 });
 
 $.when(
     $currentUserDeferred,
+    $startedTrainingsDeferred,
     $(document).ready
 ).then(function () {
-    console.log('data has been loaded');
-    console.log(app.currentUser);
-    console.log('dom ready');
-    ko.applyBindings(new TrainingPageModel(app));
+    ko.applyBindings(pageModel);
 });

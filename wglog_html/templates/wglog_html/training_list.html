@@ -2,44 +2,29 @@
 {% load static %}
 
 {% block head %}
-    <script type="text/javascript" src="{% static 'wglog_html/js/training_list.js' %}"></script>
+  <script type="text/javascript" src="{% static 'wglog_html/js/training_list.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
 <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="panel-body">
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>Дата</th>
-                        <th>Название</th>
-                        <th>Резюме</th>
-                        <th>Объем</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody data-bind="foreach: trainings">
-                    <tr>
-                        <td><input type="checkbox"/></td>
-                        <td data-bind="text: date"></td>
-                        <td data-bind="text: name"></td>
-                        <td>summary</td>
-                        <td>weight</td>
-                        <td>Х</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody data-bind="foreach: trainings">
+          <tr>
+            <td data-bind="text: date"></td>
+            <td data-bind="text: name"></td>
+            <td>summary</td>
+            <td data-bind="text: total_weight"></td>
+            <td><i class="glyphicon glyphicon-remove"></i></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="panel-footer">
-        Всего: <span>4850</span> кг
-    </div>
-
+  </div>
 </div>
 
 {% endblock %}

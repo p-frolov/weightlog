@@ -1,8 +1,3 @@
-var app = {
-    currentUser: undefined
-};
-
-
 /**
  * User model
  * @param {Object} data - user fields
@@ -22,9 +17,26 @@ function User(data) {
  * @constructor
  */
 function Training(data) {
+    this._utc_date = ko.observable(moment.utc(data.date));
+
     this.id = ko.observable(data.id);
     this.name = ko.observable(data.name);
-    this.date = ko.observable(data.date);
+    this.sets = ko.observableArray();
+
+    this.date = ko.computed(function() {
+        return this._utc_date().clone().local().format('l');
+    }, this);
+
+    // todo: investigate: http://knockoutjs.com/documentation/computed-pure.html
+    this.total_weight = ko.computed(function () {
+        return _.reduce(this.sets(), function (memo, set) {
+            return memo + set.total_weight();
+        }, 0);
+    }, this);
+
+    _.each(data.sets, function (set_json) {
+        this.sets.push(new Set(set_json))
+    }, this);
 }
 
 /**
@@ -33,10 +45,15 @@ function Training(data) {
  * @constructor
  */
 function Set(data) {
-    this.id = ko.observable(data.id);
-    this.training_id = ko.observable(data.training_id);
     this.weight = ko.observable(data.weight);
     this.reps = ko.observable(data.reps);
+
+    this.total_weight = ko.computed(function () {
+        return this.weight() * this.reps();
+    }, this);
+
+    this.id = ko.observable(data.id);
+    this.training_id = ko.observable(data.training_id);
     this.created_at = ko.observable(data.created_at);
 }
 
