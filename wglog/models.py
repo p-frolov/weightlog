@@ -26,8 +26,8 @@ def update_user_profile(sender, instance, created, **kwargs):
 class Training(models.Model):
     """Тренировка"""
 
-    STARTED = 'ST'
-    FINISHED = 'FN'
+    STARTED = 'st'
+    FINISHED = 'fn'
 
     STATUSES = (
         (STARTED, _('Started')),

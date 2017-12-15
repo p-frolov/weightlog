@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 def make_all_trainings_finished(apps, shema_editor):
     Training = apps.get_model('wglog', 'Training')
-    Training.objects.all().update(status='FN')
+    Training.objects.all().update(status='fn')
 
 class Migration(migrations.Migration):
 
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='training',
             name='status',
-            field=models.CharField(choices=[('ST', 'Started'), ('FN', 'Finished')], default='ST', max_length=2),
+            field=models.CharField(choices=[('st', 'Started'), ('fn', 'Finished')], default='st', max_length=2),
         ),
         migrations.RunPython(make_all_trainings_finished, lambda *a, **k: None)
     ]

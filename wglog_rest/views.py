@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
+from rest_framework.request import Request
 
 from wglog.models import Training, Set
 from .serializers import TrainingSerializer, SetSerializer, UserSerializer
@@ -33,18 +34,26 @@ class GetByUserMixin():
 class TrainingsList(APIView):
     """
     List trainings or create new training.
-    List limited by 5 by default
+    Query parameters:
+        'status': st - started, fn - finished
     """
-    def get(self, request, format=None):
+    def get(self, request: Request, format=None):
 
-        trainings = Training.objects.prefetch_related('sets'
+        training_status = request.query_params.get('status', None)
+        if training_status and training_status not in [Training.STARTED, Training.FINISHED]:
+            return Response({'detail': 'Bad status'}, status=status.HTTP_400_BAD_REQUEST)
+
+        q_trainings = Training.objects.prefetch_related('sets'
         ).filter(
             user=request.user
         ).order_by(
             '-date'
-        )[:5]
+        )
 
-        serializer = TrainingSerializer(trainings, many=True, context={'request': request})
+        if training_status:
+            q_trainings = q_trainings.filter(status=training_status)
+
+        serializer = TrainingSerializer(q_trainings, many=True, context={'request': request})
         return Response(serializer.data)
 
     def post(self, request, format=None):

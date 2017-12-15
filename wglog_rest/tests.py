@@ -87,11 +87,33 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         resp = self.client.get(reverse('training-list'))
         self.assertStatusCode(resp, status.HTTP_200_OK)
         json_list = resp.json()
-        self.assertEqual(len(json_list), 5, 'Must be 5 trainings by default')
+        self.assertEqual(len(json_list), 36, 'Must be 36 trainings in fixtures')
         self.assertEqual(len(json_list[0]['sets']), 12, 'Must be 12 sets in first training in fixtures')
         user = self.current_user
         self.assertAllEqualsByField(json_list, user.id, lookup_field='user_id',
                                     msg='Trainings must be belong to user.')
+
+    def test_trainings_statuses(self):
+        resp_started = self.client.get(
+            reverse('training-list'),
+            {'status': 'st'}
+        )
+        self.assertStatusCode(resp_started, status.HTTP_200_OK)
+        self.assertEquals(len(resp_started.json()), 1, 'Must be 1 started training')
+
+        resp_finished = self.client.get(
+            reverse('training-list'),
+            {'status': 'fn'}
+        )
+        self.assertStatusCode(resp_finished, status.HTTP_200_OK)
+        self.assertEquals(len(resp_finished.json()), 35, 'Must be 35 finished trainings')
+
+        resp_finished = self.client.get(
+            reverse('training-list'),
+            {'status': 'nonexistent'}
+        )
+        self.assertStatusCode(resp_finished, status.HTTP_400_BAD_REQUEST)
+
 
     def test_training_details_get(self):
         id_ = 36
