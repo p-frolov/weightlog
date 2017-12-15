@@ -34,6 +34,14 @@ function Training(data) {
         }, 0);
     }, this);
 
+    this.sets_short_summary = ko.computed(function () {
+        var firstSet = _.first(this.sets());
+        if (firstSet !== undefined) {
+            return firstSet.weight() + ' x' + firstSet.reps();
+        }
+        return 'no sets';  //todo: i18n
+    }, this);
+
     _.each(data.sets, function (set_json) {
         this.sets.push(new Set(set_json))
     }, this);

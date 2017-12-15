@@ -10,14 +10,16 @@
 <div data-bind="visible: currentTraining() === undefined"
      class="panel panel-default" style="display: none;">
   <div class="panel-body">
-      <div class="form-group">
-        <select class="form-control" name="name">
-          <option>жим</option>
-          <option>тяга</option>
-          <option>присед</option>
-        </select>
-        <button class="btn">Начать</button>
+    <div class="input-group">
+      <select class="form-control" name="name">
+        <option>жим</option>
+        <option>тяга</option>
+        <option>присед</option>
+      </select>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
       </div>
+    </div>
   </div>
 </div>
 
@@ -30,10 +32,11 @@
           <tr>
             <td data-bind="text: date"></td>
             <td data-bind="text: name"></td>
-            <td>summary</td>
+{# todo: https://www.w3schools.com/bootstrap/bootstrap_popover.asp#}
+            <td data-bind="text: sets_short_summary"></td>
             <td data-bind="text: total_weight"></td>
-            <td><i class="glyphicon glyphicon-remove"></i></td>
-            <td><i class="glyphicon glyphicon-play"></i></td>
+            <td><button type="button" class="glyphicon glyphicon-remove btn btn-xs"></button></td>
+            <td><button type="button" class="glyphicon glyphicon-play btn btn-xs"></button></td>
           </tr>
         </tbody>
       </table>
