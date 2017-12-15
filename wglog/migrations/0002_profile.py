@@ -18,10 +18,6 @@ def create_profiles(apps, schema_editor):
         user.save()
 
 
-def reverse_profiles(apps, schema_editor):
-    pass
-
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -38,5 +34,5 @@ class Migration(migrations.Migration):
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.RunPython(create_profiles, reverse_profiles),
+        migrations.RunPython(create_profiles, lambda *a, **k: None),
     ]

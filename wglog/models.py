@@ -26,8 +26,21 @@ def update_user_profile(sender, instance, created, **kwargs):
 class Training(models.Model):
     """Тренировка"""
 
+    STARTED = 'ST'
+    FINISHED = 'FN'
+
+    STATUSES = (
+        (STARTED, _('Started')),
+        (FINISHED, _('Finished'))
+    )
+
     date = models.DateTimeField(_('date'), default=timezone.now)
     name = models.CharField(_('name'), max_length=250)
+    status = models.CharField(
+        max_length=2,
+        choices=STATUSES,
+        default=STARTED
+    )
 
     user = models.ForeignKey(
         User,
