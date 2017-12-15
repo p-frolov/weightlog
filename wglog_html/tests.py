@@ -9,17 +9,22 @@ from django.contrib.auth.models import AnonymousUser
 from rest_framework import status
 
 from wglog.models import User
-from wglog.tests import AuthTestCaseMixin
+from wglog.tests import AuthTestCaseMixin, AssertTestCaseMixin
 
 
 class SmokeTestCase(TestCase):
     """Tests all urls work"""
 
-    def test_index(self):
+    def test_pages(self):
         self.assertRedirects(
             self.client.get(reverse('index')),
             reverse('login') + '?next=/'
         )
+        self.assertRedirects(
+            self.client.get(reverse('training_list')),
+            reverse('login') + '?next=/trainings/'
+        )
+
 
     def test_auth(self):
 
@@ -64,10 +69,32 @@ class SmokeTestCase(TestCase):
         )
 
 
+class PagesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
+
+    def setUp(self):
+        creds = dict(
+            username='testuser',
+            password='user12345'
+        )
+        self.create_user(**creds)
+        err_msg = 'Cannot login by created user'
+        assert self.client.login(**creds), err_msg
+
+    def test_pages(self):
+        self.assertStatusCode(
+            self.client.get(reverse('index')),
+            status.HTTP_200_OK
+        )
+        self.assertStatusCode(
+            self.client.get(reverse('training_list')),
+            status.HTTP_200_OK
+        )
+
+
 class LoginTestCase(AuthTestCaseMixin, TestCase):
 
     def setUp(self):
-        self._testuser = User.objects.create_user(
+        self._testuser = self.create_user(
             username='testuser',
             email='testuser@local.local',
             password='user12345'

@@ -2,31 +2,10 @@
 {% load static %}
 
 {% block head %}
-    <script data-main="{% static 'wglog_html/js/index' %}" src="{% static 'wglog_html/js/lib/require.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wglog_html/js/index.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Weight log</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Training</a></li>
-        <li><a href="#">Trainings</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                {{ user.username }}
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Settings</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-        </li>
-    </ul>
-    </div>
-</nav>
 
 <div class="panel panel-default">
     <div class="panel-body">
@@ -79,18 +58,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><input type="checkbox"></td><td>35</td><td>12</td><td>420</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>40</td><td>12</td><td>480</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>45</td><td>12</td><td>540</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>50</td><td>10</td><td>500</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>50</td><td>9</td><td>450</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>50</td><td>8</td><td>400</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>50</td><td>6</td><td>300</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>50</td><td>7</td><td>350</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>50</td><td>5</td><td>250</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>40</td><td>12</td><td>480</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>40</td><td>10</td><td>400</td><td>Х</td></tr>
-                    <tr><td><input type="checkbox"></td><td>40</td><td>7</td><td>280</td><td>Х</td></tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>35</td>
+                        <td>12</td>
+                        <td>420</td>
+                        <td>Х</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

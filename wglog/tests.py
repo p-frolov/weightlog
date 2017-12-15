@@ -13,11 +13,10 @@ class AuthTestCaseMixin:
         assert isinstance(self, TestCase)
         return auth.get_user(self.client)
 
-    def create_user(self, username, password):
+    def create_user(self, **kwargs):
         """Returns created test user"""
         # todo: extract flags
-        user = User.objects.create_user(username=username,
-                                        password=password, is_active=True)
+        user = User.objects.create_user(**kwargs, is_active=True)
         user.profile.email_confirmed = True
         user.save()
         return user
@@ -29,9 +28,9 @@ class AssertTestCaseMixin:
 
     def assertStatusCode(self, response, expected_code):
         assert isinstance(self, TestCase)
-        err_msg = 'Wrong status for: "{}", body: {}'.format(
+        err_msg = 'Wrong status for: "{}", body: "{}"'.format(
             response.request.get('PATH_INFO', "key error: request['PATH_INFO']"),
-            response.data
+            response.data if hasattr(response, 'data') else 'no response.data'
         )
         self.assertEqual(response.status_code, expected_code, err_msg)
 

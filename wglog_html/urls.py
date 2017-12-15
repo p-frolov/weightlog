@@ -74,6 +74,7 @@ auth_patterns = [
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^trainings/$', views.training_list, name='training_list'),
     url(r'^accounts/', include(auth_patterns)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

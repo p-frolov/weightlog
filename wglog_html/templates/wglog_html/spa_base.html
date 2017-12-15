@@ -6,15 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Wheight log{% endblock %}</title>
 
+    <script type="text/javascript" src="{% static 'wglog_html/js/lib/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wglog_html/js/lib/jquery.rest.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wglog_html/js/lib/knockout-3.4.2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wglog_html/js/lib/underscore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wglog_html/js/lib/moment.js' %}"></script>
+
     <link rel="stylesheet" href="{% static 'wglog_html/js/lib/bootstrap-3.3.7/css/bootstrap.css' %}">
-{#    <link rel="stylesheet" type="text/css" href="{% static 'wglog_html/css/common.css' %}" />#}
+    <script type="text/javascript" src="{% static 'wglog_html/js/lib/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'wglog_html/js/common.js' %}"></script>
 
     {% block head %}
-        <script type="text/javascript">console.error("You can define requirejs app!")</script>
     {% endblock %}
 
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Weight log</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'index' %}">Training</a></li>
+        <li><a href="{% url 'training_list' %}">Trainings</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-bind="text: username">
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Settings</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+</nav>
+
 {% block content %} {% endblock %}
 </body>
 </html>
