@@ -5,8 +5,10 @@
 initRestClient();
 
 var TrainingListPageModel = function () {
-    this.currentUser = ko.observable();
-    this.trainings = ko.observableArray();
+    var self = this;
+
+    self.currentUser = ko.observable();
+    self.trainings = ko.observableArray();
 };
 
 var $currentUserDeferred = $.wgclient.users.read('me');

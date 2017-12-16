@@ -5,10 +5,11 @@
 initRestClient();
 
 var TrainingPageModel = function () {
-    this.currentUser = ko.observable();
-    this.startedTrainings = ko.observableArray();
-    this.currentTraining = ko.observable();
-    // this.currentSets = ko.observableArray();
+    var self = this;
+
+    self.currentUser = ko.observable();
+    self.startedTrainings = ko.observableArray();
+    self.currentTraining = ko.observable();
 };
 
 var pageModel = new TrainingPageModel();

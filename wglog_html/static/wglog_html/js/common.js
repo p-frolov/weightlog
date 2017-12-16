@@ -4,11 +4,12 @@
  * @constructor
  */
 function User(data) {
-    this.id = ko.observable(data.id);
-    this.username = ko.observable(data.username);
-    this.firt_name = ko.observable(data.firt_name);
-    this.last_name = ko.observable(data.last_name);
-    this.email = ko.observable(data.email);
+    var self = this;
+    self.id = ko.observable(data.id);
+    self.username = ko.observable(data.username);
+    self.firt_name = ko.observable(data.firt_name);
+    self.last_name = ko.observable(data.last_name);
+    self.email = ko.observable(data.email);
 }
 
 /**
@@ -17,34 +18,45 @@ function User(data) {
  * @constructor
  */
 function Training(data) {
-    this._utc_date = ko.observable(moment.utc(data.date));
+    var self = this;
 
-    this.id = ko.observable(data.id);
-    this.name = ko.observable(data.name);
-    this.sets = ko.observableArray();
+    self._utc_date = ko.observable(moment.utc(data.date));
 
-    this.date = ko.computed(function() {
-        return this._utc_date().clone().local().format('l');
-    }, this);
+    self.id = ko.observable(data.id);
+    self.name = ko.observable(data.name);
+    self.sets = ko.observableArray();
+
+    self.date = ko.computed(function() {
+        // todo: localization: https://momentjs.com/docs/#/displaying/format/
+        return self._utc_date().clone().local().format('DD/MM/YY');
+    });
 
     // todo: investigate: http://knockoutjs.com/documentation/computed-pure.html
-    this.total_weight = ko.computed(function () {
-        return _.reduce(this.sets(), function (memo, set) {
+    self.total_weight = ko.computed(function () {
+        return _.reduce(self.sets(), function (memo, set) {
             return memo + set.total_weight();
         }, 0);
-    }, this);
+    });
 
-    this.sets_short_summary = ko.computed(function () {
-        var firstSet = _.first(this.sets());
+    self.sets_short_summary = ko.computed(function () {
+        var firstSet = _.first(self.sets());
         if (firstSet !== undefined) {
-            return firstSet.weight() + ' x' + firstSet.reps();
+            return firstSet.getSummary();
         }
         return 'no sets';  //todo: i18n
-    }, this);
+    });
 
+    self.sets_summary = ko.computed(function () {
+        var summaries = [];
+        _.each(self.sets(), function (set) {
+            summaries.push(set.getSummary());
+        });
+        return summaries.join('\n');
+    });
+    
     _.each(data.sets, function (set_json) {
-        this.sets.push(new Set(set_json))
-    }, this);
+        self.sets.push(new Set(set_json))
+    });
 }
 
 /**
@@ -53,16 +65,22 @@ function Training(data) {
  * @constructor
  */
 function Set(data) {
-    this.weight = ko.observable(data.weight);
-    this.reps = ko.observable(data.reps);
+    var self = this;
 
-    this.total_weight = ko.computed(function () {
-        return this.weight() * this.reps();
-    }, this);
+    self.weight = ko.observable(data.weight);
+    self.reps = ko.observable(data.reps);
 
-    this.id = ko.observable(data.id);
-    this.training_id = ko.observable(data.training_id);
-    this.created_at = ko.observable(data.created_at);
+    self.total_weight = ko.computed(function () {
+        return self.weight() * self.reps();
+    });
+
+    self.id = ko.observable(data.id);
+    self.training_id = ko.observable(data.training_id);
+    self.created_at = ko.observable(data.created_at);
+    
+    self.getSummary = _.bind(function () {
+        return self.weight() + ' x' + self.reps();
+    });
 }
 
 /**
@@ -91,7 +109,7 @@ function initRestClient() {
     // https://gist.github.com/alanhamlett/6316427
     var ajaxOption = {
         beforeSend: function(xhr, settings) {
-            if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {
+            if (settings.type === 'POST' || settings.type === 'PUT' || settings.type === 'DELETE') {
                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
                     // Only send the token to relative URLs i.e. locally.
                     xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
