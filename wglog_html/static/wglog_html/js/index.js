@@ -15,6 +15,10 @@ var TrainingPageModel = function () {
     self.selectedTrainingName = ko.observable();
 
     self.startTraining = function () {
+        if (!self.selectedTrainingName()) {
+            alert("Выберите название тренировки.");
+            return;
+        }
         training = new Training({
             name: self.selectedTrainingName()
         });
