@@ -20,6 +20,7 @@ var TrainingPageModel = function () {
         });
         self.startedTrainings.push(training);
         self.currentTraining(training);
+        // todo: add training name
     };
 
     self.continueTraining = function (training) {

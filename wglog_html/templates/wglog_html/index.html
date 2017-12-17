@@ -11,9 +11,18 @@
      class="panel panel-default" style="display: none;">
   <div class="panel-body">
     <div class="input-group">
-      <select data-bind="options: trainingNames, value: selectedTrainingName"
-              class="form-control">
-      </select>
+      <input data-bind="value: selectedTrainingName"
+             type="text" class="form-control" placeholder="Название тренировки">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+        </button>
+        <ul data-bind="foreach: trainingNames"
+            class="dropdown-menu dropdown-menu-right">
+          <li><a data-bind="text: $data, click: function() { console.log($data), $root.selectedTrainingName($data) }" href="#"></a></li>
+        </ul>
+      </div>
       <div class="input-group-btn">
         <button data-bind="click: startTraining"
                 type="button" class="btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
