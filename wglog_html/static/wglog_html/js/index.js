@@ -10,6 +10,38 @@ var TrainingPageModel = function () {
     self.currentUser = ko.observable();
     self.startedTrainings = ko.observableArray();
     self.currentTraining = ko.observable();
+
+    self.trainingNames = ko.observableArray(['жим', 'тяга', 'присед']);
+    self.selectedTrainingName = ko.observable();
+
+    self.startTraining = function () {
+        training = new Training({
+            name: self.selectedTrainingName()
+        });
+        self.startedTrainings.push(training);
+        self.currentTraining(training);
+    };
+
+    self.continueTraining = function (training) {
+        self.currentTraining(training);
+    };
+
+    self.pauseTraining = function () {
+        self.currentTraining(undefined);
+    };
+
+    self.finishTraining = function () {
+        self.startedTrainings.remove(
+            self.currentTraining()
+        );
+        self.currentTraining(undefined);
+    }
+
+    self.removeTraining = function (training) {
+        if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
+            self.startedTrainings.remove(training);
+        }
+    };
 };
 
 var pageModel = new TrainingPageModel();

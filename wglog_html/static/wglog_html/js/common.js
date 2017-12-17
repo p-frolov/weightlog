@@ -20,9 +20,16 @@ function User(data) {
 function Training(data) {
     var self = this;
 
-    self._utc_date = ko.observable(moment.utc(data.date));
+    self._utc_date = ko.observable(
+        (data.date !== undefined)
+            ? moment.utc(data.date)
+            : moment.utc()
+    );
 
-    self.id = ko.observable(data.id);
+    self.id = (data.id !== undefined)
+        ? ko.observable(data.id)
+        : ko.observable();
+
     self.name = ko.observable(data.name);
     self.sets = ko.observableArray();
 
@@ -46,14 +53,17 @@ function Training(data) {
         return 'no sets';  //todo: i18n
     });
 
-    self.sets_summary = ko.computed(function () {
-        var summaries = [];
-        _.each(self.sets(), function (set) {
-            summaries.push(set.getSummary());
-        });
-        return summaries.join('\n');
+    self.sets_summary = ko.computed({
+        read: function () {
+            var summaries = [];
+            _.each(self.sets(), function (set) {
+                summaries.push(set.getSummary());
+            });
+            return summaries.join('\n');
+        },
+        deferEvaluation: true
     });
-    
+
     _.each(data.sets, function (set_json) {
         self.sets.push(new Set(set_json))
     });

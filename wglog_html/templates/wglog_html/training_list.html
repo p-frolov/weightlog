@@ -17,8 +17,11 @@
           <tr>
             <td data-bind="text: date"></td>
             <td data-bind="text: name"></td>
-{# todo: https://www.w3schools.com/bootstrap/bootstrap_popover.asp#}
-            <td data-bind="text: sets_short_summary"></td>
+            <td>
+              <button data-bind="text: sets_short_summary" type="button"
+                      class="btn btn-xs btn-link">
+              </button>
+            </td>
             <td data-bind="text: total_weight"></td>
             <td><button type="button" class="glyphicon glyphicon-remove btn btn-xs"></button></td>
           </tr>
