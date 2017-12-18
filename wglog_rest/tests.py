@@ -34,24 +34,30 @@ class SmokeTestCase(AssertTestCaseMixin, TestCase):
 
     def test_trainings(self):
         self.assertEqual(self.client.get(reverse('training-list')).status_code,
-                         403, 'Cannot open "training-list" url')
+                         status.HTTP_403_FORBIDDEN, 'Cannot open "training-list" url')
 
         self.assertEqual(
             self.client.get(reverse('training-detail', kwargs={'pk': '1'})).status_code,
-            403,
+            status.HTTP_403_FORBIDDEN,
             'Cannot open "training-detail" url'
+        )
+
+    def test_training_names(self):
+        self.assertStatusCode(
+            self.client.get(reverse('training-name-list')),
+            status.HTTP_403_FORBIDDEN
         )
 
     def test_sets(self):
         self.assertEqual(
             self.client.get(reverse('training-set-list', kwargs={'training_id': '1'})).status_code,
-            403,
+            status.HTTP_403_FORBIDDEN,
             'Cannot open "training-set-list" url'
         )
 
         self.assertEqual(
             self.client.get(reverse('set-detail', kwargs={'pk': '1'})).status_code,
-            403,
+            status.HTTP_403_FORBIDDEN,
             'Cannot open "set-detail" url'
         )
 
