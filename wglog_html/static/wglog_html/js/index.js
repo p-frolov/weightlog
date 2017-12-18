@@ -19,7 +19,7 @@ var TrainingPageModel = function () {
             alert("Выберите название тренировки.");
             return;
         }
-        training = new Training({
+        var training = new Training({
             name: self.selectedTrainingName()
         });
         self.startedTrainings.push(training);
@@ -40,7 +40,7 @@ var TrainingPageModel = function () {
             self.currentTraining()
         );
         self.currentTraining(undefined);
-    }
+    };
 
     self.removeTraining = function (training) {
         if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
