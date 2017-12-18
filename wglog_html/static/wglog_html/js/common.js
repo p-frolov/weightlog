@@ -137,6 +137,8 @@ function initRestClient() {
     // client.trainings.update(41, {'name': 'changed'})
     // client.trainings.del(41)
 
+    client.add('trainingnames');
+
     client.trainings.add('sets');
     // client.trainings.sets.read(39)
 

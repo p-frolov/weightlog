@@ -11,7 +11,7 @@ var TrainingPageModel = function () {
     self.startedTrainings = ko.observableArray();
     self.currentTraining = ko.observable();
 
-    self.trainingNames = ko.observableArray(['жим', 'тяга', 'присед']);
+    self.trainingNames = ko.observableArray();
     self.selectedTrainingName = ko.observable();
 
     self.startTraining = function () {
@@ -53,9 +53,14 @@ var pageModel = new TrainingPageModel();
 
 var $currentUserDeferred = $.wgclient.users.read('me');
 var $startedTrainingsDeferred = $.wgclient.trainings.read({status:'st'});
+var $trainingNamesDeferred = $.wgclient.trainingnames.read();
 
 $currentUserDeferred.done(function (data) {
     pageModel.currentUser(new User(data));
+});
+
+$trainingNamesDeferred.done(function (data) {
+    pageModel.trainingNames = data;
 });
 
 $startedTrainingsDeferred.done(function (data) {
@@ -68,6 +73,7 @@ $startedTrainingsDeferred.done(function (data) {
 
 $.when(
     $currentUserDeferred,
+    $trainingNamesDeferred,
     $startedTrainingsDeferred,
     $(document).ready
 ).then(function () {
