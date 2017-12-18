@@ -1,3 +1,21 @@
 /**
  common styles
  */
+
+.clear-bottom-radius {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.clear-top-radius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.clear-radius {
+    border-radius: 0px;
+}
+
+.huge-input-size {
+    font-size: 200%;
+}

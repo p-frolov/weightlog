@@ -31,7 +31,7 @@ function Training(data) {
         : ko.observable();
 
     self.name = ko.observable(data.name);
-    self.sets = ko.observableArray();
+    self.sets = ko.observableArray([]);
 
     self.date = ko.computed(function() {
         // todo: localization: https://momentjs.com/docs/#/displaying/format/
@@ -92,6 +92,42 @@ function Set(data) {
         return self.weight() + ' x' + self.reps();
     });
 }
+
+ko.intObservable = function (initialValue, options) {
+    var opt = _.extendOwn({
+        min: undefined,
+        max: undefined,
+        step: 1
+    }, options || {});
+
+    var result = ko.observable(initialValue || 0);
+
+    result.subscribe(function(newValue) {
+        // todo: check on max, min
+        if (typeof(newValue) === 'string') {
+            result(parseInt(newValue.replace( /\D+/g, ''), 10));
+        } else if (isNaN(newValue)) {
+            result(0);
+        }
+    });
+
+    result.increase = function () {
+        var value = result();
+        var nextValue = value + opt.step;
+        if (opt.max === undefined || nextValue <= opt.max) {
+            result(nextValue);
+        }
+    };
+
+    result.decrease = function () {
+        var nextValue = result() - opt.step;
+        if (opt.min === undefined || nextValue >= opt.min) {
+            result(nextValue);
+        }
+    };
+
+    return result;
+};
 
 /**
  * Creates global rest client $.wgclient

@@ -8,7 +8,11 @@ var TrainingPageModel = function () {
     var self = this;
 
     self.currentUser = ko.observable();
+
+    // TRAININGS
+
     self.startedTrainings = ko.observableArray();
+
     self.currentTraining = ko.observable();
 
     self.trainingNames = ko.observableArray();
@@ -45,6 +49,23 @@ var TrainingPageModel = function () {
     self.removeTraining = function (training) {
         if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
             self.startedTrainings.remove(training);
+        }
+    };
+
+    // SETS
+
+    self.currentWeight = ko.intObservable(35, {min:1, max: 600, step: 5});
+    self.currentReps = ko.intObservable(10, {min: 1, max: 999});
+
+    self.addSet = function () {
+        self.currentTraining().sets.unshift(
+            new Set({weight: self.currentWeight(), reps: self.currentReps()})
+        );
+    };
+
+    self.removeSet = function (set) {
+        if (confirm('Удалить подход: "' + set.getSummary() + '"?')) {
+            self.currentTraining().sets.remove(set);
         }
     };
 };
