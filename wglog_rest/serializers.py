@@ -1,9 +1,27 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.encoding import smart_text
+
 from rest_framework import serializers
 
-from wglog.models import Training, Set, User
+from wglog.models import Training, Set, User, TrainingName
+
+
+# https://stackoverflow.com/questions/28009829/creating-and-saving-foreign-key-objects-using-a-slugrelatedfield
+class CreatableSlugRelatedField(serializers.SlugRelatedField):
+    def to_internal_value(self, data):
+        try:
+            return self.get_queryset().get_or_create(**{self.slug_field: data})[0]
+        except ObjectDoesNotExist:
+            self.fail('does_not_exist', slug_name=self.slug_field, value=smart_text(data))
+        except (TypeError, ValueError):
+            self.fail('invalid')
 
 
 class TrainingSerializer(serializers.ModelSerializer):
+    name = CreatableSlugRelatedField(
+        slug_field='text',
+        queryset=TrainingName.objects.all()
+    )
     url = serializers.HyperlinkedIdentityField(view_name='training-detail', read_only=True)
     sets_url = serializers.HyperlinkedIdentityField(
         view_name='training-set-list',

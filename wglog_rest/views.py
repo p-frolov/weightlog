@@ -62,6 +62,7 @@ class TrainingsList(APIView):
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+        # todo: investigate: http://www.django-rest-framework.org/api-guide/validators/#currentuserdefault
         serializer.save(user_id=request.user.id)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 

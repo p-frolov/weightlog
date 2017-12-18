@@ -23,6 +23,11 @@ def update_user_profile(sender, instance, created, **kwargs):
     instance.profile.save()
 
 
+class TrainingName(models.Model):
+    """Название тренировки, общий, дополняемый список, для всех"""
+    text = models.CharField(_('name'), max_length=250, unique=True)
+
+
 class Training(models.Model):
     """Тренировка"""
 
@@ -35,11 +40,17 @@ class Training(models.Model):
     )
 
     date = models.DateTimeField(_('date'), default=timezone.now)
-    name = models.CharField(_('name'), max_length=250)
+
     status = models.CharField(
         max_length=2,
         choices=STATUSES,
         default=STARTED
+    )
+
+    name = models.ForeignKey(
+        TrainingName,
+        on_delete=models.PROTECT,
+        verbose_name=_('name')
     )
 
     user = models.ForeignKey(
