@@ -20,5 +20,5 @@ class Migration(migrations.Migration):
             name='status',
             field=models.CharField(choices=[('st', 'Started'), ('fn', 'Finished')], default='st', max_length=2),
         ),
-        migrations.RunPython(make_all_trainings_finished, lambda *a, **k: None)
+        migrations.RunPython(make_all_trainings_finished, migrations.RunPython.noop)
     ]
