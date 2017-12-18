@@ -96,6 +96,27 @@ class TrainingDetail(GetByUserMixin, APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class TrainingNamesList(APIView):
+    """Current user's training names"""
+    def get(self, request):
+
+        # todo: search by all (when typing)
+        # from django.db.models.functions import Lower
+        # TrainingName.objects.annotate(
+        #     text_lower=Lower('text')
+        # ).filter(
+        #     text_lower__icontains='Ж'.lower()
+        # ).distinct().values_list('text', flat=True)
+        # SELECT DISTINCT "wglog_trainingname"."text" FROM "wglog_trainingname"
+        # WHERE LOWER("wglog_trainingname"."text") LIKE %ж% ESCAPE '\'
+
+        names = Training.objects.filter(
+            user_id=self.request.user.id
+        ).distinct(
+        ).values_list('name__text', flat=True)
+        return Response(names)
+
+
 class SetsList(GetByUserMixin, APIView):
     """
     List sets or create new set.

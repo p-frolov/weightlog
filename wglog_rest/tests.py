@@ -23,6 +23,12 @@ class RestAppTestCaseMixin:
             reverse('training-set-list', kwargs={'training_id': training_id})
         ).json()
 
+    def get_training_names_json(self):
+        assert isinstance(self, TestCase)
+        resp = self.client.get(reverse('training-name-list'))
+        # todo: check status
+        return resp.json()
+
 
 class SmokeTestCase(AssertTestCaseMixin, TestCase):
 
@@ -92,6 +98,16 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         user = self.current_user
         self.assertAllEqualsByField(json_list, user.id, lookup_field='user_id',
                                     msg='Trainings must be belong to user.')
+
+    def test_training_names(self):
+        resp = self.client.get(reverse('training-name-list'))
+        self.assertStatusCode(resp, status.HTTP_200_OK)
+        json_list = resp.json()
+        self.assertEquals(len(json_list), 3, 'Training names count')
+        self.assertEquals(
+            set(json_list),
+            {'присед', 'тяга', 'жим'}
+        )
 
     def test_trainings_statuses(self):
         resp_started = self.client.get(
@@ -229,6 +245,11 @@ class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTes
             self.client.delete(reverse('training-detail', kwargs={'pk': training['id']})),
             status.HTTP_404_NOT_FOUND
         )
+
+        # TRAINING NAMES
+
+        self.assertEquals(len(self.get_training_names_json()), 0,
+                          'Names must be empty for new user')
 
         # SETS
         self.assertStatusCode(
