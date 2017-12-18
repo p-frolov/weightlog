@@ -33,48 +33,48 @@ class RestAppTestCaseMixin:
 class SmokeTestCase(AssertTestCaseMixin, TestCase):
 
     def test_trainings(self):
-        self.assertEqual(self.client.get(reverse('training-list')).status_code,
+        self.assertEqual(self.client.get('/api/rest/trainings/').status_code,
                          status.HTTP_403_FORBIDDEN, 'Cannot open "training-list" url')
 
         self.assertEqual(
-            self.client.get(reverse('training-detail', kwargs={'pk': '1'})).status_code,
+            self.client.get('/api/rest/trainings/1/').status_code,
             status.HTTP_403_FORBIDDEN,
             'Cannot open "training-detail" url'
         )
 
     def test_training_names(self):
         self.assertStatusCode(
-            self.client.get(reverse('training-name-list')),
+            self.client.get('/api/rest/trainingnames/'),
             status.HTTP_403_FORBIDDEN
         )
 
     def test_sets(self):
         self.assertEqual(
-            self.client.get(reverse('training-set-list', kwargs={'training_id': '1'})).status_code,
+            self.client.get('/api/rest/trainings/1/sets/').status_code,
             status.HTTP_403_FORBIDDEN,
             'Cannot open "training-set-list" url'
         )
 
         self.assertEqual(
-            self.client.get(reverse('set-detail', kwargs={'pk': '1'})).status_code,
+            self.client.get('/api/rest/sets/1/').status_code,
             status.HTTP_403_FORBIDDEN,
             'Cannot open "set-detail" url'
         )
 
     def test_user(self):
         self.assertStatusCode(
-            self.client.get(reverse('user-detail', kwargs={'pk': 'me'})),
+            self.client.get('/api/rest/users/me/'),
             status.HTTP_403_FORBIDDEN
         )
 
         self.assertStatusCode(
-            self.client.get(reverse('user-detail', kwargs={'pk': 123})),
+            self.client.get('/api/rest/users/123/'),
             status.HTTP_403_FORBIDDEN
         )
 
         self.assertStatusCode(
             self.client.put(
-                reverse('user-detail', kwargs={'pk': 123}),
+                '/api/rest/users/123/',
                 data=json.dumps({'username': 'name'}),
                 content_type='application/json'
             ),
@@ -82,7 +82,7 @@ class SmokeTestCase(AssertTestCaseMixin, TestCase):
         )
 
         self.assertStatusCode(
-            self.client.delete(reverse('user-detail', kwargs={'pk': 123})),
+            self.client.delete('/api/rest/users/123/'),
             status.HTTP_403_FORBIDDEN
         )
 

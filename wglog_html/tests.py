@@ -17,12 +17,12 @@ class SmokeTestCase(TestCase):
 
     def test_pages(self):
         self.assertRedirects(
-            self.client.get(reverse('index')),
-            reverse('login') + '?next=/'
+            self.client.get('/'),
+            '/accounts/login/?next=/'
         )
         self.assertRedirects(
-            self.client.get(reverse('training_list')),
-            reverse('login') + '?next=/trainings/'
+            self.client.get('/trainings/'),
+            '/accounts/login/?next=/trainings/'
         )
 
 
