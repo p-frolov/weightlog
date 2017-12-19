@@ -2,6 +2,7 @@
 .idea
 WeightLog/settings.py
 *.sqlite3
+static_root/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
