@@ -89,7 +89,7 @@ function Set(data) {
     });
 
     self.id = ko.observable(data.id);
-    self.training_id = ko.observable(data.training_id);
+    self.training = ko.observable(data.training);
     self.created_at = ko.observable(data.created_at);
     
     self.getSummary = _.bind(function () {
@@ -97,6 +97,7 @@ function Set(data) {
     });
 }
 
+// todo: rewrite as extender http://knockoutjs.com/documentation/extenders.html
 ko.intObservable = function (initialValue, options) {
     var opt = _.extendOwn({
         min: undefined,
@@ -183,7 +184,9 @@ function initRestClient() {
     // client.trainings.sets.read(39)
 
     client.add('sets');
-    // see: trainings
+    // client.sets.create({'training': 40, 'name': 'test'})
+    // client.sets.update(41, {'training': 40, 'name': 'changed'})
+    // client.sets.del(41)
 
     client.add('users');
     // rest_client.users.read('me')

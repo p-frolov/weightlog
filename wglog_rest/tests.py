@@ -101,9 +101,6 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         json_list = resp.json()
         self.assertEqual(len(json_list), 36, 'Must be 36 trainings in fixtures')
         self.assertEqual(len(json_list[0]['sets']), 12, 'Must be 12 sets in first training in fixtures')
-        user = self.current_user
-        self.assertAllEqualsByField(json_list, user.id, lookup_field='user_id',
-                                    msg='Trainings must be belong to user.')
 
     def test_training_names(self):
         resp = self.client.get(reverse('training-name-list'))
@@ -149,7 +146,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         )
         self.assertEqual(json_detail['id'], id_)
 
-    def test_sets_get(self):
+    def test_training_sets_get(self):
         training_id = 36
         resp = self.client.get(
             reverse('training-set-list', kwargs={'training_id': training_id})
@@ -157,7 +154,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         self.assertStatusCode(resp, status.HTTP_200_OK)
         json_list = resp.json()
         self.assertEqual(len(json_list), 12, 'Count of sets for 36 must be 12 in fixtures')
-        self.assertAllEqualsByField(json_list, training_id, lookup_field='training_id',
+        self.assertAllEqualsByField(json_list, training_id, lookup_field='training',
                                     msg='Sets must be belong to training.')
 
     def test_set_detail_get(self):
@@ -169,7 +166,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         json_detail = resp.json()
         self.assertGreaterEqual(
             set(json_detail.keys()),
-            {'id', 'weight', 'reps', 'created_at'},
+            {'id', 'training', 'weight', 'reps', 'created_at'},
             'Set: missed fields'
         )
         self.assertEqual(json_detail['id'], set_id)
@@ -264,8 +261,8 @@ class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTes
         )
         self.assertStatusCode(
             self.client.post(
-                reverse('training-set-list', kwargs={'training_id': training['id']}),
-                data={'weight': 35, 'reps': 10}
+                reverse('set-list'),
+                data={'weight': 35, 'reps': 10, 'training': training['id']}
             ),
             status.HTTP_404_NOT_FOUND
         )
@@ -361,8 +358,8 @@ class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCas
         # CREATE
 
         create_resp = self.client.post(
-            reverse('training-set-list', kwargs={'training_id': training_id}),
-            data={'weight': 35, 'reps': 10}
+            reverse('set-list'),
+            data={'weight': 35, 'reps': 10, 'training': training_id}
         )
         self.assertStatusCode(create_resp, status.HTTP_201_CREATED)
         created_json = create_resp.json()

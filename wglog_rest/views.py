@@ -117,9 +117,9 @@ class TrainingNamesList(APIView):
         return Response(names)
 
 
-class SetsList(GetByUserMixin, APIView):
+class TrainingSetsList(GetByUserMixin, APIView):
     """
-    List sets or create new set.
+    List sets of training.
     """
     def get(self, request, training_id, format=None):
         training = self.get_training_or_404(training_id)
@@ -131,13 +131,20 @@ class SetsList(GetByUserMixin, APIView):
         )
         return Response(serializer.data)
 
-    def post(self, request, training_id, format=None):
-        serializer = SetSerializer(data=request.data, context={'request': request})
 
+class SetsList(GetByUserMixin, APIView):
+    """
+    Create new set.
+    """
+    def post(self, request, format=None):
+
+        # todo: move to validation or permissions
         training = get_object_or_404(
             Training.objects.filter(user=request.user),
-            pk=training_id
+            pk=request.data.get('training')
         )
+
+        serializer = SetSerializer(data=request.data, context={'request': request})
 
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

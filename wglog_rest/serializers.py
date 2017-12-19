@@ -22,6 +22,9 @@ class TrainingSerializer(serializers.ModelSerializer):
         slug_field='text',
         queryset=TrainingName.objects.all()
     )
+    user = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+    )
     url = serializers.HyperlinkedIdentityField(view_name='training-detail', read_only=True)
     sets_url = serializers.HyperlinkedIdentityField(
         view_name='training-set-list',
@@ -33,8 +36,7 @@ class TrainingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Training
         fields = ('id', 'date', 'name', 'sets',
-                  'user_id',  # for saving
-                  'url', 'sets_url')
+                  'url', 'sets_url', 'user')
         read_only_fields = ('date', 'sets')
         depth = 1  # show sets as objects instead of identifiers
 
@@ -53,10 +55,9 @@ class SetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Set
-        fields = ('id', 'weight', 'reps', 'created_at',
-                  'training_id',  # training_id for saving
+        fields = ('id', 'weight', 'reps', 'created_at', 'training',
                   'url', 'training_url')
-        read_only_fields = ('created_at',)
+        read_only_fields = ('created_at', 'training')
 
 
 class UserSerializer(serializers.ModelSerializer):
