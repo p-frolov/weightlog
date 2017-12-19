@@ -1,3 +1,5 @@
+// todo: http://knockoutjs.com/documentation/component-registration.html
+
 /**
  * User model
  * @param {Object} data - user fields
@@ -19,6 +21,8 @@ function User(data) {
  */
 function Training(data) {
     var self = this;
+
+    // todo: validation (name: required)
 
     self._utc_date = ko.observable(
         (data.date !== undefined)
