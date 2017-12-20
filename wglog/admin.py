@@ -10,7 +10,7 @@ from .models import Training, Set
 
 class SetInline(admin.TabularInline):
     model = Set
-    ordering = ['created_at', 'id']
+    ordering = ['stopped_at', 'id']
 
 
 @admin.register(Training)

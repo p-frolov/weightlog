@@ -55,9 +55,9 @@ class SetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Set
-        fields = ('id', 'weight', 'reps', 'created_at', 'training',
+        fields = ('id', 'training', 'weight', 'reps', 'started_at', 'stopped_at',
                   'url', 'training_url')
-        read_only_fields = ('created_at', 'training')
+        read_only_fields = ('training',)
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -69,7 +69,12 @@ class Set(models.Model):
 
     weight = models.PositiveIntegerField(_('weight'))
     reps = models.PositiveIntegerField(_('repetitions'))
-    created_at = models.DateTimeField(_('updated'), auto_now_add=True)
+
+    started_at = models.DateTimeField(_('started at'), null=True)
+    """Start time of set, value - if set is started manually, null if set is filled by end fact"""
+
+    stopped_at = models.DateTimeField(_('stopped at'), default=timezone.now)
+    """Stop time of set"""
 
     training = models.ForeignKey(
         Training,

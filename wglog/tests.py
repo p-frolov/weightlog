@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.contrib import auth
 
+from rest_framework import status
+
 from .models import User
 
 
@@ -33,6 +35,9 @@ class AssertTestCaseMixin:
             response.data if hasattr(response, 'data') else 'no response.data'
         )
         self.assertEqual(response.status_code, expected_code, err_msg)
+
+    def assertStatusOk(self, response):
+        self.assertStatusCode(response, status.HTTP_200_OK)
 
     def assertAllEqualsByField(self, list_: list, value, lookup_field='id', msg=''):
         """All fields in list of dictionary equals value"""

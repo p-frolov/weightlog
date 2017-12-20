@@ -90,8 +90,9 @@ function Set(data) {
 
     self.id = ko.observable(data.id);
     self.training = ko.observable(data.training);
-    self.created_at = ko.observable(data.created_at);
-    
+    self.started_at = ko.observable(data.started_at);
+    self.stopped_at = ko.observable(data.stopped_at);
+
     self.getSummary = _.bind(function () {
         return self.weight() + ' x' + self.reps();
     });

@@ -1,4 +1,5 @@
 import json
+from dateutil import parser as dt_parser
 
 from django.test import TestCase
 from django.core.urlresolvers import reverse
@@ -13,21 +14,33 @@ class RestAppTestCaseMixin:
 
     def get_trainings_json(self):
         assert isinstance(self, TestCase)
-        # todo: check status
-        return self.client.get(reverse('training-list')).json()
+        resp = self.client.get(reverse('training-list'))
+        assert resp.status_code == status.HTTP_200_OK, 'Cannot get trainings'
+        return resp.json()
 
     def get_sets_json(self, training_id):
         assert isinstance(self, TestCase)
-        # todo: check status
-        return self.client.get(
+        resp = self.client.get(
             reverse('training-set-list', kwargs={'training_id': training_id})
-        ).json()
+        )
+        assert resp.status_code == status.HTTP_200_OK, 'Cannot get sets'
+        return resp.json()
 
     def get_training_names_json(self):
         assert isinstance(self, TestCase)
         resp = self.client.get(reverse('training-name-list'))
-        # todo: check status
+        assert resp.status_code == status.HTTP_200_OK, 'Cannot get training names'
         return resp.json()
+
+    def create_test_training(self, **kwargs):
+        """kwargs - training fields"""
+        assert isinstance(self, TestCase)
+        training_resp = self.client.post(
+            reverse('training-list'),
+            data=kwargs
+        )
+        assert training_resp.status_code == status.HTTP_201_CREATED, "Cannot create test training"
+        return training_resp.json()
 
 
 class SmokeTestCase(AssertTestCaseMixin, TestCase):
@@ -97,14 +110,14 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
 
     def test_trainings_get(self):
         resp = self.client.get(reverse('training-list'))
-        self.assertStatusCode(resp, status.HTTP_200_OK)
+        self.assertStatusOk(resp)
         json_list = resp.json()
         self.assertEqual(len(json_list), 36, 'Must be 36 trainings in fixtures')
         self.assertEqual(len(json_list[0]['sets']), 12, 'Must be 12 sets in first training in fixtures')
 
     def test_training_names(self):
         resp = self.client.get(reverse('training-name-list'))
-        self.assertStatusCode(resp, status.HTTP_200_OK)
+        self.assertStatusOk(resp)
         json_list = resp.json()
         self.assertEquals(len(json_list), 3, 'Training names count')
         self.assertEquals(
@@ -117,14 +130,14 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
             reverse('training-list'),
             {'status': 'st'}
         )
-        self.assertStatusCode(resp_started, status.HTTP_200_OK)
+        self.assertStatusOk(resp_started)
         self.assertEquals(len(resp_started.json()), 1, 'Must be 1 started training')
 
         resp_finished = self.client.get(
             reverse('training-list'),
             {'status': 'fn'}
         )
-        self.assertStatusCode(resp_finished, status.HTTP_200_OK)
+        self.assertStatusOk(resp_finished)
         self.assertEquals(len(resp_finished.json()), 35, 'Must be 35 finished trainings')
 
         resp_finished = self.client.get(
@@ -137,7 +150,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
     def test_training_details_get(self):
         id_ = 36
         resp = self.client.get(reverse('training-detail', kwargs={'pk': id_}))
-        self.assertStatusCode(resp, status.HTTP_200_OK)
+        self.assertStatusOk(resp)
         json_detail = resp.json()
         self.assertGreaterEqual(
             set(json_detail.keys()),
@@ -151,7 +164,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         resp = self.client.get(
             reverse('training-set-list', kwargs={'training_id': training_id})
         )
-        self.assertStatusCode(resp, status.HTTP_200_OK)
+        self.assertStatusOk(resp)
         json_list = resp.json()
         self.assertEqual(len(json_list), 12, 'Count of sets for 36 must be 12 in fixtures')
         self.assertAllEqualsByField(json_list, training_id, lookup_field='training',
@@ -162,11 +175,11 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         resp = self.client.get(
             reverse('set-detail', kwargs={'pk': set_id})
         )
-        self.assertStatusCode(resp, status.HTTP_200_OK)
+        self.assertStatusOk(resp)
         json_detail = resp.json()
         self.assertGreaterEqual(
             set(json_detail.keys()),
-            {'id', 'training', 'weight', 'reps', 'created_at'},
+            {'id', 'training', 'weight', 'reps', 'started_at', 'stopped_at'},
             'Set: missed fields'
         )
         self.assertEqual(json_detail['id'], set_id)
@@ -175,7 +188,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         current_user_resp = self.client.get(
             reverse('user-detail', kwargs={'pk': 'me'})
         )
-        self.assertStatusCode(current_user_resp, status.HTTP_200_OK)
+        self.assertStatusOk(current_user_resp)
         json_detail = current_user_resp.json()
         self.assertEquals(
             set(json_detail.keys()),
@@ -284,7 +297,7 @@ class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTes
         )
 
 
-class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
+class RestTrainingChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
 
     def setUp(self):
         credentials = dict(username='testchanges', password='user12345')
@@ -322,7 +335,7 @@ class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCas
             data=json.dumps({'name': training_name2}),
             content_type='application/json'
         )
-        self.assertStatusCode(update_resp, status.HTTP_200_OK)
+        self.assertStatusOk(update_resp)
 
         # check from changing response
         updated_json = update_resp.json()
@@ -338,60 +351,107 @@ class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCas
 
         self.assertEqual(len(self.get_trainings_json()), 0, 'Trainings must be empty')
 
+
+class RestSetChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
+
+    def setUp(self):
+        credentials = dict(username='testchanges', password='user12345')
+        self._user = self.create_user(**credentials)
+        assert self.client.login(**credentials), 'Cannot login'
+        self._training = self.create_test_training(name='testgym')
+
     def test_set(self):
         """Sets: create, update, delete"""
 
-        # test training
-        training_resp = self.client.post(
-            reverse('training-list'),
-            data={'name': 'testgym'}
-        )
-        self.assertStatusCode(training_resp, status.HTTP_201_CREATED)
+        training_id = self._training['id']
 
-        training_id = training_resp.json()['id']
-        self.assertEqual(
-            len(self.get_sets_json(training_id)),
-            0,
-            'Sets must be empty'
-        )
+        started_on_create_str = '2017-12-20T17:11:45Z'
+        stopped_on_create_str = '2017-12-20T17:17:28Z'
 
         # CREATE
 
         create_resp = self.client.post(
             reverse('set-list'),
-            data={'weight': 35, 'reps': 10, 'training': training_id}
+            data={
+                'weight': 35,
+                'reps': 10,
+                'training': training_id,
+                'started_at': started_on_create_str,
+                'stopped_at': stopped_on_create_str
+            }
         )
         self.assertStatusCode(create_resp, status.HTTP_201_CREATED)
         created_json = create_resp.json()
         self.assertEqual(created_json['weight'], 35)
         self.assertEqual(created_json['reps'], 10)
+        self.assertEquals(
+            dt_parser.parse(created_json['started_at']),
+            dt_parser.parse(started_on_create_str)
+        )
+        self.assertEquals(
+            dt_parser.parse(created_json['stopped_at']),
+            dt_parser.parse(stopped_on_create_str)
+        )
+
 
         sets = self.get_sets_json(training_id)
         self.assertEqual(len(sets), 1)
         self.assertEqual(sets[0]['weight'], 35)
         self.assertEqual(sets[0]['reps'], 10)
+        self.assertEquals(
+            dt_parser.parse(sets[0]['started_at']),
+            dt_parser.parse(started_on_create_str)
+        )
+        self.assertEquals(
+            dt_parser.parse(sets[0]['stopped_at']),
+            dt_parser.parse(stopped_on_create_str)
+        )
 
         set_id = sets[0]['id']
 
         # UPDATE
 
+        started_on_update_str = '2017-11-10T20:20:20Z'
+        stopped_on_update_str = '2017-11-10T20:25:20Z'
+
         update_resp = self.client.put(
             reverse('set-detail', kwargs={'pk': set_id}),
-            data=json.dumps({'weight': 55, 'reps': 7}),
+            data=json.dumps({
+                'weight': 55,
+                'reps': 7,
+                'started_at': started_on_update_str,
+                'stopped_at': stopped_on_update_str
+            }),
             content_type='application/json'
         )
-        self.assertStatusCode(update_resp, status.HTTP_200_OK)
+        self.assertStatusOk(update_resp)
 
         # check from update response
         updated_json = update_resp.json()
         self.assertEqual(updated_json['weight'], 55)
         self.assertEqual(updated_json['reps'], 7)
+        self.assertEquals(
+            dt_parser.parse(updated_json['started_at']),
+            dt_parser.parse(started_on_update_str)
+        )
+        self.assertEquals(
+            dt_parser.parse(updated_json['stopped_at']),
+            dt_parser.parse(stopped_on_update_str)
+        )
 
         # check from list
         sets_updated = self.get_sets_json(training_id)
         self.assertEqual(len(sets_updated), 1)
         self.assertEqual(sets_updated[0]['weight'], 55)
         self.assertEqual(sets_updated[0]['reps'], 7)
+        self.assertEquals(
+            dt_parser.parse(sets_updated[0]['started_at']),
+            dt_parser.parse(started_on_update_str)
+        )
+        self.assertEquals(
+            dt_parser.parse(sets_updated[0]['stopped_at']),
+            dt_parser.parse(stopped_on_update_str)
+        )
 
         # DELETE
 
@@ -402,3 +462,83 @@ class RestChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCas
 
         sets_deleted = self.get_sets_json(training_id)
         self.assertEqual(len(sets_deleted), 0, "Sets must be empty after deleting")
+
+    def test_set_by_stop(self):
+        training_id = self._training['id']
+        set_resp = self.client.post(
+            reverse('set-list'),
+            data={'weight': 45, 'reps': 11, 'training': training_id}
+        )
+        self.assertStatusCode(set_resp, status.HTTP_201_CREATED)
+        set_ = set_resp.json()
+
+        self.assertIsNone(set_['started_at'])
+        self.assertIsNotNone(set_['stopped_at'])
+
+    def test_set_by_interval_at_once(self):
+        training_id = self._training['id']
+        started_str = '2017-12-20T16:33:15Z'
+        stopped_str = '2017-12-20T16:38:25Z'
+
+        set_resp = self.client.post(
+            reverse('set-list'),
+            data={
+                'weight': 45,
+                'reps': 11,
+                'training': training_id,
+                'started_at': started_str,
+                'stopped_at': stopped_str
+            }
+        )
+        self.assertStatusCode(set_resp, status.HTTP_201_CREATED)
+
+        set_ = set_resp.json()
+        self.assertEquals(
+            dt_parser.parse(set_['started_at']),
+            dt_parser.parse(started_str)
+        )
+        self.assertEquals(
+            dt_parser.parse(set_['stopped_at']),
+            dt_parser.parse(stopped_str)
+        )
+
+    def test_set_by_interval_2step(self):
+        training_id = self._training['id']
+        started_str = '2017-12-20T17:11:45Z'
+        stopped_str = '2017-12-20T17:17:28Z'
+
+        set1_resp = self.client.post(
+            reverse('set-list'),
+            data={
+                'weight': 65,
+                'reps': 10,
+                'training': training_id,
+                'started_at': started_str,
+            }
+        )
+        self.assertStatusCode(set1_resp, status.HTTP_201_CREATED)
+
+        set1 = set1_resp.json()
+        self.assertEquals(
+            dt_parser.parse(set1['started_at']),
+            dt_parser.parse(started_str)
+        )
+
+        set2_resp = self.client.put(
+            reverse('set-detail', kwargs={'pk': set1['id']}),
+            # todo: fix for change: {'weight': ['This field is required.']}
+            data=json.dumps({'weight': set1['weight'], 'reps': 7, 'stopped_at': stopped_str}),
+            content_type='application/json'
+        )
+        self.assertStatusOk(set2_resp)
+
+        set2 = set2_resp.json()
+
+        self.assertEquals(
+            dt_parser.parse(set2['started_at']),
+            dt_parser.parse(started_str)
+        )
+        self.assertEquals(
+            dt_parser.parse(set2['stopped_at']),
+            dt_parser.parse(stopped_str)
+        )

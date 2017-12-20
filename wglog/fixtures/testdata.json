@@ -5,7 +5,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.874Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.874Z",
         "training": 1
     }
 },
@@ -15,7 +16,8 @@
     "fields": {
         "weight": 70,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.879Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.879Z",
         "training": 1
     }
 },
@@ -25,7 +27,8 @@
     "fields": {
         "weight": 70,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:12.884Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.884Z",
         "training": 1
     }
 },
@@ -35,7 +38,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.888Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.888Z",
         "training": 1
     }
 },
@@ -45,7 +49,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.896Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.896Z",
         "training": 1
     }
 },
@@ -55,7 +60,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.900Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.900Z",
         "training": 1
     }
 },
@@ -65,7 +71,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.905Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.905Z",
         "training": 1
     }
 },
@@ -75,7 +82,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:12.909Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.909Z",
         "training": 1
     }
 },
@@ -85,7 +93,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:12.914Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.914Z",
         "training": 1
     }
 },
@@ -95,7 +104,8 @@
     "fields": {
         "weight": 35,
         "reps": 7,
-        "created_at": "2017-11-25T05:44:12.918Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.918Z",
         "training": 1
     }
 },
@@ -105,7 +115,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.928Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.928Z",
         "training": 2
     }
 },
@@ -115,7 +126,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.935Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.935Z",
         "training": 2
     }
 },
@@ -125,7 +137,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.940Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.940Z",
         "training": 2
     }
 },
@@ -135,7 +148,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.944Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.944Z",
         "training": 2
     }
 },
@@ -145,7 +159,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.949Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.949Z",
         "training": 2
     }
 },
@@ -155,7 +170,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.953Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.953Z",
         "training": 2
     }
 },
@@ -165,7 +181,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.958Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.958Z",
         "training": 2
     }
 },
@@ -175,7 +192,8 @@
     "fields": {
         "weight": 65,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:12.962Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.962Z",
         "training": 2
     }
 },
@@ -185,7 +203,8 @@
     "fields": {
         "weight": 70,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:12.967Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.967Z",
         "training": 2
     }
 },
@@ -195,7 +214,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:12.975Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.975Z",
         "training": 2
     }
 },
@@ -205,7 +225,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:12.980Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.980Z",
         "training": 2
     }
 },
@@ -215,7 +236,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:12.984Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.984Z",
         "training": 2
     }
 },
@@ -225,7 +247,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:12.988Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.988Z",
         "training": 2
     }
 },
@@ -235,7 +258,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:12.992Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.992Z",
         "training": 2
     }
 },
@@ -245,7 +269,8 @@
     "fields": {
         "weight": 45,
         "reps": 9,
-        "created_at": "2017-11-25T05:44:12.997Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:12.997Z",
         "training": 2
     }
 },
@@ -255,7 +280,8 @@
     "fields": {
         "weight": 35,
         "reps": 20,
-        "created_at": "2017-11-25T05:44:13.004Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.004Z",
         "training": 2
     }
 },
@@ -265,7 +291,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.012Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.012Z",
         "training": 3
     }
 },
@@ -275,7 +302,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.017Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.017Z",
         "training": 3
     }
 },
@@ -285,7 +313,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.021Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.021Z",
         "training": 3
     }
 },
@@ -295,7 +324,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.026Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.026Z",
         "training": 3
     }
 },
@@ -305,7 +335,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.030Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.030Z",
         "training": 3
     }
 },
@@ -315,7 +346,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.034Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.034Z",
         "training": 3
     }
 },
@@ -325,7 +357,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.038Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.038Z",
         "training": 3
     }
 },
@@ -335,7 +368,8 @@
     "fields": {
         "weight": 75,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.042Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.042Z",
         "training": 3
     }
 },
@@ -345,7 +379,8 @@
     "fields": {
         "weight": 80,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.046Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.046Z",
         "training": 3
     }
 },
@@ -355,7 +390,8 @@
     "fields": {
         "weight": 85,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.053Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.053Z",
         "training": 3
     }
 },
@@ -365,7 +401,8 @@
     "fields": {
         "weight": 90,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.057Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.057Z",
         "training": 3
     }
 },
@@ -375,7 +412,8 @@
     "fields": {
         "weight": 95,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.061Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.061Z",
         "training": 3
     }
 },
@@ -385,7 +423,8 @@
     "fields": {
         "weight": 100,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.065Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.065Z",
         "training": 3
     }
 },
@@ -395,7 +434,8 @@
     "fields": {
         "weight": 90,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.070Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.070Z",
         "training": 3
     }
 },
@@ -405,7 +445,8 @@
     "fields": {
         "weight": 90,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.077Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.077Z",
         "training": 3
     }
 },
@@ -415,7 +456,8 @@
     "fields": {
         "weight": 90,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.084Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.084Z",
         "training": 3
     }
 },
@@ -425,7 +467,8 @@
     "fields": {
         "weight": 90,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.089Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.089Z",
         "training": 3
     }
 },
@@ -435,7 +478,8 @@
     "fields": {
         "weight": 90,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.094Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.094Z",
         "training": 3
     }
 },
@@ -445,7 +489,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.106Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.106Z",
         "training": 4
     }
 },
@@ -455,7 +500,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.110Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.110Z",
         "training": 4
     }
 },
@@ -465,7 +511,8 @@
     "fields": {
         "weight": 40,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.115Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.115Z",
         "training": 4
     }
 },
@@ -475,7 +522,8 @@
     "fields": {
         "weight": 45,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.119Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.119Z",
         "training": 4
     }
 },
@@ -485,7 +533,8 @@
     "fields": {
         "weight": 50,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.124Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.124Z",
         "training": 4
     }
 },
@@ -495,7 +544,8 @@
     "fields": {
         "weight": 55,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.128Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.128Z",
         "training": 4
     }
 },
@@ -505,7 +555,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.132Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.132Z",
         "training": 4
     }
 },
@@ -515,7 +566,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.137Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.137Z",
         "training": 4
     }
 },
@@ -525,7 +577,8 @@
     "fields": {
         "weight": 70,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.141Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.141Z",
         "training": 4
     }
 },
@@ -535,7 +588,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.147Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.147Z",
         "training": 4
     }
 },
@@ -545,7 +599,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.151Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.151Z",
         "training": 4
     }
 },
@@ -555,7 +610,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.161Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.161Z",
         "training": 5
     }
 },
@@ -565,7 +621,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.165Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.165Z",
         "training": 5
     }
 },
@@ -575,7 +632,8 @@
     "fields": {
         "weight": 40,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.170Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.170Z",
         "training": 5
     }
 },
@@ -585,7 +643,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.174Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.174Z",
         "training": 5
     }
 },
@@ -595,7 +654,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.179Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.179Z",
         "training": 5
     }
 },
@@ -605,7 +665,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.183Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.183Z",
         "training": 5
     }
 },
@@ -615,7 +676,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.188Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.188Z",
         "training": 5
     }
 },
@@ -625,7 +687,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.193Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.193Z",
         "training": 5
     }
 },
@@ -635,7 +698,8 @@
     "fields": {
         "weight": 65,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.197Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.197Z",
         "training": 5
     }
 },
@@ -645,7 +709,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.202Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.202Z",
         "training": 5
     }
 },
@@ -655,7 +720,8 @@
     "fields": {
         "weight": 70,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.206Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.206Z",
         "training": 5
     }
 },
@@ -665,7 +731,8 @@
     "fields": {
         "weight": 65,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.211Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.211Z",
         "training": 5
     }
 },
@@ -675,7 +742,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.215Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.215Z",
         "training": 5
     }
 },
@@ -685,7 +753,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.220Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.220Z",
         "training": 5
     }
 },
@@ -695,7 +764,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.225Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.225Z",
         "training": 5
     }
 },
@@ -705,7 +775,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.229Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.229Z",
         "training": 5
     }
 },
@@ -715,7 +786,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.234Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.234Z",
         "training": 5
     }
 },
@@ -725,7 +797,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.239Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.239Z",
         "training": 5
     }
 },
@@ -735,7 +808,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.243Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.243Z",
         "training": 5
     }
 },
@@ -745,7 +819,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.248Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.248Z",
         "training": 5
     }
 },
@@ -755,7 +830,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.253Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.253Z",
         "training": 5
     }
 },
@@ -765,7 +841,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.262Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.262Z",
         "training": 6
     }
 },
@@ -775,7 +852,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.266Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.266Z",
         "training": 6
     }
 },
@@ -785,7 +863,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.274Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.274Z",
         "training": 6
     }
 },
@@ -795,7 +874,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.279Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.279Z",
         "training": 6
     }
 },
@@ -805,7 +885,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.284Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.284Z",
         "training": 6
     }
 },
@@ -815,7 +896,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.291Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.291Z",
         "training": 6
     }
 },
@@ -825,7 +907,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.295Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.295Z",
         "training": 6
     }
 },
@@ -835,7 +918,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.300Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.300Z",
         "training": 6
     }
 },
@@ -845,7 +929,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.309Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.309Z",
         "training": 7
     }
 },
@@ -855,7 +940,8 @@
     "fields": {
         "weight": 40,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.314Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.314Z",
         "training": 7
     }
 },
@@ -865,7 +951,8 @@
     "fields": {
         "weight": 45,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.319Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.319Z",
         "training": 7
     }
 },
@@ -875,7 +962,8 @@
     "fields": {
         "weight": 45,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.324Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.324Z",
         "training": 7
     }
 },
@@ -885,7 +973,8 @@
     "fields": {
         "weight": 50,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.328Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.328Z",
         "training": 7
     }
 },
@@ -895,7 +984,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:13.333Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.333Z",
         "training": 7
     }
 },
@@ -905,7 +995,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.337Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.337Z",
         "training": 7
     }
 },
@@ -915,7 +1006,8 @@
     "fields": {
         "weight": 65,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.345Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.345Z",
         "training": 7
     }
 },
@@ -925,7 +1017,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.350Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.350Z",
         "training": 7
     }
 },
@@ -935,7 +1028,8 @@
     "fields": {
         "weight": 70,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.357Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.357Z",
         "training": 7
     }
 },
@@ -945,7 +1039,8 @@
     "fields": {
         "weight": 75,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.362Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.362Z",
         "training": 7
     }
 },
@@ -955,7 +1050,8 @@
     "fields": {
         "weight": 80,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.367Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.367Z",
         "training": 7
     }
 },
@@ -965,7 +1061,8 @@
     "fields": {
         "weight": 85,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.372Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.372Z",
         "training": 7
     }
 },
@@ -975,7 +1072,8 @@
     "fields": {
         "weight": 90,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.377Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.377Z",
         "training": 7
     }
 },
@@ -985,7 +1083,8 @@
     "fields": {
         "weight": 95,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.384Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.384Z",
         "training": 7
     }
 },
@@ -995,7 +1094,8 @@
     "fields": {
         "weight": 100,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.389Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.389Z",
         "training": 7
     }
 },
@@ -1005,7 +1105,8 @@
     "fields": {
         "weight": 95,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.394Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.394Z",
         "training": 7
     }
 },
@@ -1015,7 +1116,8 @@
     "fields": {
         "weight": 85,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.398Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.398Z",
         "training": 7
     }
 },
@@ -1025,7 +1127,8 @@
     "fields": {
         "weight": 85,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.402Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.402Z",
         "training": 7
     }
 },
@@ -1035,7 +1138,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.412Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.412Z",
         "training": 8
     }
 },
@@ -1045,7 +1149,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.416Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.416Z",
         "training": 8
     }
 },
@@ -1055,7 +1160,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.422Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.422Z",
         "training": 8
     }
 },
@@ -1065,7 +1171,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.427Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.427Z",
         "training": 8
     }
 },
@@ -1075,7 +1182,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.432Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.432Z",
         "training": 8
     }
 },
@@ -1085,7 +1193,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.436Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.436Z",
         "training": 8
     }
 },
@@ -1095,7 +1204,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.441Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.441Z",
         "training": 8
     }
 },
@@ -1105,7 +1215,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.445Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.445Z",
         "training": 8
     }
 },
@@ -1115,7 +1226,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.453Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.453Z",
         "training": 8
     }
 },
@@ -1125,7 +1237,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.458Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.458Z",
         "training": 8
     }
 },
@@ -1135,7 +1248,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.465Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.465Z",
         "training": 8
     }
 },
@@ -1145,7 +1259,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.471Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.471Z",
         "training": 8
     }
 },
@@ -1155,7 +1270,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.476Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.476Z",
         "training": 8
     }
 },
@@ -1165,7 +1281,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.480Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.480Z",
         "training": 8
     }
 },
@@ -1175,7 +1292,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.485Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.485Z",
         "training": 8
     }
 },
@@ -1185,7 +1303,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.490Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.490Z",
         "training": 8
     }
 },
@@ -1195,7 +1314,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.494Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.494Z",
         "training": 8
     }
 },
@@ -1205,7 +1325,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.499Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.499Z",
         "training": 8
     }
 },
@@ -1215,7 +1336,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.503Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.503Z",
         "training": 8
     }
 },
@@ -1225,7 +1347,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.511Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.511Z",
         "training": 8
     }
 },
@@ -1235,7 +1358,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.516Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.516Z",
         "training": 8
     }
 },
@@ -1245,7 +1369,8 @@
     "fields": {
         "weight": 55,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.520Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.520Z",
         "training": 8
     }
 },
@@ -1255,7 +1380,8 @@
     "fields": {
         "weight": 50,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.525Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.525Z",
         "training": 8
     }
 },
@@ -1265,7 +1391,8 @@
     "fields": {
         "weight": 35,
         "reps": 12,
-        "created_at": "2017-11-25T05:44:13.529Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.529Z",
         "training": 8
     }
 },
@@ -1275,7 +1402,8 @@
     "fields": {
         "weight": 35,
         "reps": 20,
-        "created_at": "2017-11-25T05:44:13.534Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.534Z",
         "training": 8
     }
 },
@@ -1285,7 +1413,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.544Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.544Z",
         "training": 9
     }
 },
@@ -1295,7 +1424,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.550Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.550Z",
         "training": 9
     }
 },
@@ -1305,7 +1435,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.556Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.556Z",
         "training": 9
     }
 },
@@ -1315,7 +1446,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.560Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.560Z",
         "training": 9
     }
 },
@@ -1325,7 +1457,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.564Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.564Z",
         "training": 9
     }
 },
@@ -1335,7 +1468,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.569Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.569Z",
         "training": 9
     }
 },
@@ -1345,7 +1479,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.573Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.573Z",
         "training": 9
     }
 },
@@ -1355,7 +1490,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.578Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.578Z",
         "training": 9
     }
 },
@@ -1365,7 +1501,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.582Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.582Z",
         "training": 9
     }
 },
@@ -1375,7 +1512,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.586Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.586Z",
         "training": 9
     }
 },
@@ -1385,7 +1523,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.590Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.590Z",
         "training": 9
     }
 },
@@ -1395,7 +1534,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.595Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.595Z",
         "training": 9
     }
 },
@@ -1405,7 +1545,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.599Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.599Z",
         "training": 9
     }
 },
@@ -1415,7 +1556,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.603Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.603Z",
         "training": 9
     }
 },
@@ -1425,7 +1567,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.607Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.607Z",
         "training": 9
     }
 },
@@ -1435,7 +1578,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.611Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.611Z",
         "training": 9
     }
 },
@@ -1445,7 +1589,8 @@
     "fields": {
         "weight": 45,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:13.615Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.615Z",
         "training": 9
     }
 },
@@ -1455,7 +1600,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.624Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.624Z",
         "training": 10
     }
 },
@@ -1465,7 +1611,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.632Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.632Z",
         "training": 10
     }
 },
@@ -1475,7 +1622,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.636Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.636Z",
         "training": 10
     }
 },
@@ -1485,7 +1633,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.641Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.641Z",
         "training": 10
     }
 },
@@ -1495,7 +1644,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.645Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.645Z",
         "training": 10
     }
 },
@@ -1505,7 +1655,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.649Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.649Z",
         "training": 10
     }
 },
@@ -1515,7 +1666,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.653Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.653Z",
         "training": 10
     }
 },
@@ -1525,7 +1677,8 @@
     "fields": {
         "weight": 70,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.657Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.657Z",
         "training": 10
     }
 },
@@ -1535,7 +1688,8 @@
     "fields": {
         "weight": 75,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.661Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.661Z",
         "training": 10
     }
 },
@@ -1545,7 +1699,8 @@
     "fields": {
         "weight": 80,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.668Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.668Z",
         "training": 10
     }
 },
@@ -1555,7 +1710,8 @@
     "fields": {
         "weight": 85,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.673Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.673Z",
         "training": 10
     }
 },
@@ -1565,7 +1721,8 @@
     "fields": {
         "weight": 90,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.678Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.678Z",
         "training": 10
     }
 },
@@ -1575,7 +1732,8 @@
     "fields": {
         "weight": 95,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.685Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.685Z",
         "training": 10
     }
 },
@@ -1585,7 +1743,8 @@
     "fields": {
         "weight": 100,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:13.692Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.692Z",
         "training": 10
     }
 },
@@ -1595,7 +1754,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.701Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.701Z",
         "training": 11
     }
 },
@@ -1605,7 +1765,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.705Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.705Z",
         "training": 11
     }
 },
@@ -1615,7 +1776,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.710Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.710Z",
         "training": 11
     }
 },
@@ -1625,7 +1787,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.714Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.714Z",
         "training": 11
     }
 },
@@ -1635,7 +1798,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.719Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.719Z",
         "training": 11
     }
 },
@@ -1645,7 +1809,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.723Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.723Z",
         "training": 11
     }
 },
@@ -1655,7 +1820,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.730Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.730Z",
         "training": 11
     }
 },
@@ -1665,7 +1831,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.735Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.735Z",
         "training": 11
     }
 },
@@ -1675,7 +1842,8 @@
     "fields": {
         "weight": 60,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.739Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.739Z",
         "training": 11
     }
 },
@@ -1685,7 +1853,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.752Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.752Z",
         "training": 12
     }
 },
@@ -1695,7 +1864,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.756Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.756Z",
         "training": 12
     }
 },
@@ -1705,7 +1875,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.761Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.761Z",
         "training": 12
     }
 },
@@ -1715,7 +1886,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.765Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.765Z",
         "training": 12
     }
 },
@@ -1725,7 +1897,8 @@
     "fields": {
         "weight": 50,
         "reps": 11,
-        "created_at": "2017-11-25T05:44:13.770Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.770Z",
         "training": 12
     }
 },
@@ -1735,7 +1908,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.774Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.774Z",
         "training": 12
     }
 },
@@ -1745,7 +1919,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.778Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.778Z",
         "training": 12
     }
 },
@@ -1755,7 +1930,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.782Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.782Z",
         "training": 12
     }
 },
@@ -1765,7 +1941,8 @@
     "fields": {
         "weight": 70,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.790Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.790Z",
         "training": 12
     }
 },
@@ -1775,7 +1952,8 @@
     "fields": {
         "weight": 75,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.794Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.794Z",
         "training": 12
     }
 },
@@ -1785,7 +1963,8 @@
     "fields": {
         "weight": 80,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.798Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.798Z",
         "training": 12
     }
 },
@@ -1795,7 +1974,8 @@
     "fields": {
         "weight": 85,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.803Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.803Z",
         "training": 12
     }
 },
@@ -1805,7 +1985,8 @@
     "fields": {
         "weight": 90,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.809Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.809Z",
         "training": 12
     }
 },
@@ -1815,7 +1996,8 @@
     "fields": {
         "weight": 95,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.815Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.815Z",
         "training": 12
     }
 },
@@ -1825,7 +2007,8 @@
     "fields": {
         "weight": 100,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.819Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.819Z",
         "training": 12
     }
 },
@@ -1835,7 +2018,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:13.828Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.828Z",
         "training": 13
     }
 },
@@ -1845,7 +2029,8 @@
     "fields": {
         "weight": 35,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:13.832Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.832Z",
         "training": 13
     }
 },
@@ -1855,7 +2040,8 @@
     "fields": {
         "weight": 35,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.840Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.840Z",
         "training": 13
     }
 },
@@ -1865,7 +2051,8 @@
     "fields": {
         "weight": 45,
         "reps": 7,
-        "created_at": "2017-11-25T05:44:13.845Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.845Z",
         "training": 13
     }
 },
@@ -1875,7 +2062,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.850Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.850Z",
         "training": 13
     }
 },
@@ -1885,7 +2073,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.861Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.861Z",
         "training": 13
     }
 },
@@ -1895,7 +2084,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.865Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.865Z",
         "training": 13
     }
 },
@@ -1905,7 +2095,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.877Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.877Z",
         "training": 14
     }
 },
@@ -1915,7 +2106,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.881Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.881Z",
         "training": 14
     }
 },
@@ -1925,7 +2117,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.886Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.886Z",
         "training": 14
     }
 },
@@ -1935,7 +2128,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.890Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.890Z",
         "training": 14
     }
 },
@@ -1945,7 +2139,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:13.894Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.894Z",
         "training": 14
     }
 },
@@ -1955,7 +2150,8 @@
     "fields": {
         "weight": 40,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.902Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.902Z",
         "training": 14
     }
 },
@@ -1965,7 +2161,8 @@
     "fields": {
         "weight": 40,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.907Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.907Z",
         "training": 14
     }
 },
@@ -1975,7 +2172,8 @@
     "fields": {
         "weight": 40,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.912Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.912Z",
         "training": 14
     }
 },
@@ -1985,7 +2183,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.916Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.916Z",
         "training": 14
     }
 },
@@ -1995,7 +2194,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.921Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.921Z",
         "training": 14
     }
 },
@@ -2005,7 +2205,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.925Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.925Z",
         "training": 14
     }
 },
@@ -2015,7 +2216,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.930Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.930Z",
         "training": 14
     }
 },
@@ -2025,7 +2227,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.939Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.939Z",
         "training": 15
     }
 },
@@ -2035,7 +2238,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.943Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.943Z",
         "training": 15
     }
 },
@@ -2045,7 +2249,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.948Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.948Z",
         "training": 15
     }
 },
@@ -2055,7 +2260,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.954Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.954Z",
         "training": 15
     }
 },
@@ -2065,7 +2271,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:13.959Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.959Z",
         "training": 15
     }
 },
@@ -2075,7 +2282,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.963Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.963Z",
         "training": 15
     }
 },
@@ -2085,7 +2293,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.968Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.968Z",
         "training": 15
     }
 },
@@ -2095,7 +2304,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.973Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.973Z",
         "training": 15
     }
 },
@@ -2105,7 +2315,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.978Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.978Z",
         "training": 15
     }
 },
@@ -2115,7 +2326,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:13.982Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.982Z",
         "training": 15
     }
 },
@@ -2125,7 +2337,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.987Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.987Z",
         "training": 15
     }
 },
@@ -2135,7 +2348,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:13.993Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:13.993Z",
         "training": 15
     }
 },
@@ -2145,7 +2359,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.003Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.003Z",
         "training": 16
     }
 },
@@ -2155,7 +2370,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.008Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.008Z",
         "training": 16
     }
 },
@@ -2165,7 +2381,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.013Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.013Z",
         "training": 16
     }
 },
@@ -2175,7 +2392,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.017Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.017Z",
         "training": 16
     }
 },
@@ -2185,7 +2403,8 @@
     "fields": {
         "weight": 35,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.022Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.022Z",
         "training": 16
     }
 },
@@ -2195,7 +2414,8 @@
     "fields": {
         "weight": 45,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.026Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.026Z",
         "training": 16
     }
 },
@@ -2205,7 +2425,8 @@
     "fields": {
         "weight": 45,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.031Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.031Z",
         "training": 16
     }
 },
@@ -2215,7 +2436,8 @@
     "fields": {
         "weight": 45,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.036Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.036Z",
         "training": 16
     }
 },
@@ -2225,7 +2447,8 @@
     "fields": {
         "weight": 45,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.040Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.040Z",
         "training": 16
     }
 },
@@ -2235,7 +2458,8 @@
     "fields": {
         "weight": 45,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:14.045Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.045Z",
         "training": 16
     }
 },
@@ -2245,7 +2469,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.049Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.049Z",
         "training": 16
     }
 },
@@ -2255,7 +2480,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.053Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.053Z",
         "training": 16
     }
 },
@@ -2265,7 +2491,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.058Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.058Z",
         "training": 16
     }
 },
@@ -2275,7 +2502,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.062Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.062Z",
         "training": 16
     }
 },
@@ -2285,7 +2513,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.067Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.067Z",
         "training": 16
     }
 },
@@ -2295,7 +2524,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.076Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.076Z",
         "training": 17
     }
 },
@@ -2305,7 +2535,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.085Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.085Z",
         "training": 17
     }
 },
@@ -2315,7 +2546,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.093Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.093Z",
         "training": 17
     }
 },
@@ -2325,7 +2557,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.097Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.097Z",
         "training": 17
     }
 },
@@ -2335,7 +2568,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.102Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.102Z",
         "training": 17
     }
 },
@@ -2345,7 +2579,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.109Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.109Z",
         "training": 17
     }
 },
@@ -2355,7 +2590,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.114Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.114Z",
         "training": 17
     }
 },
@@ -2365,7 +2601,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.118Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.118Z",
         "training": 17
     }
 },
@@ -2375,7 +2612,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.123Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.123Z",
         "training": 17
     }
 },
@@ -2385,7 +2623,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.128Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.128Z",
         "training": 17
     }
 },
@@ -2395,7 +2634,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.133Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.133Z",
         "training": 17
     }
 },
@@ -2405,7 +2645,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.137Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.137Z",
         "training": 17
     }
 },
@@ -2415,7 +2656,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.146Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.146Z",
         "training": 18
     }
 },
@@ -2425,7 +2667,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.152Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.152Z",
         "training": 18
     }
 },
@@ -2435,7 +2678,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.157Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.157Z",
         "training": 18
     }
 },
@@ -2445,7 +2689,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.164Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.164Z",
         "training": 18
     }
 },
@@ -2455,7 +2700,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.169Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.169Z",
         "training": 18
     }
 },
@@ -2465,7 +2711,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.173Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.173Z",
         "training": 18
     }
 },
@@ -2475,7 +2722,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.178Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.178Z",
         "training": 18
     }
 },
@@ -2485,7 +2733,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.182Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.182Z",
         "training": 18
     }
 },
@@ -2495,7 +2744,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.187Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.187Z",
         "training": 18
     }
 },
@@ -2505,7 +2755,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:14.194Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.194Z",
         "training": 18
     }
 },
@@ -2515,7 +2766,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.198Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.198Z",
         "training": 18
     }
 },
@@ -2525,7 +2777,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.202Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.202Z",
         "training": 18
     }
 },
@@ -2535,7 +2788,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.208Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.208Z",
         "training": 18
     }
 },
@@ -2545,7 +2799,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.212Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.212Z",
         "training": 18
     }
 },
@@ -2555,7 +2810,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.218Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.218Z",
         "training": 18
     }
 },
@@ -2565,7 +2821,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.226Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.226Z",
         "training": 19
     }
 },
@@ -2575,7 +2832,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.230Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.230Z",
         "training": 19
     }
 },
@@ -2585,7 +2843,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.234Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.234Z",
         "training": 19
     }
 },
@@ -2595,7 +2854,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.238Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.238Z",
         "training": 19
     }
 },
@@ -2605,7 +2865,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.242Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.242Z",
         "training": 19
     }
 },
@@ -2615,7 +2876,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.248Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.248Z",
         "training": 19
     }
 },
@@ -2625,7 +2887,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.252Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.252Z",
         "training": 19
     }
 },
@@ -2635,7 +2898,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.256Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.256Z",
         "training": 19
     }
 },
@@ -2645,7 +2909,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.263Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.263Z",
         "training": 19
     }
 },
@@ -2655,7 +2920,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.268Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.268Z",
         "training": 19
     }
 },
@@ -2665,7 +2931,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.272Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.272Z",
         "training": 19
     }
 },
@@ -2675,7 +2942,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.276Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.276Z",
         "training": 19
     }
 },
@@ -2685,7 +2953,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.280Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.280Z",
         "training": 19
     }
 },
@@ -2695,7 +2964,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.287Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.287Z",
         "training": 19
     }
 },
@@ -2705,7 +2975,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.291Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.291Z",
         "training": 19
     }
 },
@@ -2715,7 +2986,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.299Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.299Z",
         "training": 19
     }
 },
@@ -2725,7 +2997,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.306Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.306Z",
         "training": 19
     }
 },
@@ -2735,7 +3008,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.311Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.311Z",
         "training": 19
     }
 },
@@ -2745,7 +3019,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.316Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.316Z",
         "training": 19
     }
 },
@@ -2755,7 +3030,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.320Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.320Z",
         "training": 19
     }
 },
@@ -2765,7 +3041,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.329Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.329Z",
         "training": 20
     }
 },
@@ -2775,7 +3052,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.334Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.334Z",
         "training": 20
     }
 },
@@ -2785,7 +3063,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.338Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.338Z",
         "training": 20
     }
 },
@@ -2795,7 +3074,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.343Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.343Z",
         "training": 20
     }
 },
@@ -2805,7 +3085,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.349Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.349Z",
         "training": 20
     }
 },
@@ -2815,7 +3096,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.353Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.353Z",
         "training": 20
     }
 },
@@ -2825,7 +3107,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.358Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.358Z",
         "training": 20
     }
 },
@@ -2835,7 +3118,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.363Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.363Z",
         "training": 20
     }
 },
@@ -2845,7 +3129,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.367Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.367Z",
         "training": 20
     }
 },
@@ -2855,7 +3140,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.372Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.372Z",
         "training": 20
     }
 },
@@ -2865,7 +3151,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.382Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.382Z",
         "training": 20
     }
 },
@@ -2875,7 +3162,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.387Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.387Z",
         "training": 20
     }
 },
@@ -2885,7 +3173,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.391Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.391Z",
         "training": 20
     }
 },
@@ -2895,7 +3184,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.397Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.397Z",
         "training": 20
     }
 },
@@ -2905,7 +3195,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.406Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.406Z",
         "training": 21
     }
 },
@@ -2915,7 +3206,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.410Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.410Z",
         "training": 21
     }
 },
@@ -2925,7 +3217,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.415Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.415Z",
         "training": 21
     }
 },
@@ -2935,7 +3228,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.419Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.419Z",
         "training": 21
     }
 },
@@ -2945,7 +3239,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.424Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.424Z",
         "training": 21
     }
 },
@@ -2955,7 +3250,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.429Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.429Z",
         "training": 21
     }
 },
@@ -2965,7 +3261,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.434Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.434Z",
         "training": 21
     }
 },
@@ -2975,7 +3272,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.439Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.439Z",
         "training": 21
     }
 },
@@ -2985,7 +3283,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.443Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.443Z",
         "training": 21
     }
 },
@@ -2995,7 +3294,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.448Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.448Z",
         "training": 21
     }
 },
@@ -3005,7 +3305,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:14.453Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.453Z",
         "training": 21
     }
 },
@@ -3015,7 +3316,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:14.457Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.457Z",
         "training": 21
     }
 },
@@ -3025,7 +3327,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:14.465Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.465Z",
         "training": 21
     }
 },
@@ -3035,7 +3338,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:14.469Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.469Z",
         "training": 21
     }
 },
@@ -3045,7 +3349,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:14.475Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.475Z",
         "training": 21
     }
 },
@@ -3055,7 +3360,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.485Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.485Z",
         "training": 22
     }
 },
@@ -3065,7 +3371,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.490Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.490Z",
         "training": 22
     }
 },
@@ -3075,7 +3382,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.495Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.495Z",
         "training": 22
     }
 },
@@ -3085,7 +3393,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.499Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.499Z",
         "training": 22
     }
 },
@@ -3095,7 +3404,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.503Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.503Z",
         "training": 22
     }
 },
@@ -3105,7 +3415,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.508Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.508Z",
         "training": 22
     }
 },
@@ -3115,7 +3426,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.515Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.515Z",
         "training": 22
     }
 },
@@ -3125,7 +3437,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.520Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.520Z",
         "training": 22
     }
 },
@@ -3135,7 +3448,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.528Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.528Z",
         "training": 22
     }
 },
@@ -3145,7 +3459,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.532Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.532Z",
         "training": 22
     }
 },
@@ -3155,7 +3470,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.537Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.537Z",
         "training": 22
     }
 },
@@ -3165,7 +3481,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.541Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.541Z",
         "training": 22
     }
 },
@@ -3175,7 +3492,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.549Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.549Z",
         "training": 22
     }
 },
@@ -3185,7 +3503,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.554Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.554Z",
         "training": 22
     }
 },
@@ -3195,7 +3514,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.563Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.563Z",
         "training": 23
     }
 },
@@ -3205,7 +3525,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.568Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.568Z",
         "training": 23
     }
 },
@@ -3215,7 +3536,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.572Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.572Z",
         "training": 23
     }
 },
@@ -3225,7 +3547,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.577Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.577Z",
         "training": 23
     }
 },
@@ -3235,7 +3558,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.581Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.581Z",
         "training": 23
     }
 },
@@ -3245,7 +3569,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.586Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.586Z",
         "training": 23
     }
 },
@@ -3255,7 +3580,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.590Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.590Z",
         "training": 23
     }
 },
@@ -3265,7 +3591,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.595Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.595Z",
         "training": 23
     }
 },
@@ -3275,7 +3602,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.599Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.599Z",
         "training": 23
     }
 },
@@ -3285,7 +3613,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.604Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.604Z",
         "training": 23
     }
 },
@@ -3295,7 +3624,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.609Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.609Z",
         "training": 23
     }
 },
@@ -3305,7 +3635,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.618Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.618Z",
         "training": 23
     }
 },
@@ -3315,7 +3646,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.623Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.623Z",
         "training": 23
     }
 },
@@ -3325,7 +3657,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.627Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.627Z",
         "training": 23
     }
 },
@@ -3335,7 +3668,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.632Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.632Z",
         "training": 23
     }
 },
@@ -3345,7 +3679,8 @@
     "fields": {
         "weight": 85,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.636Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.636Z",
         "training": 23
     }
 },
@@ -3355,7 +3690,8 @@
     "fields": {
         "weight": 85,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.641Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.641Z",
         "training": 23
     }
 },
@@ -3365,7 +3701,8 @@
     "fields": {
         "weight": 85,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.648Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.648Z",
         "training": 23
     }
 },
@@ -3375,7 +3712,8 @@
     "fields": {
         "weight": 85,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.656Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.656Z",
         "training": 23
     }
 },
@@ -3385,7 +3723,8 @@
     "fields": {
         "weight": 85,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.661Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.661Z",
         "training": 23
     }
 },
@@ -3395,7 +3734,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.671Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.671Z",
         "training": 24
     }
 },
@@ -3405,7 +3745,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.676Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.676Z",
         "training": 24
     }
 },
@@ -3415,7 +3756,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.683Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.683Z",
         "training": 24
     }
 },
@@ -3425,7 +3767,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.688Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.688Z",
         "training": 24
     }
 },
@@ -3435,7 +3778,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.693Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.693Z",
         "training": 24
     }
 },
@@ -3445,7 +3789,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.697Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.697Z",
         "training": 24
     }
 },
@@ -3455,7 +3800,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.702Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.702Z",
         "training": 24
     }
 },
@@ -3465,7 +3811,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.707Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.707Z",
         "training": 24
     }
 },
@@ -3475,7 +3822,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.711Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.711Z",
         "training": 24
     }
 },
@@ -3485,7 +3833,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.716Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.716Z",
         "training": 24
     }
 },
@@ -3495,7 +3844,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.727Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.727Z",
         "training": 25
     }
 },
@@ -3505,7 +3855,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.732Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.732Z",
         "training": 25
     }
 },
@@ -3515,7 +3866,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.736Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.736Z",
         "training": 25
     }
 },
@@ -3525,7 +3877,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.741Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.741Z",
         "training": 25
     }
 },
@@ -3535,7 +3888,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.747Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.747Z",
         "training": 25
     }
 },
@@ -3545,7 +3899,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.751Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.751Z",
         "training": 25
     }
 },
@@ -3555,7 +3910,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.758Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.758Z",
         "training": 25
     }
 },
@@ -3565,7 +3921,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.762Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.762Z",
         "training": 25
     }
 },
@@ -3575,7 +3932,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.767Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.767Z",
         "training": 25
     }
 },
@@ -3585,7 +3943,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.771Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.771Z",
         "training": 25
     }
 },
@@ -3595,7 +3954,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.776Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.776Z",
         "training": 25
     }
 },
@@ -3605,7 +3965,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.781Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.781Z",
         "training": 25
     }
 },
@@ -3615,7 +3976,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.785Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.785Z",
         "training": 25
     }
 },
@@ -3625,7 +3987,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.790Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.790Z",
         "training": 25
     }
 },
@@ -3635,7 +3998,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.795Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.795Z",
         "training": 25
     }
 },
@@ -3645,7 +4009,8 @@
     "fields": {
         "weight": 55,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.800Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.800Z",
         "training": 25
     }
 },
@@ -3655,7 +4020,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.804Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.804Z",
         "training": 25
     }
 },
@@ -3665,7 +4031,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.809Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.809Z",
         "training": 25
     }
 },
@@ -3675,7 +4042,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.813Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.813Z",
         "training": 25
     }
 },
@@ -3685,7 +4053,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.817Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.817Z",
         "training": 25
     }
 },
@@ -3695,7 +4064,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.822Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.822Z",
         "training": 25
     }
 },
@@ -3705,7 +4075,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.830Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.830Z",
         "training": 26
     }
 },
@@ -3715,7 +4086,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.837Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.837Z",
         "training": 26
     }
 },
@@ -3725,7 +4097,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.841Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.841Z",
         "training": 26
     }
 },
@@ -3735,7 +4108,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.846Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.846Z",
         "training": 26
     }
 },
@@ -3745,7 +4119,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.851Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.851Z",
         "training": 26
     }
 },
@@ -3755,7 +4130,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.855Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.855Z",
         "training": 26
     }
 },
@@ -3765,7 +4141,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.860Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.860Z",
         "training": 26
     }
 },
@@ -3775,7 +4152,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.864Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.864Z",
         "training": 26
     }
 },
@@ -3785,7 +4163,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.871Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.871Z",
         "training": 26
     }
 },
@@ -3795,7 +4174,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.875Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.875Z",
         "training": 26
     }
 },
@@ -3805,7 +4185,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.886Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.886Z",
         "training": 26
     }
 },
@@ -3815,7 +4196,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.891Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.891Z",
         "training": 26
     }
 },
@@ -3825,7 +4207,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.896Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.896Z",
         "training": 26
     }
 },
@@ -3835,7 +4218,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.900Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.900Z",
         "training": 26
     }
 },
@@ -3845,7 +4229,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.904Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.904Z",
         "training": 26
     }
 },
@@ -3855,7 +4240,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.911Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.911Z",
         "training": 26
     }
 },
@@ -3865,7 +4251,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.916Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.916Z",
         "training": 26
     }
 },
@@ -3875,7 +4262,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.922Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.922Z",
         "training": 26
     }
 },
@@ -3885,7 +4273,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.948Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.948Z",
         "training": 26
     }
 },
@@ -3895,7 +4284,8 @@
     "fields": {
         "weight": 75,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.958Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.958Z",
         "training": 26
     }
 },
@@ -3905,7 +4295,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.970Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.970Z",
         "training": 27
     }
 },
@@ -3915,7 +4306,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.974Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.974Z",
         "training": 27
     }
 },
@@ -3925,7 +4317,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.979Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.979Z",
         "training": 27
     }
 },
@@ -3935,7 +4328,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.985Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.985Z",
         "training": 27
     }
 },
@@ -3945,7 +4339,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:14.990Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.990Z",
         "training": 27
     }
 },
@@ -3955,7 +4350,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:14.997Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:14.997Z",
         "training": 27
     }
 },
@@ -3965,7 +4361,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.002Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.002Z",
         "training": 27
     }
 },
@@ -3975,7 +4372,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.006Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.006Z",
         "training": 27
     }
 },
@@ -3985,7 +4383,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.011Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.011Z",
         "training": 27
     }
 },
@@ -3995,7 +4394,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.015Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.015Z",
         "training": 27
     }
 },
@@ -4005,7 +4405,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.020Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.020Z",
         "training": 27
     }
 },
@@ -4015,7 +4416,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.024Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.024Z",
         "training": 27
     }
 },
@@ -4025,7 +4427,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.029Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.029Z",
         "training": 27
     }
 },
@@ -4035,7 +4438,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.033Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.033Z",
         "training": 27
     }
 },
@@ -4045,7 +4449,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.038Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.038Z",
         "training": 27
     }
 },
@@ -4055,7 +4460,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.048Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.048Z",
         "training": 28
     }
 },
@@ -4065,7 +4471,8 @@
     "fields": {
         "weight": 40,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.053Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.053Z",
         "training": 28
     }
 },
@@ -4075,7 +4482,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.061Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.061Z",
         "training": 28
     }
 },
@@ -4085,7 +4493,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.066Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.066Z",
         "training": 28
     }
 },
@@ -4095,7 +4504,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.070Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.070Z",
         "training": 28
     }
 },
@@ -4105,7 +4515,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.075Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.075Z",
         "training": 28
     }
 },
@@ -4115,7 +4526,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.080Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.080Z",
         "training": 28
     }
 },
@@ -4125,7 +4537,8 @@
     "fields": {
         "weight": 50,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.085Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.085Z",
         "training": 28
     }
 },
@@ -4135,7 +4548,8 @@
     "fields": {
         "weight": 55,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.090Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.090Z",
         "training": 28
     }
 },
@@ -4145,7 +4559,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.095Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.095Z",
         "training": 28
     }
 },
@@ -4155,7 +4570,8 @@
     "fields": {
         "weight": 65,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.099Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.099Z",
         "training": 28
     }
 },
@@ -4165,7 +4581,8 @@
     "fields": {
         "weight": 70,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.104Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.104Z",
         "training": 28
     }
 },
@@ -4175,7 +4592,8 @@
     "fields": {
         "weight": 75,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.108Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.108Z",
         "training": 28
     }
 },
@@ -4185,7 +4603,8 @@
     "fields": {
         "weight": 80,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.113Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.113Z",
         "training": 28
     }
 },
@@ -4195,7 +4614,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.118Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.118Z",
         "training": 28
     }
 },
@@ -4205,7 +4625,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.123Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.123Z",
         "training": 28
     }
 },
@@ -4215,7 +4636,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.128Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.128Z",
         "training": 28
     }
 },
@@ -4225,7 +4647,8 @@
     "fields": {
         "weight": 55,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.132Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.132Z",
         "training": 28
     }
 },
@@ -4235,7 +4658,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.141Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.141Z",
         "training": 29
     }
 },
@@ -4245,7 +4669,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.146Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.146Z",
         "training": 29
     }
 },
@@ -4255,7 +4680,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.150Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.150Z",
         "training": 29
     }
 },
@@ -4265,7 +4691,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.155Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.155Z",
         "training": 29
     }
 },
@@ -4275,7 +4702,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.159Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.159Z",
         "training": 29
     }
 },
@@ -4285,7 +4713,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.164Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.164Z",
         "training": 29
     }
 },
@@ -4295,7 +4724,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.171Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.171Z",
         "training": 29
     }
 },
@@ -4305,7 +4735,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.180Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.180Z",
         "training": 29
     }
 },
@@ -4315,7 +4746,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.185Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.185Z",
         "training": 29
     }
 },
@@ -4325,7 +4757,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.189Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.189Z",
         "training": 29
     }
 },
@@ -4335,7 +4768,8 @@
     "fields": {
         "weight": 55,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.194Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.194Z",
         "training": 29
     }
 },
@@ -4345,7 +4779,8 @@
     "fields": {
         "weight": 65,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.199Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.199Z",
         "training": 29
     }
 },
@@ -4355,7 +4790,8 @@
     "fields": {
         "weight": 75,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.206Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.206Z",
         "training": 29
     }
 },
@@ -4365,7 +4801,8 @@
     "fields": {
         "weight": 85,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.211Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.211Z",
         "training": 29
     }
 },
@@ -4375,7 +4812,8 @@
     "fields": {
         "weight": 95,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.215Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.215Z",
         "training": 29
     }
 },
@@ -4385,7 +4823,8 @@
     "fields": {
         "weight": 105,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.221Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.221Z",
         "training": 29
     }
 },
@@ -4395,7 +4834,8 @@
     "fields": {
         "weight": 85,
         "reps": 8,
-        "created_at": "2017-11-25T05:44:15.229Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.229Z",
         "training": 29
     }
 },
@@ -4405,7 +4845,8 @@
     "fields": {
         "weight": 85,
         "reps": 8,
-        "created_at": "2017-11-25T05:44:15.233Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.233Z",
         "training": 29
     }
 },
@@ -4415,7 +4856,8 @@
     "fields": {
         "weight": 85,
         "reps": 8,
-        "created_at": "2017-11-25T05:44:15.238Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.238Z",
         "training": 29
     }
 },
@@ -4425,7 +4867,8 @@
     "fields": {
         "weight": 85,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.242Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.242Z",
         "training": 29
     }
 },
@@ -4435,7 +4878,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.252Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.252Z",
         "training": 30
     }
 },
@@ -4445,7 +4889,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.257Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.257Z",
         "training": 30
     }
 },
@@ -4455,7 +4900,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.263Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.263Z",
         "training": 30
     }
 },
@@ -4465,7 +4911,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.268Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.268Z",
         "training": 30
     }
 },
@@ -4475,7 +4922,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.273Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.273Z",
         "training": 30
     }
 },
@@ -4485,7 +4933,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.280Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.280Z",
         "training": 30
     }
 },
@@ -4495,7 +4944,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.285Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.285Z",
         "training": 30
     }
 },
@@ -4505,7 +4955,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.289Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.289Z",
         "training": 30
     }
 },
@@ -4515,7 +4966,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.294Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.294Z",
         "training": 30
     }
 },
@@ -4525,7 +4977,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.299Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.299Z",
         "training": 30
     }
 },
@@ -4535,7 +4988,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.308Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.308Z",
         "training": 31
     }
 },
@@ -4545,7 +4999,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.313Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.313Z",
         "training": 31
     }
 },
@@ -4555,7 +5010,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.319Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.319Z",
         "training": 31
     }
 },
@@ -4565,7 +5021,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.327Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.327Z",
         "training": 31
     }
 },
@@ -4575,7 +5032,8 @@
     "fields": {
         "weight": 35,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.331Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.331Z",
         "training": 31
     }
 },
@@ -4585,7 +5043,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.336Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.336Z",
         "training": 31
     }
 },
@@ -4595,7 +5054,8 @@
     "fields": {
         "weight": 45,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.340Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.340Z",
         "training": 31
     }
 },
@@ -4605,7 +5065,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.344Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.344Z",
         "training": 31
     }
 },
@@ -4615,7 +5076,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.349Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.349Z",
         "training": 31
     }
 },
@@ -4625,7 +5087,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.353Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.353Z",
         "training": 31
     }
 },
@@ -4635,7 +5098,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.358Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.358Z",
         "training": 31
     }
 },
@@ -4645,7 +5109,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.365Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.365Z",
         "training": 31
     }
 },
@@ -4655,7 +5120,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.370Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.370Z",
         "training": 31
     }
 },
@@ -4665,7 +5131,8 @@
     "fields": {
         "weight": 60,
         "reps": 2,
-        "created_at": "2017-11-25T05:44:15.375Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.375Z",
         "training": 31
     }
 },
@@ -4675,7 +5142,8 @@
     "fields": {
         "weight": 65,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.379Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.379Z",
         "training": 31
     }
 },
@@ -4685,7 +5153,8 @@
     "fields": {
         "weight": 70,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.389Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.389Z",
         "training": 31
     }
 },
@@ -4695,7 +5164,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.394Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.394Z",
         "training": 31
     }
 },
@@ -4705,7 +5175,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.399Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.399Z",
         "training": 31
     }
 },
@@ -4715,7 +5186,8 @@
     "fields": {
         "weight": 60,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.403Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.403Z",
         "training": 31
     }
 },
@@ -4725,7 +5197,8 @@
     "fields": {
         "weight": 60,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.408Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.408Z",
         "training": 31
     }
 },
@@ -4735,7 +5208,8 @@
     "fields": {
         "weight": 55,
         "reps": 4,
-        "created_at": "2017-11-25T05:44:15.412Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.412Z",
         "training": 31
     }
 },
@@ -4745,7 +5219,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.421Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.421Z",
         "training": 32
     }
 },
@@ -4755,7 +5230,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.425Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.425Z",
         "training": 32
     }
 },
@@ -4765,7 +5241,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.430Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.430Z",
         "training": 32
     }
 },
@@ -4775,7 +5252,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.435Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.435Z",
         "training": 32
     }
 },
@@ -4785,7 +5263,8 @@
     "fields": {
         "weight": 35,
         "reps": 3,
-        "created_at": "2017-11-25T05:44:15.442Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.442Z",
         "training": 32
     }
 },
@@ -4795,7 +5274,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.447Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.447Z",
         "training": 32
     }
 },
@@ -4805,7 +5285,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.452Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.452Z",
         "training": 32
     }
 },
@@ -4815,7 +5296,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.457Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.457Z",
         "training": 32
     }
 },
@@ -4825,7 +5307,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.461Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.461Z",
         "training": 32
     }
 },
@@ -4835,7 +5318,8 @@
     "fields": {
         "weight": 45,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.466Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.466Z",
         "training": 32
     }
 },
@@ -4845,7 +5329,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.470Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.470Z",
         "training": 32
     }
 },
@@ -4855,7 +5340,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.475Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.475Z",
         "training": 32
     }
 },
@@ -4865,7 +5351,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.479Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.479Z",
         "training": 32
     }
 },
@@ -4875,7 +5362,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.483Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.483Z",
         "training": 32
     }
 },
@@ -4885,7 +5373,8 @@
     "fields": {
         "weight": 65,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.487Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.487Z",
         "training": 32
     }
 },
@@ -4895,7 +5384,8 @@
     "fields": {
         "weight": 85,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.491Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.491Z",
         "training": 32
     }
 },
@@ -4905,7 +5395,8 @@
     "fields": {
         "weight": 85,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.496Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.496Z",
         "training": 32
     }
 },
@@ -4915,7 +5406,8 @@
     "fields": {
         "weight": 85,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.500Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.500Z",
         "training": 32
     }
 },
@@ -4925,7 +5417,8 @@
     "fields": {
         "weight": 85,
         "reps": 7,
-        "created_at": "2017-11-25T05:44:15.504Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.504Z",
         "training": 32
     }
 },
@@ -4935,7 +5428,8 @@
     "fields": {
         "weight": 95,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.508Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.508Z",
         "training": 32
     }
 },
@@ -4945,7 +5439,8 @@
     "fields": {
         "weight": 95,
         "reps": 1,
-        "created_at": "2017-11-25T05:44:15.512Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.512Z",
         "training": 32
     }
 },
@@ -4955,7 +5450,8 @@
     "fields": {
         "weight": 35,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.520Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.520Z",
         "training": 33
     }
 },
@@ -4965,7 +5461,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.524Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.524Z",
         "training": 33
     }
 },
@@ -4975,7 +5472,8 @@
     "fields": {
         "weight": 50,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.529Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.529Z",
         "training": 33
     }
 },
@@ -4985,7 +5483,8 @@
     "fields": {
         "weight": 50,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.533Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.533Z",
         "training": 33
     }
 },
@@ -4995,7 +5494,8 @@
     "fields": {
         "weight": 50,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.537Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.537Z",
         "training": 33
     }
 },
@@ -5005,7 +5505,8 @@
     "fields": {
         "weight": 35,
         "reps": 12,
-        "created_at": "2017-11-25T05:44:15.546Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.546Z",
         "training": 34
     }
 },
@@ -5015,7 +5516,8 @@
     "fields": {
         "weight": 45,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.550Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.550Z",
         "training": 34
     }
 },
@@ -5025,7 +5527,8 @@
     "fields": {
         "weight": 50,
         "reps": 11,
-        "created_at": "2017-11-25T05:44:15.554Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.554Z",
         "training": 34
     }
 },
@@ -5035,7 +5538,8 @@
     "fields": {
         "weight": 50,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:15.559Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.559Z",
         "training": 34
     }
 },
@@ -5045,7 +5549,8 @@
     "fields": {
         "weight": 45,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.563Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.563Z",
         "training": 34
     }
 },
@@ -5055,7 +5560,8 @@
     "fields": {
         "weight": 45,
         "reps": 9,
-        "created_at": "2017-11-25T05:44:15.572Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.572Z",
         "training": 34
     }
 },
@@ -5065,7 +5571,8 @@
     "fields": {
         "weight": 45,
         "reps": 8,
-        "created_at": "2017-11-25T05:44:15.579Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.579Z",
         "training": 34
     }
 },
@@ -5075,7 +5582,8 @@
     "fields": {
         "weight": 35,
         "reps": 14,
-        "created_at": "2017-11-25T05:44:15.583Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.583Z",
         "training": 34
     }
 },
@@ -5085,7 +5593,8 @@
     "fields": {
         "weight": 35,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.595Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.595Z",
         "training": 35
     }
 },
@@ -5095,7 +5604,8 @@
     "fields": {
         "weight": 45,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.599Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.599Z",
         "training": 35
     }
 },
@@ -5105,7 +5615,8 @@
     "fields": {
         "weight": 55,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.604Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.604Z",
         "training": 35
     }
 },
@@ -5115,7 +5626,8 @@
     "fields": {
         "weight": 65,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.609Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.609Z",
         "training": 35
     }
 },
@@ -5125,7 +5637,8 @@
     "fields": {
         "weight": 75,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.614Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.614Z",
         "training": 35
     }
 },
@@ -5135,7 +5648,8 @@
     "fields": {
         "weight": 80,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.618Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.618Z",
         "training": 35
     }
 },
@@ -5145,7 +5659,8 @@
     "fields": {
         "weight": 85,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:15.626Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.626Z",
         "training": 35
     }
 },
@@ -5155,7 +5670,8 @@
     "fields": {
         "weight": 85,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.630Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.630Z",
         "training": 35
     }
 },
@@ -5165,7 +5681,8 @@
     "fields": {
         "weight": 75,
         "reps": 15,
-        "created_at": "2017-11-25T05:44:15.635Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.635Z",
         "training": 35
     }
 },
@@ -5175,7 +5692,8 @@
     "fields": {
         "weight": 75,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.639Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.639Z",
         "training": 35
     }
 },
@@ -5185,7 +5703,8 @@
     "fields": {
         "weight": 75,
         "reps": 9,
-        "created_at": "2017-11-25T05:44:15.643Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.643Z",
         "training": 35
     }
 },
@@ -5195,7 +5714,8 @@
     "fields": {
         "weight": 35,
         "reps": 12,
-        "created_at": "2017-11-25T05:44:15.653Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.653Z",
         "training": 36
     }
 },
@@ -5205,7 +5725,8 @@
     "fields": {
         "weight": 40,
         "reps": 12,
-        "created_at": "2017-11-25T05:44:15.658Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.658Z",
         "training": 36
     }
 },
@@ -5215,7 +5736,8 @@
     "fields": {
         "weight": 45,
         "reps": 12,
-        "created_at": "2017-11-25T05:44:15.662Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.662Z",
         "training": 36
     }
 },
@@ -5225,7 +5747,8 @@
     "fields": {
         "weight": 50,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.670Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.670Z",
         "training": 36
     }
 },
@@ -5235,7 +5758,8 @@
     "fields": {
         "weight": 50,
         "reps": 9,
-        "created_at": "2017-11-25T05:44:15.676Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.676Z",
         "training": 36
     }
 },
@@ -5245,7 +5769,8 @@
     "fields": {
         "weight": 50,
         "reps": 8,
-        "created_at": "2017-11-25T05:44:15.681Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.681Z",
         "training": 36
     }
 },
@@ -5255,7 +5780,8 @@
     "fields": {
         "weight": 50,
         "reps": 6,
-        "created_at": "2017-11-25T05:44:15.686Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.686Z",
         "training": 36
     }
 },
@@ -5265,7 +5791,8 @@
     "fields": {
         "weight": 50,
         "reps": 7,
-        "created_at": "2017-11-25T05:44:15.693Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.693Z",
         "training": 36
     }
 },
@@ -5275,7 +5802,8 @@
     "fields": {
         "weight": 50,
         "reps": 5,
-        "created_at": "2017-11-25T05:44:15.698Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.698Z",
         "training": 36
     }
 },
@@ -5285,7 +5813,8 @@
     "fields": {
         "weight": 40,
         "reps": 12,
-        "created_at": "2017-11-25T05:44:15.702Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.702Z",
         "training": 36
     }
 },
@@ -5295,7 +5824,8 @@
     "fields": {
         "weight": 40,
         "reps": 10,
-        "created_at": "2017-11-25T05:44:15.706Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.706Z",
         "training": 36
     }
 },
@@ -5305,7 +5835,8 @@
     "fields": {
         "weight": 40,
         "reps": 7,
-        "created_at": "2017-11-25T05:44:15.712Z",
+        "started_at":null,
+        "stopped_at": "2017-11-25T05:44:15.712Z",
         "training": 36
     }
 },
