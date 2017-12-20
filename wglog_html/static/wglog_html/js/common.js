@@ -24,19 +24,22 @@ function Training(data) {
 
     // todo: validation (name: required)
 
+    if(data === undefined) {
+        data = {};
+    }
+
+    self.id = ko.observable(data.id);
+
+    self.name = ko.observable(data.name);
+    self.sets = ko.observableArray([]);
+
+
+    // todo: utcDate extender
     self._utc_date = ko.observable(
         (data.date !== undefined)
             ? moment.utc(data.date)
             : moment.utc()
     );
-
-    self.id = (data.id !== undefined)
-        ? ko.observable(data.id)
-        : ko.observable();
-
-    self.name = ko.observable(data.name);
-    self.sets = ko.observableArray([]);
-
     self.date = ko.computed(function() {
         // todo: localization: https://momentjs.com/docs/#/displaying/format/
         return self._utc_date().clone().local().format('DD/MM/YY');
@@ -81,6 +84,16 @@ function Training(data) {
 function Set(data) {
     var self = this;
 
+    if(data === undefined) {
+        data = {};
+    }
+
+    self.id = ko.observable(data.id);
+
+    // todo: apply utcDate extender
+    self.started_at = ko.observable(data.started_at);
+    self.stopped_at = ko.observable(data.stopped_at);
+
     self.weight = ko.observable(data.weight);
     self.reps = ko.observable(data.reps);
 
@@ -88,10 +101,7 @@ function Set(data) {
         return self.weight() * self.reps();
     });
 
-    self.id = ko.observable(data.id);
     self.training = ko.observable(data.training);
-    self.started_at = ko.observable(data.started_at);
-    self.stopped_at = ko.observable(data.stopped_at);
 
     self.getSummary = _.bind(function () {
         return self.weight() + ' x' + self.reps();

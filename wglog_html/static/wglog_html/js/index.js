@@ -72,30 +72,64 @@ var TrainingPageModel = function () {
 
 var pageModel = new TrainingPageModel();
 
-var $currentUserDeferred = $.wgclient.users.read('me');
-var $startedTrainingsDeferred = $.wgclient.trainings.read({status:'st'});
-var $trainingNamesDeferred = $.wgclient.trainingnames.read();
 
-$currentUserDeferred.done(function (data) {
+/**
+ * LOAD DATA
+ */
+
+var dataDeferred = {
+    currentUser: $.wgclient.users.read('me'),
+    startedTrainings: $.wgclient.trainings.read({status:'st'}),
+    trainingNames: $.wgclient.trainingnames.read()
+};
+
+var $dataLoaded = $.when(
+    dataDeferred.currentUser,
+    dataDeferred.startedTrainings,
+    dataDeferred.trainingNames
+);
+
+/**
+ * INIT DATA
+  */
+
+dataDeferred.currentUser.done(function (data) {
     pageModel.currentUser(new User(data));
 });
 
-$trainingNamesDeferred.done(function (data) {
+dataDeferred.trainingNames.done(function (data) {
+    // todo: validation (check on list of strings)
     pageModel.trainingNames = data;
 });
 
-$startedTrainingsDeferred.done(function (data) {
+dataDeferred.startedTrainings.done(function (data) {
+    var trainings = pageModel.startedTrainings();
     _.each(data, function (training_json) {
-        pageModel.startedTrainings.push(
-            new Training(training_json)
-        );
+        trainings.push( new Training(training_json) );
     });
+    pageModel.startedTrainings(trainings);
 });
 
+
+var $dataInitialized = (function () {
+    var dfd = $.Deferred();
+    $.when($dataLoaded).done(function () {
+        dfd.resolve();
+    }).fail(dfd.reject);
+    return dfd.promise();
+})();
+
+// todo: http://knockoutjs.com/documentation/asynchronous-error-handling.html
+// ko.onError = function(error) {
+//     myLogger("knockout error", error);
+// };
+
+/**
+ * START APP
+ */
+
 $.when(
-    $currentUserDeferred,
-    $trainingNamesDeferred,
-    $startedTrainingsDeferred,
+    $dataInitialized,
     $(document).ready
 ).then(function () {
     ko.applyBindings(pageModel);
