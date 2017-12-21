@@ -35,11 +35,7 @@ function Training(data) {
 
 
     // todo: utcDate extender
-    self._utc_date = ko.observable(
-        (data.date !== undefined)
-            ? moment.utc(data.date)
-            : moment.utc()
-    );
+    self._utc_date = ko.observable(moment.utc(data.date));
     self.date = ko.computed(function() {
         // todo: localization: https://momentjs.com/docs/#/displaying/format/
         return self._utc_date().clone().local().format('DD/MM/YY');
