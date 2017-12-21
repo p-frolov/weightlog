@@ -2,6 +2,7 @@
  * Script for index page
  */
 
+initLocale();
 initRestClient();
 
 var TrainingPageModel = function () {

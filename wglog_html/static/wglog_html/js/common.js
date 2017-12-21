@@ -34,12 +34,7 @@ function Training(data) {
     self.sets = ko.observableArray([]);
 
 
-    // todo: utcDate extender
-    self._utc_date = ko.observable(moment.utc(data.date));
-    self.date = ko.computed(function() {
-        // todo: localization: https://momentjs.com/docs/#/displaying/format/
-        return self._utc_date().clone().local().format('DD/MM/YY');
-    });
+    self.date = ko.observable(data.date).extend({datetime: {format: 'L'}});
 
     // todo: investigate: http://knockoutjs.com/documentation/computed-pure.html
     self.total_weight = ko.computed(function () {
@@ -86,9 +81,8 @@ function Set(data) {
 
     self.id = ko.observable(data.id);
 
-    // todo: apply utcDate extender
-    self.started_at = ko.observable(data.started_at);
-    self.stopped_at = ko.observable(data.stopped_at);
+    self.started_at = ko.observable(data.started_at).extend({datetime: {format: 'LTS'}});
+    self.stopped_at = ko.observable(data.stopped_at).extend({datetime: {format: 'LTS'}});
 
     self.weight = ko.observable(data.weight);
     self.reps = ko.observable(data.reps);
@@ -104,8 +98,21 @@ function Set(data) {
     });
 }
 
+/**
+ * Validates and increases/decreases value in accordance with options.
+ *
+ * @example
+ *
+ * currentWeight = ko.observable(35).extend({ intCounter: {min:1, max: 600, step: 5} });
+ * data-bind="value: currentWeight"
+ * data-bind="click: currentWeight.increase"
+ * data-bind="click: currentWeight.decrease"
+ *
+ * @param target {ko.observable}
+ * @param options {Object} - min, max, step
+ */
 ko.extenders.intCounter = function(target, options) {
-    var options = _.extendOwn({
+    var opt = _.extendOwn({
         min: undefined,
         max: undefined,
         step: 1
@@ -125,11 +132,11 @@ ko.extenders.intCounter = function(target, options) {
                 valueToWrite = parseInt(newValue);
             }
 
-            if (options.max !== undefined && newValue > options.max) {
-                valueToWrite = options.max;
+            if (opt.max !== undefined && newValue > opt.max) {
+                valueToWrite = opt.max;
             }
-            if (options.min !== undefined && newValue < options.min) {
-                valueToWrite = options.min;
+            if (opt.min !== undefined && newValue < opt.min) {
+                valueToWrite = opt.min;
             }
 
             if (valueToWrite !== current) {
@@ -143,18 +150,96 @@ ko.extenders.intCounter = function(target, options) {
     // todo: up to max if interval less than step (also for min)
     result.increase = function () {
         var value = result();
-        var nextValue = value + options.step;
-        if (options.max === undefined || nextValue <= options.max) {
+        var nextValue = value + opt.step;
+        if (opt.max === undefined || nextValue <= opt.max) {
             result(nextValue);
         }
     };
 
     result.decrease = function () {
-        var nextValue = result() - options.step;
-        if (options.min === undefined || nextValue >= options.min) {
+        var nextValue = result() - opt.step;
+        if (opt.min === undefined || nextValue >= opt.min) {
             result(nextValue);
         }
     };
+    result(target());
+    return result;
+};
+
+/**
+ * Formatted local datetime.
+ *
+ * Requires to set only utc datetime.
+ * In addition, extender stores utc datetime.
+ *
+ * @example
+ * a = ko.observable('2017-12-21T12:11:38Z').extend({datetime: {format: 'L LT'}})
+ * // or ko.observable(moment.utc()).extend({datetime: {format: 'L LT'}})
+ * a() // "21.12.2017 16:11"
+ * a.utcdata() // "2017-12-21T12:11:38Z"
+ *
+ * a = ko.observable().extend({datetime: {format: 'L LT'}})
+ * a() // ""
+ * a.utcdata() // null
+ *
+ * a(moment.utc())
+ * a(undefined)
+ * a(null)
+ *
+ * @requires moment
+ * @param target {ko.observable}
+ * @param options {Object} - format
+ */
+ko.extenders.datetime = function (target, options) {
+    var opt = _.extendOwn({
+        format: 'L LT' // date time
+    }, options);
+
+    var result = ko.pureComputed({
+        read: target,
+        write: function (newValue) {
+            var current = target();
+
+            var utcDatetime;
+            var valueToWrite;
+
+            if (newValue === undefined || newValue === null) {
+                utcDatetime = null;
+                valueToWrite = '';
+            }
+            else {
+                // todo: handle error
+                utcDatetime = moment.isMoment(newValue)
+                    ? newValue
+                    : moment.utc(newValue);
+
+                if ( !utcDatetime.isUtc() ) {
+                    console.error('Not valid utc datetime', utcDatetime);
+                    // parsing error - prevent write
+                    return;
+                }
+                valueToWrite = utcDatetime.clone().local().format(opt.format);
+            }
+
+            result._utcDatetime = utcDatetime;
+            if (valueToWrite !== current) {
+                target(valueToWrite);
+            } else if (newValue !== current) {
+                target.notifySubscribers(valueToWrite)
+            }
+        }
+    }).extend({notify: 'always'});
+
+    /**
+     * @returns {string|null} - UTC ISO string or null
+     */
+    result.utcdata = function () {
+        if (result._utcDatetime === null) {
+            return null;
+        }
+        return result._utcDatetime.format();
+    };
+
     result(target());
     return result;
 };
@@ -217,4 +302,8 @@ function initRestClient() {
     // rest_client.users.read('me')
 
     $.wgclient = client;
+}
+
+function initLocale() {
+    moment.locale('ru');
 }
