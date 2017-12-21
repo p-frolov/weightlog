@@ -104,40 +104,58 @@ function Set(data) {
     });
 }
 
-// todo: rewrite as extender http://knockoutjs.com/documentation/extenders.html
-ko.intObservable = function (initialValue, options) {
-    var opt = _.extendOwn({
+ko.extenders.intCounter = function(target, options) {
+    var options = _.extendOwn({
         min: undefined,
         max: undefined,
         step: 1
-    }, options || {});
+    }, options);
 
-    var result = ko.observable(initialValue || 0);
+    var result = ko.pureComputed({
+        read: target,
+        write: function (newValue) {
+            var current = target(),
+                valueToWrite;
 
-    result.subscribe(function(newValue) {
-        // todo: check on max, min
-        if (typeof(newValue) === 'string') {
-            result(parseInt(newValue.replace( /\D+/g, ''), 10));
-        } else if (isNaN(newValue)) {
-            result(0);
+            if (typeof(newValue) === 'string') {
+                valueToWrite = parseInt(newValue.replace( /\D+/g, ''), 10);
+            } else if (isNaN(newValue)) {
+                valueToWrite = 0;
+            } else {
+                valueToWrite = parseInt(newValue);
+            }
+
+            if (options.max !== undefined && newValue > options.max) {
+                valueToWrite = options.max;
+            }
+            if (options.min !== undefined && newValue < options.min) {
+                valueToWrite = options.min;
+            }
+
+            if (valueToWrite !== current) {
+                target(valueToWrite);
+            } else if (newValue !== current) {
+                target.notifySubscribers(valueToWrite)
+            }
         }
-    });
+    }).extend({notify: 'always'});
 
+    // todo: up to max if interval less than step (also for min)
     result.increase = function () {
         var value = result();
-        var nextValue = value + opt.step;
-        if (opt.max === undefined || nextValue <= opt.max) {
+        var nextValue = value + options.step;
+        if (options.max === undefined || nextValue <= options.max) {
             result(nextValue);
         }
     };
 
     result.decrease = function () {
-        var nextValue = result() - opt.step;
-        if (opt.min === undefined || nextValue >= opt.min) {
+        var nextValue = result() - options.step;
+        if (options.min === undefined || nextValue >= options.min) {
             result(nextValue);
         }
     };
-
+    result(target());
     return result;
 };
 

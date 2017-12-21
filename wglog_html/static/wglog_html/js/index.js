@@ -54,8 +54,8 @@ var TrainingPageModel = function () {
 
     // SETS
 
-    self.currentWeight = ko.intObservable(35, {min:1, max: 600, step: 5});
-    self.currentReps = ko.intObservable(10, {min: 1, max: 999});
+    self.currentWeight = ko.observable(35).extend({ intCounter: {min:1, max: 600, step: 5} });
+    self.currentReps = ko.observable(10).extend({ intCounter: {min: 1, max: 999}});
 
     self.addSet = function () {
         self.currentTraining().sets.unshift(
