@@ -41,6 +41,7 @@ class TrainingSerializer(serializers.ModelSerializer):
         depth = 1  # show sets as objects instead of identifiers
 
 
+# todo: validate stopped: no less than started (? and training date)
 class SetSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='set-detail',

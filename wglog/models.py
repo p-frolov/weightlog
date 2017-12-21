@@ -73,6 +73,7 @@ class Set(models.Model):
     started_at = models.DateTimeField(_('started at'), null=True)
     """Start time of set, value - if set is started manually, null if set is filled by end fact"""
 
+    # todo: validate no less than started (? and training date)
     stopped_at = models.DateTimeField(_('stopped at'), default=timezone.now)
     """Stop time of set"""
 
