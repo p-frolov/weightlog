@@ -167,14 +167,22 @@ ko.extenders.datetime = function (target, options) {
  * a.pastTime() // "00:00"
  *
  * @param target {ko.observable}
- * @param options {Object}
+ * @param options {Object} - empty: string for null time value,
+ *                         - format: 'human' - ss | HH:mm | d.HH:mm
+ *                         - format: 'nonzero' - ss | mm:ss | HH:mm:ss | d.HH:mm
  * @returns {ko.observable}
  */
 ko.extenders.chronograph = function (target, options) {
     // todo: autostart when set
     var opt = _.extendOwn({
-        empty: '00:00'
+        empty: '00:00',
+        format: 'human'
     }, options);
+
+    if (!_(['human', 'nonzero']).contains(opt.format)) {
+        console.error('chronograph format must be "human" or "nonzero"');
+        return;
+    }
 
     if (!_.has(target, '_utcDatetime')) {
         // todo: handle error
@@ -204,16 +212,30 @@ ko.extenders.chronograph = function (target, options) {
         }
 
         var d = moment.duration(now.diff(start)),
-            time_text;
-        if (d.asDays() > 1) {
-            // todo: i18n
-            time_text = parseInt(d.asDays()) + "." + padZero(d.hours()) + ':' + padZero(d.minutes());
-        }
-        else if (d.asMinutes() > 1) {
-            time_text = padZero(d.hours()) + ':' + padZero(d.minutes());
-        }
-        else {
-            time_text = padZero(d.seconds());
+            time_text = opt.empty;
+        if (opt.format === 'human') {
+            if (d.asDays() > 1) {
+                time_text = parseInt(d.asDays()) + "." + padZero(d.hours()) + ':' + padZero(d.minutes());
+            }
+            else if (d.asMinutes() > 1) {
+                time_text = padZero(d.hours()) + ':' + padZero(d.minutes());
+            }
+            else {
+                time_text = padZero(d.seconds());
+            }
+        } else if (opt.format === 'nonzero') {
+            if (d.asDays() > 1) {
+                time_text = parseInt(d.asDays()) + "." + _([d.hours(), d.minutes()]).map(padZero).join(':');
+            }
+            else if (d.asHours() > 1) {
+                time_text = _([d.hours(), d.minutes(), d.seconds()]).map(padZero).join(':');
+            }
+            else if (d.asMinutes() > 1) {
+                time_text = _([d.minutes(), d.seconds()]).map(padZero).join(':');
+            }
+            else {
+                time_text = padZero(d.seconds());
+            }
         }
         return time_text;
     };

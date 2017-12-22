@@ -20,7 +20,15 @@ var TrainingPageModel = function () {
 
     self.trainingNames = ko.observableArray();
     self.selectedTrainingName = ko.observable();
-    self.currentTrainingPastTimer = ko.observable().extend({datetime: null, chronograph: null});
+    self.currentTrainingPastTimer = ko.observable().extend({
+        datetime: null,
+        chronograph: null
+    });
+
+    self.currentSetPastTimer = ko.observable().extend({
+        datetime: null,
+        chronograph: {format: 'nonzero'}
+    });
 
     self._setCurrentTraining = function (training) {
         if(training === null) {
@@ -35,9 +43,8 @@ var TrainingPageModel = function () {
     };
 
     self.startTraining = function () {
-        // todo: develop plugin for highlight necessary area instead of alert
         if (!self.selectedTrainingName()) {
-            alert("Выберите название тренировки.");
+            $(".js-new-training-block .js-name").effect('highlight', {color: '#fbd850'}, 'slow');
             return;
         }
         var training = new Training({
@@ -46,6 +53,7 @@ var TrainingPageModel = function () {
         });
         self.startedTrainings.push(training);
         self._setCurrentTraining(training);
+        self.selectedTrainingName(undefined);
     };
 
     self.continueTraining = function (training) {
@@ -85,6 +93,15 @@ var TrainingPageModel = function () {
             self.currentTraining().sets.remove(set);
         }
     };
+
+    self.startSet = function () {
+        var player = document.getElementById('start_set_player');
+        player.volume = 0.3;
+        player.currentTime = 0;
+        self.currentSetPastTimer(moment.utc().format());
+        self.currentSetPastTimer.watch();
+        player.play();
+    }
 };
 
 var pageModel = new TrainingPageModel();
