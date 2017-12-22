@@ -2,6 +2,15 @@
  common styles
  */
 
+@font-face {
+    font-family: Lcd;
+    src: url('../fonts/LCD14.otf');
+}
+
+.text-lcd {
+    font-family: Lcd;
+}
+
 .clear-bottom-radius {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -14,6 +23,10 @@
 
 .clear-radius {
     border-radius: 0px;
+}
+
+.clear-padding {
+    padding: 0px;
 }
 
 .huge-input-size {

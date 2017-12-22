@@ -7,6 +7,8 @@
 
 {% block content %}
 
+{# START TRAINING PANEL #}
+
 <div data-bind="visible: currentTraining() === undefined"
      class="panel panel-default" style="display: none;">
   <div class="panel-body">
@@ -31,6 +33,8 @@
     </div>
   </div>
 </div>
+
+{# STARTED TRAINING LIST #}
 
 <div data-bind="visible: startedTrainings().length > 0 && currentTraining() === undefined "
      class="panel panel-default" style="display: none;">
@@ -57,7 +61,7 @@
               {# https://habrahabr.ru/post/124931/ #}
               {# http://jsfiddle.net/romanych/BtbZu/ #}
               <button data-bind="click: function(training) { $root.continueTraining(training) }"
-                      type="button" class="glyphicon glyphicon-play btn btn-xs"></button>
+                      type="button" class="glyphicon glyphicon-chevron-right btn btn-xs"></button>
             </td>
           </tr>
         </tbody>
@@ -66,19 +70,35 @@
   </div>
 </div>
 
+{# CURRENT TRAINING PANEL #}
+
 <div data-bind="visible: currentTraining() !== undefined"
      class="panel panel-default" style="display: none;">
   <!-- ko with: currentTraining -->
   <div class="panel-heading">
-    <button data-bind="click: function() { /* setting */ }"
-        type="button" class="btn btn-xs"><i class="glyphicon glyphicon-cog"></i></button>
-    <strong data-bind="text: name"></strong>
-    <span class="pull-right">
-      <button data-bind="click: function() { $root.pauseTraining() }"
-          type="button" class="btn btn-xs"><i class="glyphicon glyphicon-pause"></i></button>
-      <button data-bind="click: function() { $root.finishTraining() }"
-          type="button" class="btn btn-xs"><i class="glyphicon glyphicon-stop"></i></button>
-    </span>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-2">
+          <button data-bind="click: function() { $root.pauseTraining() }"
+              type="button" class="btn btn-sm"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        </div>
+        <div class="col-xs-6 clear-padding">
+          <span data-bind="text: name"
+                  style="font-size: 150%;"></span>
+        </div>
+        <div class="col-xs-2 clear-padding">
+          <span data-bind="text: $root.currentTrainingPastTimer.pastTime"
+                class="text-muted text-lcd text-nowrap pull-right"
+                style="margin-top: 7px;"></span>
+        </div>
+        <div class="col-xs-2 text-right">
+          <button data-bind="click: function() { $root.finishTraining() }"
+              type="button" class="btn btn-sm"><i class="glyphicon glyphicon-stop"></i></button>
+{#          <button data-bind="click: function() { /* setting */ }"#}
+{#              type="button" class="btn btn-sm"><i class="glyphicon glyphicon-cog"></i></button>#}
+        </div>
+      </div>
+    </div>
   </div>
   <div class="panel-body">
 

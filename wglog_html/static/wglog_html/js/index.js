@@ -12,39 +12,55 @@ var TrainingPageModel = function () {
 
     // TRAININGS
 
+    // todo: extract current training as a component
+
     self.startedTrainings = ko.observableArray();
 
     self.currentTraining = ko.observable();
 
     self.trainingNames = ko.observableArray();
     self.selectedTrainingName = ko.observable();
+    self.currentTrainingPastTimer = ko.observable().extend({datetime: null, chronograph: null});
+
+    self._setCurrentTraining = function (training) {
+        if(training === null) {
+            self.currentTraining(undefined);
+            self.currentTrainingPastTimer(null);
+            self.currentTrainingPastTimer.stop();
+            return;
+        }
+        self.currentTrainingPastTimer(training.date.utcdata());
+        self.currentTrainingPastTimer.watch();
+        self.currentTraining(training);
+    };
 
     self.startTraining = function () {
+        // todo: develop plugin for highlight necessary area instead of alert
         if (!self.selectedTrainingName()) {
             alert("Выберите название тренировки.");
             return;
         }
         var training = new Training({
-            name: self.selectedTrainingName()
+            name: self.selectedTrainingName(),
+            date: moment.utc().format()
         });
         self.startedTrainings.push(training);
-        self.currentTraining(training);
-        // todo: add training name
+        self._setCurrentTraining(training);
     };
 
     self.continueTraining = function (training) {
-        self.currentTraining(training);
+        self._setCurrentTraining(training);
     };
 
     self.pauseTraining = function () {
-        self.currentTraining(undefined);
+        self._setCurrentTraining(null);
     };
 
     self.finishTraining = function () {
         self.startedTrainings.remove(
             self.currentTraining()
         );
-        self.currentTraining(undefined);
+        self._setCurrentTraining(null);
     };
 
     self.removeTraining = function (training) {
