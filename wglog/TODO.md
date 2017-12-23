@@ -26,3 +26,14 @@
 - функциональные (selenium) тесты
 - ввести статус текущей тренировки, для показа в случае перезагрузки
 страницы
+
+
+### Offline
+- https://django-html5-appcache.readthedocs.io/en/latest/index.html
+- https://ashoksamantray.wordpress.com/2014/10/27/caching-static-files-in-django-web-application/
+- https://stackoverflow.com/questions/30210726/where-to-set-cache-headers-for-manifest-file-on-django-app
+- http://htmlbook.ru/html/html/manifest
+- https://habrahabr.ru/post/117123/
+- https://habrahabr.ru/post/160477/
+- https://habrahabr.ru/post/151815/
+- https://habrahabr.ru/post/279291/
