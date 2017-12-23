@@ -7,15 +7,14 @@
 
 {% block content %}
 
-{# START TRAINING PANEL #}
-
+<!--region START TRAINING PANEL-->
 <div data-bind="visible: currentTraining() === undefined"
      class="js-new-training-block panel panel-default">
   <div class="panel-body">
     <div class="input-group">
       {# https://jqueryui.com/autocomplete/#remote-jsonp #}
       <input data-bind="value: selectedTrainingName"
-             type="text" class="js-name form-control" placeholder="Выберите название тренировки">
+             type="text" class="js-name form-control" placeholder="Название тренировки">
       <div class="input-group-btn">
         <button type="button" class="btn btn-default dropdown-toggle"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,9 +32,9 @@
     </div>
   </div>
 </div>
+<!--endregion-->
 
-{# STARTED TRAINING LIST #}
-
+<!--region STARTED TRAINING LIST-->
 <div data-bind="visible: startedTrainings().length > 0 && currentTraining() === undefined "
      class="panel panel-default" style="display: none;">
   <div class="panel-body">
@@ -69,13 +68,15 @@
     </div>
   </div>
 </div>
+<!--endregion-->
 
-{# CURRENT TRAINING PANEL #}
-
+<!--region CURRENT TRAINING PANEL-->
 <div data-bind="visible: currentTraining() !== undefined"
      class="panel panel-default" style="display: none;">
-  <!-- ko with: currentTraining -->
-  <div class="panel-heading">
+
+  <!--region CURRENT TRAINING HEADER-->
+  <div data-bind="with: currentTraining"
+       class="panel-heading">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-2">
@@ -100,20 +101,25 @@
       </div>
     </div>
   </div>
+  <!--endregion-->
+
   <div class="panel-body">
 
-    <div class="container-fluid">
+    <!--region CURRENT SET-->
+    <div data-bind="with: currentSet"
+         class="js-current-set-block container-fluid">
 
+      <!--region WEIGHT REPS BUTTONS PANEL-->
       <div class="row">
         <div class="col-xs-6">
           {# todo: продолжать рост, если удерживать кнопку http://jsfiddle.net/LysCF/ #}
-          <button data-bind="click: $root.currentWeight.increase" type="button"
+          <button data-bind="click: weight.increase" type="button"
                   class="btn btn-block btn-default btn-lg clear-bottom-radius">
             <i class="glyphicon glyphicon-chevron-up"></i>
           </button>
         </div>
         <div class="col-xs-6">
-          <button data-bind="click: $root.currentReps.increase" type="button"
+          <button data-bind="click: reps.increase" type="button"
                   class="btn btn-block btn-default btn-lg clear-bottom-radius"
                   style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
             <i class="glyphicon glyphicon-chevron-up"></i>
@@ -124,27 +130,27 @@
       <div class="row">
         <div class="col-xs-6">
           <strong>
-            <input data-bind="value: $root.currentWeight" type="text" min="0" pattern="\d*"
-                   class="form-control text-center huge-input-size clear-radius">
+            <input data-bind="value: weight" type="text" min="0" pattern="\d*"
+                   class="js-weight form-control text-center huge-input-size clear-radius">
           </strong>
         </div>
         <div class="col-xs-6">
           <strong>
-            <input data-bind="value: $root.currentReps" type="text" min="0" pattern="\d*"
-                   class="form-control text-center huge-input-size clear-radius">
+            <input data-bind="value: reps" type="text" min="0" pattern="\d*"
+                   class="js-reps form-control text-center huge-input-size clear-radius">
           </strong>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-6">
-          <button data-bind="click: $root.currentWeight.decrease" type="button"
+          <button data-bind="click: weight.decrease" type="button"
                   class="btn btn-block btn-default btn-lg clear-top-radius">
             <i class="glyphicon glyphicon-chevron-down"></i>
           </button>
         </div>
         <div class="col-xs-6">
-          <button data-bind="click: $root.currentReps.decrease" type="button"
+          <button data-bind="click: reps.decrease" type="button"
                   class="btn btn-block btn-default btn-lg clear-top-radius">
             <i class="glyphicon glyphicon-chevron-down"></i>
           </button>
@@ -159,37 +165,42 @@
           <p class="text-center"><strong>повторы</strong></p>
         </div>
       </div>
+      <!--endregion-->
 
-      <div class="row">
+      <!--region TIMER PANEL-->
+      <div data-bind="visible: $root.settings.set.is_by_start()"
+           class="row">
         <div class="col-xs-4">
           <p style="margin-top: 7px;">Подход:</p>
         </div>
         <div class="col-xs-4 text-center">
-          <span data-bind="text: $root.currentSetPastTimer.pastTime"
+          <span data-bind="text: started_at.pastTime"
                 class="text-lcd text-nowrap"
                 style="font-size: 29px;"></span>
         </div>
         <div class="col-xs-4 text-right">
-          <button data-bind="visible: true, click: function() { $root.startSet() }"
-                  type="button" class="btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
-          <button data-bind="visible: false"
-                  type="button" class="btn btn-secondary"><i class="glyphicon glyphicon-stop"></i></button>
+          <button data-bind="visible: true, click: $root.startSet" type="button"
+                  class="js-start-btn btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
         </div>
       </div>
+      <!--endregion-->
 
       <br>
       <div class="row">
         <div class="col-xs-12">
-          <button data-bind="click: $root.addSet"
-                  type="button" class="btn btn-block btn-lg">Добавить</button>
+          <button data-bind="click: $root.addSet" type="button"
+                  class="js-add-btn btn btn-block btn-lg">Добавить</button>
         </div>
       </div>
 
     </div>
+    <!--endregion-->
 
     <br>
-    <p class="text-right">Всего: <strong data-bind="text: total_weight"></strong> кг</p>
 
+    <!--region CURRENT TRAINING SETS-->
+    <!-- ko with: currentTraining -->
+    <p class="text-right">Всего: <strong data-bind="text: total_weight"></strong> кг</p>
     <div class="table-responsive">
       <table class="table">
         <tbody data-bind="foreach: sets">
@@ -209,10 +220,13 @@
         </tbody>
       </table>
     </div>
+    <!-- /ko -->
+    <!--endregion-->
 
   </div>
-  <!-- /ko -->
+
 </div>
+<!--endregion-->
 
 <audio id="start_set_player"
        src="{% static 'wglog_html/sounds/best_wake_up_sound.mp3' %}"

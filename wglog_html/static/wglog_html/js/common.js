@@ -14,6 +14,34 @@ function User(data) {
     self.email = ko.observable(data.email);
 }
 
+function Settings(data) {
+    var self = this;
+    // todo: validate settings
+
+    var settings = {
+        set: {
+            type: 'by_stop',
+            weight: 35,
+            reps: 10
+        }
+    };
+
+    $.extend(true, settings, data);
+
+    self.set = {
+        // by_stop | by_start
+        type: ko.observable(settings.set.type),
+        weight: ko.observable(settings.set.weight),
+        reps: ko.observable(settings.set.reps)
+    };
+    self.set.is_by_start = ko.computed(function () {
+        return this.set.type() === 'by_start';
+    }, self);
+    self.set.is_by_stop = ko.computed(function () {
+        return this.set.type() === 'by_stop';
+    }, self);
+}
+
 /**
  * Training model
  * @param data
@@ -62,7 +90,10 @@ function Training(data) {
         deferEvaluation: true
     });
 
-    _.each(data.sets, function (set_json) {
+    var sorted_sets = _.sortBy(data.sets, function (set_json) {
+        return -set_json.id
+    });
+    _.each(sorted_sets, function (set_json) {
         self.sets.push(new Set(set_json))
     });
 }
@@ -72,7 +103,7 @@ function Training(data) {
  * @param data
  * @constructor
  */
-function Set(data) {
+var Set = function (data) {
     var self = this;
 
     if(data === undefined) {
@@ -81,22 +112,52 @@ function Set(data) {
 
     self.id = ko.observable(data.id);
 
-    self.started_at = ko.observable(data.started_at).extend({datetime: {format: 'LTS'}});
-    self.stopped_at = ko.observable(data.stopped_at).extend({datetime: {format: 'LTS'}});
+    self.started_at = ko.observable(data.started_at).extend({
+        datetime: {format: 'LTS'},
+        chronograph: {format: 'nonzero'}
+    });
+    self.stopped_at = ko.observable(data.stopped_at).extend({
+        datetime: {format: 'LTS'}
+    });
 
-    self.weight = ko.observable(data.weight);
-    self.reps = ko.observable(data.reps);
+    self.weight = ko.observable(data.weight).extend({
+        intCounter: {min:1, max: 600, step: 5}
+    });
+    self.reps = ko.observable(data.reps).extend({
+        intCounter: {min: 1, max: 999}
+    });
 
     self.total_weight = ko.computed(function () {
         return self.weight() * self.reps();
     });
 
     self.training = ko.observable(data.training);
+};
 
-    self.getSummary = _.bind(function () {
-        return self.weight() + ' x' + self.reps();
+Set.prototype.getSummary = function () {
+    return this.weight() + ' x' + this.reps();
+};
+
+/**
+ * @param set {Set}
+ */
+Set.prototype.fillBySet = function (set) {
+    this.weight(set.weight());
+    this.reps(set.reps());
+    // this.training(set.training());
+};
+
+/**
+ * @param settings {Settings}
+ * @returns {Set}
+ */
+Set.createBySettings = function(settings) {
+    return new Set({
+        weight: settings.set.weight(),
+        reps: settings.set.reps()
     });
-}
+};
+
 
 /**
  * Creates global rest client $.wgclient
