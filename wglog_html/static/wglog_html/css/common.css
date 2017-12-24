@@ -29,6 +29,10 @@
     padding: 0px;
 }
 
+.clear-margin {
+    margin: 0px;
+}
+
 .huge-input-size {
     font-size: 200%;
 }

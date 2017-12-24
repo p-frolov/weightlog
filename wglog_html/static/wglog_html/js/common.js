@@ -95,7 +95,7 @@ function Training(data) {
             _.each(self.sets(), function (set) {
                 summaries.push(set.getSummary());
             });
-            return summaries.join('\n');
+            return summaries.join(', ');
         },
         deferEvaluation: true
     });
