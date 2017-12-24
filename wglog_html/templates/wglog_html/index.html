@@ -15,7 +15,7 @@
 {% block content %}
 
 <!--region SETTINGS-->
-<div data-bind="visible: settingsShown"
+<div data-bind="visible: state() === 'settings'"
      class="panel panel-default" style="display: none;">
   <div class="panel-heading text-right clear-padding">
       <button data-bind="click: function() { settingsShown(false) }" type="button"
@@ -63,7 +63,7 @@
 <!--endregion-->
 
 <!--region START TRAINING PANEL-->
-<div data-bind="visible: currentTraining() === undefined"
+<div data-bind="visible: state() === 'start'"
      class="js-new-training-block panel panel-default">
   <div class="panel-body">
     <div class="input-group">
@@ -90,7 +90,7 @@
 <!--endregion-->
 
 <!--region STARTED TRAINING LIST-->
-<div data-bind="visible: startedTrainings().length > 0 && currentTraining() === undefined "
+<div data-bind="visible: state() === 'start' && startedTrainings().length > 0"
      class="panel panel-default" style="display: none;">
   <div class="panel-body">
     <div class="table-responsive">
@@ -126,7 +126,7 @@
 <!--endregion-->
 
 <!--region CURRENT TRAINING PANEL-->
-<div data-bind="visible: currentTraining() !== undefined"
+<div data-bind="visible: state() === 'training'"
      class="panel panel-default" style="display: none;">
 
   <!--region CURRENT TRAINING HEADER-->

@@ -140,6 +140,18 @@ var TrainingPageModel = function () {
 
     //endregion
 
+    /** start | settings | training */
+    self.state = ko.computed(function () {
+        if (self.settingsShown()) {
+            return 'settings';
+        } else if (self.currentTraining()) {
+            return 'training';
+        } else {
+            return 'start';
+        }
+    });
+
+
     //region UTILS
 
     self._highlightTrainingActions = function () {
