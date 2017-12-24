@@ -66,7 +66,7 @@
 <div data-bind="visible: state() === 'start'"
      class="js-new-training-block panel panel-default">
   <div class="panel-body">
-    <div class="input-group">
+    <div class="input-group input-group-lg" role="group">
       {# https://jqueryui.com/autocomplete/#remote-jsonp #}
       <input data-bind="value: selectedTrainingName"
              class="js-name form-control" type="text"  placeholder="Название тренировки">
@@ -77,7 +77,8 @@
         </button>
         <ul data-bind="foreach: trainingNames"
             class="dropdown-menu dropdown-menu-right">
-          <li><a data-bind="text: $data, click: function() { $root.selectedTrainingName($data) }" href="#"></a></li>
+          <li><a data-bind="text: $data, click: function() { $root.selectedTrainingName($data) }"
+                 style="font-size: 150%;" href="#"></a></li>
         </ul>
       </div>
       <div class="input-group-btn">
@@ -108,9 +109,9 @@
             </div>
             <div class="col-xs-3 clear-padding text-right">
               <button data-bind="click: function(training) { $root.removeTraining(training) }" type="button"
-                      class="glyphicon glyphicon-remove btn btn-xs"></button>
+                      class="glyphicon glyphicon-remove btn btn-sm"></button>
               <button data-bind="click: function(training) { $root.continueTraining(training) }" type="button"
-                      class="glyphicon glyphicon-chevron-right btn btn-xs"></button>
+                      class="glyphicon glyphicon-chevron-right btn btn-sm"></button>
             </div>
           </div>
           <div class="row">
