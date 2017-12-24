@@ -48,8 +48,6 @@ var TrainingPageModel = function () {
 
         var set = Set.createBySettings(self.settings);
         self.currentSet(set);
-
-        self._highlightTrainingActions();
     };
 
     self.continueTraining = function (training) {
@@ -60,8 +58,6 @@ var TrainingPageModel = function () {
         }
         self.currentSet(newSet);
         self._setCurrentTraining(training);
-
-        self._highlightTrainingActions();
     };
 
     self.pauseTraining = function () {
@@ -151,6 +147,16 @@ var TrainingPageModel = function () {
         }
     });
 
+    self.contextHelp = function () {
+        switch (self.state()) {
+            case 'start':
+                self._highlightStartActions();
+                break;
+            case 'training':
+                self._highlightTrainingActions();
+                break;
+        }
+    };
 
     //region UTILS
 
@@ -161,6 +167,14 @@ var TrainingPageModel = function () {
         self._highlightChain(
             prefixAll('.js-current-set-block ', selectors)
         );
+    };
+
+    self._highlightStartActions = function () {
+        var $block = $('.js-new-training-block');
+        self._highlightChain([
+            $block.find('.js-name, .js-name-btn'),
+            $block.find('.js-start-btn')
+        ]);
     };
 
     /**
@@ -186,7 +200,7 @@ var TrainingPageModel = function () {
             chainEach(selectors, function (s) {
                 return $(s).effect('highlight', {color: '#fbd850'}, 'slow').promise();
             });
-        }, 500);
+        }, 250);
     };
 
     //endregion

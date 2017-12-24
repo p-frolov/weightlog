@@ -69,9 +69,9 @@
     <div class="input-group">
       {# https://jqueryui.com/autocomplete/#remote-jsonp #}
       <input data-bind="value: selectedTrainingName"
-             type="text" class="js-name form-control" placeholder="Название тренировки">
+             class="js-name form-control" type="text"  placeholder="Название тренировки">
       <div class="input-group-btn">
-        <button class="btn btn-default dropdown-toggle" type="button"
+        <button class="js-name-btn btn btn-default dropdown-toggle" type="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="caret"></span>
         </button>
@@ -82,7 +82,7 @@
       </div>
       <div class="input-group-btn">
         <button data-bind="click: startTraining" type="button"
-                class="btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
+                class="js-start-btn btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
       </div>
     </div>
   </div>

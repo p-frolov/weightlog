@@ -9,6 +9,8 @@ var TrainingListPageModel = function () {
 
     self.currentUser = ko.observable();
     self.trainings = ko.observableArray();
+    self.contextHelp = function () {};
+
 };
 
 var $currentUserDeferred = $.wgclient.users.read('me');
