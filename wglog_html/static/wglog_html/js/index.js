@@ -2,37 +2,35 @@
  * Script for index page
  */
 
-initLocale();
 initRestClient();
 
 var TrainingPageModel = function () {
     var self = this;
 
-    self.settings = new Settings({set: {type: 'by_start'}});
-
     self.currentUser = ko.observable();
 
-    // TRAININGS
+    //region SETTINGS
+
+    self.settings = new Settings({set: {type: 'by_start'}});
+    self.settingsShown = ko.observable(false);
+    self.langs = ko.observableArray([
+        {value: 'ru', text: 'RU'},
+        {value: 'en', text: 'EN'}
+    ]);
+    self.setTypes = ko.observableArray([
+        {value: 'by_stop', text: 'По окончанию'},
+        {value: 'by_start', text: 'Со стартом'}
+    ]);
+
+    //endregion
+
+    //region CURRENT TRAINING
 
     // todo: extract current training as a component
-
-    self.startedTrainings = ko.observableArray();
-
     self.currentTraining = ko.observable();
 
     self.trainingNames = ko.observableArray();
     self.selectedTrainingName = ko.observable();
-    self.currentTrainingPastTimer = ko.observable().extend({
-        datetime: null,
-        chronograph: null
-    });
-
-    self.currentSet = ko.observable();
-
-    self.currentSetPastTimer = ko.observable().extend({
-        datetime: null,
-        chronograph: {format: 'nonzero'}
-    });
 
     self.startTraining = function () {
         if (!self.selectedTrainingName()) {
@@ -81,13 +79,43 @@ var TrainingPageModel = function () {
         self._setCurrentTraining(null);
     };
 
+    self.removeSet = function (set) {
+        if (confirm('Удалить подход: "' + set.getSummary() + '"?')) {
+            self.currentTraining().sets.remove(set);
+        }
+    };
+
+    self._setCurrentTraining = function (training) {
+        if(training === null) {
+            self.currentTraining().date.stop();
+            self.currentTraining(undefined);
+            return;
+        }
+        self.currentTraining(training);
+        self.currentTraining().date.watch();
+    };
+
+    //endregion
+
+    //region STARTED TRAININGS
+
+    self.startedTrainings = ko.observableArray();
+
     self.removeTraining = function (training) {
+        if(!training.sets().length) {
+            self.startedTrainings.remove(training);
+            return;
+        }
         if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
             self.startedTrainings.remove(training);
         }
     };
 
-    // SETS
+    //endregion
+
+    //region CURRENT SET
+
+    self.currentSet = ko.observable();
 
     self.startSet = function () {
         self.currentSet().started_at(moment.utc().format());
@@ -110,23 +138,9 @@ var TrainingPageModel = function () {
         self.currentSet(newSet);
     };
 
-    self.removeSet = function (set) {
-        if (confirm('Удалить подход: "' + set.getSummary() + '"?')) {
-            self.currentTraining().sets.remove(set);
-        }
-    };
+    //endregion
 
-    self._setCurrentTraining = function (training) {
-        if(training === null) {
-            self.currentTraining(undefined);
-            self.currentTrainingPastTimer(null);
-            self.currentTrainingPastTimer.stop();
-            return;
-        }
-        self.currentTrainingPastTimer(training.date.utcdata());
-        self.currentTrainingPastTimer.watch();
-        self.currentTraining(training);
-    };
+    //region UTILS
 
     self._highlightTrainingActions = function () {
         var selectors = self.settings.set.is_by_start()
@@ -156,10 +170,14 @@ var TrainingPageModel = function () {
             console.warn('_highlightChain: empty selectors');
             return;
         }
-        chainEach(selectors, function (s) {
-            return $(s).effect('highlight', {color: '#fbd850'}, 'slow').promise();
-        });
+        setTimeout(function () {
+            chainEach(selectors, function (s) {
+                return $(s).effect('highlight', {color: '#fbd850'}, 'slow').promise();
+            });
+        }, 500);
     };
+
+    //endregion
 };
 
 var pageModel = new TrainingPageModel();

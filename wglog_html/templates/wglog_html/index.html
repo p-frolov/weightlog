@@ -5,7 +5,69 @@
   <script type="text/javascript" src="{% static 'wglog_html/js/index.js' %}"></script>
 {% endblock %}
 
+{% block menu_items %}
+  <li>
+    <a data-bind="click: function() { settingsShown(true); $('.navbar-toggle').click() }"
+       href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+  </li>
+{% endblock %}
+
 {% block content %}
+
+{#<div class="container">#}
+{#  <p class="text-right">#}
+{#      <button data-bind="click: function() { /* get help */ }"#}
+{#          type="button" class="btn btn-sm"><i class="glyphicon glyphicon-question-sign"></i></button>#}
+{#  </p>#}
+{#</div>#}
+
+<!--region SETTINGS-->
+<div data-bind="visible: settingsShown"
+     class="panel panel-default" style="display: none;">
+  <div class="panel-heading text-right clear-padding">
+      <button data-bind="click: function() { settingsShown(false) }" type="button"
+              class="btn btn-link"><i class="glyphicon glyphicon-remove"></i></button>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="col-xs-4 control-label" for="settings-lang">Язык</label>
+        <div class="col-xs-8">
+          <select data-bind="options: langs,
+                             optionsText: 'text',
+                             optionsValue: 'value',
+                             value: settings.lang"
+                  class="form-control" id="settings-lang"></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-4 control-label" for="settings-set-weight">Вес</label>
+        <div class="col-xs-8">
+          <input data-bind="value: settings.set.weight" id="settings-set-weight"
+                 class="form-control" type="number" placeholder="Начальный вес снаряда">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-4 control-label" for="settings-set-reps">Повторы</label>
+        <div class="col-xs-8">
+          <input data-bind="value: settings.set.reps" id="settings-set-reps"
+                 class="form-control" type="number" placeholder="Начальное количество повторов">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-4 control-label" for="settings-set-type">Фиксация подхода</label>
+        <div class="col-xs-8">
+          <select data-bind="options: setTypes,
+                             optionsText: 'text',
+                             optionsValue: 'value',
+                             value: settings.set.type"
+                  class="form-control" id="settings-set-type"></select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--endregion-->
 
 <!--region START TRAINING PANEL-->
 <div data-bind="visible: currentTraining() === undefined"
@@ -16,7 +78,7 @@
       <input data-bind="value: selectedTrainingName"
              type="text" class="js-name form-control" placeholder="Название тренировки">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle"
+        <button class="btn btn-default dropdown-toggle" type="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="caret"></span>
         </button>
@@ -26,8 +88,8 @@
         </ul>
       </div>
       <div class="input-group-btn">
-        <button data-bind="click: startTraining"
-                type="button" class="btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
+        <button data-bind="click: startTraining" type="button"
+                class="btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
       </div>
     </div>
   </div>
@@ -52,15 +114,15 @@
             </td>
             <td data-bind="text: total_weight"></td>
             <td>
-              <button data-bind="click: function(training) { $root.removeTraining(training) }"
-                      type="button" class="glyphicon glyphicon-remove btn btn-xs"></button>
+              <button data-bind="click: function(training) { $root.removeTraining(training) }" type="button"
+                      class="glyphicon glyphicon-remove btn btn-xs"></button>
             </td>
             <td>
               {# todo: why don't work: data-bind="click: $root.continueTraining }" #}
               {# https://habrahabr.ru/post/124931/ #}
               {# http://jsfiddle.net/romanych/BtbZu/ #}
-              <button data-bind="click: function(training) { $root.continueTraining(training) }"
-                      type="button" class="glyphicon glyphicon-chevron-right btn btn-xs"></button>
+              <button data-bind="click: function(training) { $root.continueTraining(training) }" type="button"
+                      class="glyphicon glyphicon-chevron-right btn btn-xs"></button>
             </td>
           </tr>
         </tbody>
@@ -88,15 +150,13 @@
                   style="font-size: 150%;"></span>
         </div>
         <div class="col-xs-2 clear-padding">
-          <span data-bind="text: $root.currentTrainingPastTimer.pastTime"
+          <span data-bind="text: date.pastTime"
                 class="text-muted text-lcd text-nowrap pull-right"
                 style="margin-top: 7px;"></span>
         </div>
         <div class="col-xs-3 text-right">
-          <button data-bind="click: function() { $root.finishTraining() }"
-              type="button" class="btn btn-sm"><i class="glyphicon glyphicon-stop"></i></button>
-{#          <button data-bind="click: function() { /* setting */ }"#}
-{#              type="button" class="btn btn-sm"><i class="glyphicon glyphicon-cog"></i></button>#}
+          <button data-bind="click: function() { $root.finishTraining() }" type="button"
+                  class="btn btn-sm"><i class="glyphicon glyphicon-stop"></i></button>
         </div>
       </div>
     </div>

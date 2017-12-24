@@ -18,21 +18,22 @@ function Settings(data) {
     var self = this;
     // todo: validate settings
 
-    var settings = {
+    var defaults = {
         set: {
             type: 'by_stop',
             weight: 35,
             reps: 10
-        }
+        },
+        lang: 'ru' // todo: detect locale
     };
 
-    $.extend(true, settings, data);
+    $.extend(true, defaults, data);
 
     self.set = {
         // by_stop | by_start
-        type: ko.observable(settings.set.type),
-        weight: ko.observable(settings.set.weight),
-        reps: ko.observable(settings.set.reps)
+        type: ko.observable(defaults.set.type),
+        weight: ko.observable(defaults.set.weight),
+        reps: ko.observable(defaults.set.reps)
     };
     self.set.is_by_start = ko.computed(function () {
         return this.set.type() === 'by_start';
@@ -40,6 +41,12 @@ function Settings(data) {
     self.set.is_by_stop = ko.computed(function () {
         return this.set.type() === 'by_stop';
     }, self);
+
+    self.lang = ko.observable();
+    self.lang.subscribe(function (newValue) {
+        moment.locale(newValue);
+    });
+    self.lang(defaults.lang);
 }
 
 /**
@@ -62,7 +69,10 @@ function Training(data) {
     self.sets = ko.observableArray([]);
 
 
-    self.date = ko.observable(data.date).extend({datetime: {format: 'L'}});
+    self.date = ko.observable(data.date).extend({
+        datetime: {format: 'L'},
+        chronograph: null
+    });
 
     // todo: investigate: http://knockoutjs.com/documentation/computed-pure.html
     self.total_weight = ko.computed(function () {
@@ -217,8 +227,4 @@ function initRestClient() {
     // rest_client.users.read('me')
 
     $.wgclient = client;
-}
-
-function initLocale() {
-    moment.locale('ru');
 }
