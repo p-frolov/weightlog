@@ -10,24 +10,35 @@
 <div data-bind="visible: trainings().length > 0"
      class="panel panel-default" style="display: none;">
   <div class="panel-body">
-    <p data-bind="text: trainings().length" class="text-right">test</p>
-    <div class="table-responsive">
-      <table class="table">
-        <tbody data-bind="foreach: trainings">
-          <tr>
-            <td data-bind="text: date"></td>
-            <td data-bind="text: name"></td>
-            <td>
-              <button data-bind="text: sets_short_summary" type="button"
-                      class="btn btn-xs btn-link">
-              </button>
-            </td>
-            <td data-bind="text: total_weight"></td>
-            <td><button type="button" class="glyphicon glyphicon-remove btn btn-xs"></button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+    <p data-bind="text: trainings().length" class="text-right"></p>
+
+    <ul data-bind="foreach: trainings"
+        class="list-group clear-margin">
+      <li class="list-group-item">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-3 clear-padding">
+              <span data-bind="text: date"
+                    class="text-muted"></span>
+            </div>
+            <div class="col-xs-6 clear-padding text-center">
+              <strong data-bind="text: name"
+                      style="font-size: 120%;"></strong>
+            </div>
+            <div class="col-xs-3 clear-padding text-right">
+              <button type="button" class="glyphicon glyphicon-remove btn btn-sm"></button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 clear-padding">
+              <strong><span  data-bind="text: total_weight"></span> кг:</strong>
+              <span data-bind="text: sets_summary"></span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
 
   </div>
 </div>

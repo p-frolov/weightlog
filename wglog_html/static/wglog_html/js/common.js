@@ -81,15 +81,22 @@ function Training(data) {
         }, 0);
     });
 
-    self.sets_short_summary = ko.computed(function () {
-        var firstSet = _.first(self.sets());
-        if (firstSet !== undefined) {
-            return firstSet.getSummary();
+    self.sets_summary = ko.computed(function () {
+        var sets = self.sets();
+        var _sets = _(sets);
+        if (sets. length > 2) {
+            return [_sets.first().getSummary(), '...', _sets.last().getSummary()].join(', ');
         }
-        return 'no sets';  //todo: i18n
+        if (sets.length == 2) {
+            return [_sets.first().getSummary(), _sets.last().getSummary()].join(', ');
+        }
+        if (sets.length == 1) {
+            return _sets.first().getSummary();
+        }
+        return '';
     });
 
-    self.sets_summary = ko.computed({
+    self.sets_full_summary = ko.computed({
         read: function () {
             var summaries = [];
             _.each(self.sets(), function (set) {

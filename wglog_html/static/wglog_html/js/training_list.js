@@ -8,6 +8,7 @@ var TrainingListPageModel = function () {
     var self = this;
 
     self.currentUser = ko.observable();
+    self.settings = new Settings();
     self.trainings = ko.observableArray();
     self.contextHelp = function () {};
 
