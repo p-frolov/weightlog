@@ -258,29 +258,44 @@
 
     <!--region CURRENT TRAINING SETS-->
     <!-- ko with: currentTraining -->
-    <div>
-      <span>Всего: <strong data-bind="text: total_weight"></strong> кг</span>
-      <span data-bind="text: $root.pastFromLastSet.pastTime"
-           class="text-muted text-lcd pull-right"></span>
-    </div>
-    <div class="table-responsive">
-      <table class="table">
-        <tbody data-bind="foreach: sets">
-          <tr>
-            <td data-bind="text: weight" class="text-center"></td>
-            <td data-bind="text: reps" class="text-center"></td>
-            <td data-bind="text: total_weight" class="text-center"></td>
-            <td>
-              <span class="pull-right">
-                <button data-bind="click: function(set) { $root.removeSet(set) }"
-                        type="button" class="btn btn-xs">
-                  <i class="glyphicon glyphicon-remove"></i>
-                </button>
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div data-bind="visible: sets().length > 0"
+         class="panel panel-default">
+      <div class="panel-body">
+        <div>
+          <span>Всего: <strong data-bind="text: total_weight"></strong> кг</span>
+          <span data-bind="text: $root.pastFromLastSet.pastTime"
+               class="text-muted text-lcd pull-right"></span>
+        </div>
+        <ul data-bind="foreach: sets"
+            class="list-group clear-margin">
+          <li {# data-bind="css: { active: $index() == 0 }" #}
+              class="list-group-item">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-3 clear-padding">
+                  <span data-bind="text: duration"
+                        class="text-lcd text-muted"></span>
+                </div>
+                <div class="col-xs-6 clear-padding text-center"
+                     style="font-size: 150%;">
+                  <nobr>
+                    <strong data-bind="text: weight" class="text-center"></strong>
+                    x<strong data-bind="text: reps" class="text-center"></strong>
+                    = <strong data-bind="text: total_weight" class="text-center"></strong>
+                  </nobr>
+                </div>
+                <div class="col-xs-3 clear-padding text-right">
+                  <button data-bind="click: function(set) { $root.removeSet(set) }"
+                          type="button" class="btn btn-default btn-sm">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- /ko -->
     <!--endregion-->
