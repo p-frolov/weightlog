@@ -129,6 +129,15 @@ var Set = function (data) {
     self.stopped_at = ko.observable(data.stopped_at).extend({
         datetime: {format: 'LTS'}
     });
+    self.duration = ko.computed(function () {
+        if (self.started_at() && self.stopped_at()) {
+            return timeDiffNonzeroFormat(
+                self.started_at._utcDatetime,
+                self.stopped_at._utcDatetime
+            );
+        }
+        return '';
+    });
 
     self.weight = ko.observable(data.weight).extend({
         intCounter: {min:1, max: 600, step: 5}

@@ -109,7 +109,7 @@
             </div>
             <div class="col-xs-3 clear-padding text-right">
               <button data-bind="click: function(training) { $root.removeTraining(training) }" type="button"
-                      class="glyphicon glyphicon-remove btn btn-sm"></button>
+                      class="glyphicon glyphicon-remove btn btn-default btn-sm"></button>
               <button data-bind="click: function(training) { $root.continueTraining(training) }" type="button"
                       class="glyphicon glyphicon-chevron-right btn btn-sm"></button>
             </div>
@@ -226,7 +226,6 @@
       <div data-bind="visible: $root.settings.set.is_by_start()"
            class="row">
         <div class="col-xs-4">
-          <p style="margin-top: 7px;">Подход:</p>
         </div>
         <div class="col-xs-4 text-center">
           <span data-bind="text: started_at.pastTime"
@@ -234,8 +233,12 @@
                 style="font-size: 29px;"></span>
         </div>
         <div class="col-xs-4 text-right">
-          <button data-bind="visible: true, click: $root.startSet" type="button"
+          <button data-bind="click: $root.startSet, visible: !started_at()" type="button"
                   class="js-start-btn btn btn-secondary"><i class="glyphicon glyphicon-play"></i></button>
+          <button data-bind="click: $root.stopSet, visible: started_at() && !stopped_at()" type="button"
+                  class="btn btn-secondary"><i class="glyphicon glyphicon-stop"></i></button>
+          <div data-bind="text: duration"
+               class="text-muted text-lcd"></div>
         </div>
       </div>
       <!--endregion-->
@@ -255,7 +258,11 @@
 
     <!--region CURRENT TRAINING SETS-->
     <!-- ko with: currentTraining -->
-    <p class="text-right">Всего: <strong data-bind="text: total_weight"></strong> кг</p>
+    <div>
+      <span>Всего: <strong data-bind="text: total_weight"></strong> кг</span>
+      <span data-bind="text: $root.pastFromLastSet.pastTime"
+           class="text-muted text-lcd pull-right"></span>
+    </div>
     <div class="table-responsive">
       <table class="table">
         <tbody data-bind="foreach: sets">

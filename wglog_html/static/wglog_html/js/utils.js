@@ -1,7 +1,7 @@
 /**
  * Add prefix for all element of array
  *
- * @requires _
+ * @requires underscore
  *
  * @param prefix {String}
  * @param array {Array}
@@ -19,8 +19,8 @@ function prefixAll(prefix, array) {
  *     return $(s).effect('highlight', {color: 'yellow'}, 'slow').promise();
  * });
  *
- * @requires _
- * @requires $
+ * @requires underscore
+ * @requires jquery
  *
  * @param async {function} - must returns deferred object
  * @param items {Array} - each item will be passed to async function
@@ -42,4 +42,76 @@ function chainEach(items, async) {
         });
     };
     r(async(_.first(items)), _.rest(items));
+}
+
+/**
+ * Convenient human format time for UI.
+ *
+ * Shows days, hours, minutes, seconds
+ * < a min: ss
+ * a min - a day: HH:mm
+ * > a day: d.HH:mm
+ *
+ * @requires moment
+ *
+ * @param start {moment}
+ * @param stop {moment}
+ */
+function timeDiffHumanFormat(start, stop) {
+
+    if (stop.isBefore(start)) {
+        console.error('timeDiffHumanFormat: stop before start');
+        return '';
+    }
+
+    var padZero = function(v) { return ((v < 10) ? '0' : '') + v; };
+    var d = moment.duration(stop.diff(start));
+
+    if (d.asDays() > 1) {
+        return parseInt(d.asDays()) + "." + padZero(d.hours()) + ':' + padZero(d.minutes());
+    }
+    else if (d.asMinutes() > 1) {
+        return padZero(d.hours()) + ':' + padZero(d.minutes());
+    }
+    else {
+        return padZero(d.seconds());
+    }
+}
+
+/**
+ * Convenient for UI time format.
+ *
+ * < a min: ss
+ * a min - a hour: mm:ss
+ * a hour - a day: HH:mm:ss
+ * > a day: d.HH:mm
+ *
+ * @requires moment
+ * @requires underscore
+ *
+ * @param start {moment}
+ * @param stop {moment}
+ */
+function timeDiffNonzeroFormat(start, stop) {
+
+    if (stop.isBefore(start)) {
+        console.error('timeDiffNonzeroFormat: stop before start');
+        return '';
+    }
+
+    var padZero = function(v) { return ((v < 10) ? '0' : '') + v; };
+    var d = moment.duration(stop.diff(start));
+
+    if (d.asDays() > 1) {
+        return parseInt(d.asDays()) + "." + _([d.hours(), d.minutes()]).map(padZero).join(':');
+    }
+    else if (d.asHours() > 1) {
+        return _([d.hours(), d.minutes(), d.seconds()]).map(padZero).join(':');
+    }
+    else if (d.asMinutes() > 1) {
+        return _([d.minutes(), d.seconds()]).map(padZero).join(':');
+    }
+    else {
+        return padZero(d.seconds());
+    }
 }

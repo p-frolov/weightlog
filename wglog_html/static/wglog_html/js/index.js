@@ -118,19 +118,31 @@ var TrainingPageModel = function () {
         self.currentSet().started_at.watch()
     };
 
+    self.stopSet = function () {
+        self.currentSet().stopped_at(moment.utc().format());
+        self.currentSet().started_at.stop();
+    };
+
     self.addSet = function () {
+        var currentSet = self.currentSet();
         var cannotAdd = self.settings.set.is_by_start()
-                      && !self.currentSet().started_at();
+                      && !currentSet.started_at();
+
         if (cannotAdd) {
             self._highlight('.js-current-set-block .js-start-btn');
             return;
         }
-        var newSet = Set.createBySettings(self.settings);
-        newSet.fillBySet(self.currentSet());
+
         // todo: extend training to add its id to set:
-        self.currentTraining().sets.unshift(self.currentSet());
-        self.currentSet().started_at.stop();
-        self.currentSet().stopped_at(moment.utc().format());
+        self.currentTraining().sets.unshift(currentSet);
+
+        currentSet.started_at.stop();
+        if ( !currentSet.stopped_at() ) {
+            currentSet.stopped_at(moment.utc().format());
+        }
+
+        var newSet = Set.createBySettings(self.settings);
+        newSet.fillBySet(currentSet);
         self.currentSet(newSet);
     };
 
@@ -147,15 +159,55 @@ var TrainingPageModel = function () {
         }
     });
 
-    self.contextHelp = function () {
-        switch (self.state()) {
-            case 'start':
-                self._highlightStartActions();
-                break;
-            case 'training':
-                self._highlightTrainingActions();
-                break;
+
+    //region PAST TIME FROM LAST SET
+
+    self.pastFromLastSet = ko.observable().extend({
+        datetime: {format: 'LTS'},
+        chronograph: {format: 'nonzero'}
+    });
+    self.state.subscribe(function (newState) {
+        self.pastFromLastSet.watch(newState == 'training');
+    });
+    ko.computed(function () {
+        if (self.state() !== 'training') {
+            return;
         }
+
+        var currentSet = self.currentSet();
+        var currentSets = self.currentTraining().sets();
+
+        if (currentSet && currentSet.started_at() && currentSet.stopped_at()) {
+            // show when set is stopped but not added
+            self.pastFromLastSet(currentSet.stopped_at.utcdata());
+        }
+        else if (currentSet && currentSet.started_at() && !currentSet.stopped_at()) {
+            // don't show when doing set (started but not stopped)
+            self.pastFromLastSet(null);
+        }
+        else if (currentSets.length) {
+            // time by last set in current training,
+            // also when settings.set.type is 'by stop'
+            self.pastFromLastSet(currentSets[0].stopped_at.utcdata())
+        }
+        else {
+            self.pastFromLastSet(null);
+        }
+    });
+
+    //endregion
+
+
+    self.contextHelp = function () {
+        // todo: bug: highlighting break KO: replase it by tooltips of visible elements
+        // switch (self.state()) {
+        //     case 'start':
+        //         self._highlightStartActions();
+        //         break;
+        //     case 'training':
+        //         self._highlightTrainingActions();
+        //         break;
+        // }
     };
 
     //region UTILS

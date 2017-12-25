@@ -211,53 +211,38 @@ ko.extenders.chronograph = function (target, options) {
             return opt.empty;
         }
 
-        var d = moment.duration(now.diff(start)),
-            time_text = opt.empty;
+        var time_text = opt.empty;
         if (opt.format === 'human') {
-            if (d.asDays() > 1) {
-                time_text = parseInt(d.asDays()) + "." + padZero(d.hours()) + ':' + padZero(d.minutes());
-            }
-            else if (d.asMinutes() > 1) {
-                time_text = padZero(d.hours()) + ':' + padZero(d.minutes());
-            }
-            else {
-                time_text = padZero(d.seconds());
-            }
+            time_text = timeDiffHumanFormat(start, now);
         } else if (opt.format === 'nonzero') {
-            if (d.asDays() > 1) {
-                time_text = parseInt(d.asDays()) + "." + _([d.hours(), d.minutes()]).map(padZero).join(':');
-            }
-            else if (d.asHours() > 1) {
-                time_text = _([d.hours(), d.minutes(), d.seconds()]).map(padZero).join(':');
-            }
-            else if (d.asMinutes() > 1) {
-                time_text = _([d.minutes(), d.seconds()]).map(padZero).join(':');
-            }
-            else {
-                time_text = padZero(d.seconds());
-            }
+            time_text = timeDiffNonzeroFormat(start, now);
         }
         return time_text;
     };
 
     var timer = 0;
     /**
-     * Starts watching
-     */
-    target.watch = function () {
-        timer = window.setInterval(function() {
-            // ko prevents events with the same value
-            target.pastTime(target._pastFrom(target._utcDatetime));
-        }, 1000);
-        target.pastTime(target._pastFrom(target._utcDatetime));
-    };
-
-    /**
      * Stops watching
      */
     target.stop = function () {
         window.clearInterval(timer);
         target.pastTime(opt.empty);
+    };
+    /**
+     * Starts watching
+     *
+     * @param is_watch {Boolean} - stop if false otherwise - start watching
+     */
+    target.watch = function (is_watch) {
+        if (is_watch === false) {
+            target.stop();
+            return;
+        }
+        timer = window.setInterval(function() {
+            // ko prevents events with the same value
+            target.pastTime(target._pastFrom(target._utcDatetime));
+        }, 1000);
+        target.pastTime(target._pastFrom(target._utcDatetime));
     };
 
     return target;
