@@ -59,7 +59,7 @@ function Training(data) {
 
     // todo: validation (name: required)
 
-    if(data === undefined) {
+    if (data === undefined) {
         data = {};
     }
 
@@ -87,10 +87,10 @@ function Training(data) {
         if (sets. length > 2) {
             return [_sets.first().getSummary(), '...', _sets.last().getSummary()].join(', ');
         }
-        if (sets.length == 2) {
+        if (sets.length === 2) {
             return [_sets.first().getSummary(), _sets.last().getSummary()].join(', ');
         }
-        if (sets.length == 1) {
+        if (sets.length === 1) {
             return _sets.first().getSummary();
         }
         return '';
