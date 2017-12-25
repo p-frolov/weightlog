@@ -34,7 +34,7 @@ var TrainingPageModel = function () {
 
     self.startTraining = function () {
         if (!self.selectedTrainingName()) {
-            self._highlight('.js-new-training-block .js-name');
+            // self._highlight('.js-new-training-block .js-name'); todo: tooltips
             return;
         }
 
@@ -199,15 +199,14 @@ var TrainingPageModel = function () {
 
 
     self.contextHelp = function () {
-        // todo: bug: highlighting break KO: replase it by tooltips of visible elements
-        // switch (self.state()) {
-        //     case 'start':
-        //         self._highlightStartActions();
-        //         break;
-        //     case 'training':
-        //         self._highlightTrainingActions();
-        //         break;
-        // }
+        switch (self.state()) {
+            case 'start':
+                // self._highlightStartActions(); todo: tooltips
+                break;
+            case 'training':
+                // self._highlightTrainingActions(); todo: tooltips
+                break;
+        }
     };
 
     //region UTILS
