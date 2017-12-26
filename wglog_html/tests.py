@@ -2,7 +2,7 @@ import re
 from urllib.parse import urlparse
 
 from django.test import TestCase, override_settings
-from django.core.urlresolvers import reverse, resolve
+from django.urls import reverse, resolve
 from django.core import mail
 
 from django.contrib.auth.models import AnonymousUser

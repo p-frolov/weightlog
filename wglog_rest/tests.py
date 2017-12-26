@@ -2,7 +2,7 @@ import json
 from dateutil import parser as dt_parser
 
 from django.test import TestCase
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from rest_framework import status
 
