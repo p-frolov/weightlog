@@ -1,0 +1,8 @@
+postgresql:
+  image: postgres:9.6
+  container_name: pg_weightlog
+  env_file: .env
+  volumes:
+    - ./pgdata:/var/lib/postgresql/data/pgdata
+  ports:
+    - "5432:5432"

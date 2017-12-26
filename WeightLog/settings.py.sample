@@ -25,7 +25,12 @@ SECRET_KEY = 'o-ls9=6l_fs*-g%)vtxwuks@o4$1r6cq6=4q5z8ss%rufl2ydb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'testserver', # for testing
+    '192.168.1.2' # for LAN (server ip)
+]
 
 
 # Application definition
@@ -37,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'rest_framework',
     'wglog.apps.WeightlogConfig',
     'wglog_rest.apps.WglogRestConfig',
@@ -52,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'WeightLog.urls'
@@ -81,8 +86,12 @@ WSGI_APPLICATION = 'WeightLog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'wglog',
+        'USER': 'wgloguser',
+        'PASSWORD': 'testpass',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -130,6 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 ADMINS = [('Admin', 'admin@local.local')]
 
@@ -139,3 +149,10 @@ INTERNAL_IPS = [
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'testsite_app'
+# EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
