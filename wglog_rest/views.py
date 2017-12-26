@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.request import Request
 
 from wglog.models import Training, Set
-from .serializers import TrainingSerializer, SetSerializer, UserSerializer
+from .serializers import TrainingSerializer, SetSerializer, UserSerializer, SettingsSerializer
 
 
 @api_view(['GET'])
@@ -18,13 +18,14 @@ def api_root(request, format=None):
     })
 
 
-class GetByUserMixin():
+class GetByUserMixin:
     """
     Helper to get objects by user.
     Dependent on APIView.request
     """
     def get_training_or_404(self, id):
         """Returns training by user and id, raises 404 if not found"""
+        assert isinstance(self, APIView)
         return get_object_or_404(
             Training.objects.filter(user=self.request.user),
             pk=id
@@ -196,3 +197,18 @@ class UserDetail(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+
+class SettingsDetail(APIView):
+    """Settings of current user"""
+
+    def get(self, request, format=None):
+        serializer = SettingsSerializer(data=request.user.profile.settings)
+        serializer.is_valid()
+        return Response(serializer.data)
+
+    def put(self, request, format=None):
+        serializer = SettingsSerializer(data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=request.user)
+        return Response()

@@ -3,7 +3,7 @@ from django.utils.encoding import smart_text
 
 from rest_framework import serializers
 
-from wglog.models import Training, Set, User, TrainingName
+from wglog.models import Training, Set, User, TrainingName, UserSettings
 
 
 # https://stackoverflow.com/questions/28009829/creating-and-saving-foreign-key-objects-using-a-slugrelatedfield
@@ -42,6 +42,9 @@ class TrainingSerializer(serializers.ModelSerializer):
 
 
 # todo: validate stopped: no less than started (? and training date)
+# http://www.django-rest-framework.org/api-guide/serializers/#validation
+# todo: partial update
+# http://www.django-rest-framework.org/api-guide/serializers/#partial-updates
 class SetSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='set-detail',
@@ -67,3 +70,27 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'first_name', 'last_name', 'email')
         read_only_fields = ('username', 'email')
+
+
+class SettingsSerializer(serializers.Serializer):
+
+    lang = serializers.ChoiceField(
+        list(UserSettings.LANGS.items())
+    )
+    set_type = serializers.ChoiceField(
+        list(UserSettings.SET_TYPES.items())
+    )
+    set_weight = serializers.IntegerField(
+        min_value=Set.MIN_WEIGHT,
+        max_value=Set.MAX_WEIGHT
+    )
+    set_reps = serializers.IntegerField(
+        min_value=Set.MIN_WEIGHT,
+        max_value=Set.MAX_REPS
+    )
+
+    def save(self, user: User):
+        profile = user.profile
+        for k, v in self.validated_data.items():
+            profile.settings[k] = v
+        profile.save()

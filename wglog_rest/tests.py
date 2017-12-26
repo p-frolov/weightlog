@@ -7,6 +7,7 @@ from django.urls import reverse
 from rest_framework import status
 
 from wglog.tests import AuthTestCaseMixin, AssertTestCaseMixin
+from wglog.models import UserSettings
 
 
 class RestAppTestCaseMixin:
@@ -30,6 +31,12 @@ class RestAppTestCaseMixin:
         assert isinstance(self, TestCase)
         resp = self.client.get(reverse('training-name-list'))
         assert resp.status_code == status.HTTP_200_OK, 'Cannot get training names'
+        return resp.json()
+
+    def get_user_settings_json(self):
+        assert isinstance(self, TestCase)
+        resp = self.client.get(reverse('user-settings'))
+        assert resp.status_code == status.HTTP_200_OK, 'Cannot get user settings'
         return resp.json()
 
     def create_test_training(self, **kwargs):
@@ -96,6 +103,11 @@ class SmokeTestCase(AssertTestCaseMixin, TestCase):
 
         self.assertStatusCode(
             self.client.delete('/api/rest/users/123/'),
+            status.HTTP_403_FORBIDDEN
+        )
+
+        self.assertStatusCode(
+            self.client.get('/api/rest/settings/'),
             status.HTTP_403_FORBIDDEN
         )
 
@@ -211,6 +223,23 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
             status.HTTP_405_METHOD_NOT_ALLOWED
         )
 
+    def test_settings_get(self):
+        user_settings_resp = self.client.get(
+            reverse('user-settings')
+        )
+        self.assertStatusOk(user_settings_resp)
+        json_settings = user_settings_resp.json()
+        self.assertEquals(
+            set(json_settings.keys()),
+            {'lang', 'set_type', 'set_weight', 'set_reps'},
+            'User settings keys'
+        )
+        self.assertEquals(
+            json_settings,
+            UserSettings.default(),
+            'User default settings'
+        )
+
 
 class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
 
@@ -297,7 +326,7 @@ class RestPermissionsTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTes
         )
 
 
-class RestTrainingChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
+class RestTrainingAndSettingsChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
 
     def setUp(self):
         credentials = dict(username='testchanges', password='user12345')
@@ -350,6 +379,62 @@ class RestTrainingChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, Asser
         self.assertStatusCode(delete_resp, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(len(self.get_trainings_json()), 0, 'Trainings must be empty')
+
+    def test_user_settings(self):
+        default_settings = self.get_user_settings_json()
+        new_settings = {
+            'lang': 'en',
+            'set_type': 'by_start',
+            'set_weight': 100,
+            'set_reps': 100
+        }
+        self.assertStatusOk(self.client.put(
+            reverse('user-settings'),
+            data=json.dumps(new_settings),
+            content_type='application/json'
+        ))
+        self.assertEquals(
+            self.get_user_settings_json(),
+            new_settings,
+            'Settings batch updating'
+        )
+        invalid_settings = {
+            'lang': 'nonlang',
+            'set_type': 'nonesettype',
+            'set_weight': -10,
+            'set_reps': -10
+        }
+        bad_update_resp = self.client.put(
+            reverse('user-settings'),
+            data=json.dumps(invalid_settings),
+            content_type='application/json'
+        )
+        self.assertStatusCode(bad_update_resp, status.HTTP_400_BAD_REQUEST)
+        self.assertEquals(
+            bad_update_resp.json().keys(),
+            invalid_settings.keys(),
+            'Bad request error keys does not match keys of invalid settings'
+        )
+        self.assertEquals(
+            self.get_user_settings_json(),
+            new_settings,
+            'Settings is broken after invalid updating'
+        )
+
+        actual_settings = dict(new_settings)
+        for k, v in default_settings.items():
+            with self.subTest(setting_key=k, setting_value=v):
+                actual_settings[k] = v
+                self.assertStatusOk(self.client.put(
+                    reverse('user-settings'),
+                    data=json.dumps({k: v}),
+                    content_type='application/json'
+                ))
+                self.assertEquals(
+                    self.get_user_settings_json(),
+                    actual_settings,
+                    'Update single setting'
+                )
 
 
 class RestSetChangesTestCase(RestAppTestCaseMixin, AuthTestCaseMixin, AssertTestCaseMixin, TestCase):

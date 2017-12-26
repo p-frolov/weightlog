@@ -6,6 +6,7 @@ from . import views
 
 rest_api_patterns = [
     re_path(r'^users/(?P<pk>([0-9]+|me))/$', views.UserDetail.as_view(), name='user-detail'),
+    path('settings/', views.SettingsDetail.as_view(), name='user-settings'),
 
     path('trainings/', views.TrainingsList.as_view(), name='training-list'),
     re_path(r'^trainings/(?P<pk>[0-9]+)/$', views.TrainingDetail.as_view(), name='training-detail'),

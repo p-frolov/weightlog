@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from django.contrib.postgres import fields as pgfields
 from django.contrib.auth.models import User
 
 # about user
@@ -11,11 +12,38 @@ from django.contrib.auth.models import User
 # https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
 
 
+class UserSettings:
+
+    LANGS = {
+        'ru': 'Русский',
+        'en': 'English'
+    }
+
+    SET_TYPES = {
+        'by_stop': _('By finish'),
+        'by_start': _('By start')
+    }
+
+    # https://docs.djangoproject.com/en/2.0/ref/contrib/postgres/fields/#django.contrib.postgres.fields.JSONField
+    # default must be callable
+    @staticmethod
+    def default():
+        return dict(
+            lang='ru',
+            set_type='by_stop',
+            set_weight=20,
+            set_reps=10
+        )
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
+    settings = pgfields.JSONField(default=UserSettings.default)
 
 
+# todo: investigate
+# http://www.django-rest-framework.org/api-guide/serializers/#handling-saving-related-instances-in-model-manager-classes
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -66,6 +94,11 @@ class Training(models.Model):
 
 class Set(models.Model):
     """Подходы (вес, повторения, время)"""
+
+    MIN_WEIGHT = 1
+    MAX_WEIGHT = 600
+    MIN_REPS = 1
+    MAX_REPS = 999
 
     weight = models.PositiveIntegerField(_('weight'))
     reps = models.PositiveIntegerField(_('repetitions'))
