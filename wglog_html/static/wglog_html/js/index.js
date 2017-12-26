@@ -35,6 +35,7 @@ var TrainingPageModel = function () {
     self.startTraining = function () {
         if (!self.selectedTrainingName()) {
             // self._highlight('.js-new-training-block .js-name'); todo: tooltips
+            alert("Выберите название тренировки."); // todo: i18n
             return;
         }
 
@@ -129,7 +130,8 @@ var TrainingPageModel = function () {
                       && !currentSet.started_at();
 
         if (cannotAdd) {
-            self._highlight('.js-current-set-block .js-start-btn');
+            // self._highlight('.js-current-set-block .js-start-btn');
+            alert("Сначала запустите таймер подхода."); // todo: i18n
             return;
         }
 
