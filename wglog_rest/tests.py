@@ -7,7 +7,7 @@ from django.urls import reverse
 from rest_framework import status
 
 from wglog.tests import AuthTestCaseMixin, AssertTestCaseMixin
-from wglog.models import UserSettings
+from wglog.models import UserSettings, AppSettings
 
 
 class RestAppTestCaseMixin:
@@ -108,6 +108,12 @@ class SmokeTestCase(AssertTestCaseMixin, TestCase):
 
         self.assertStatusCode(
             self.client.get('/api/rest/settings/'),
+            status.HTTP_403_FORBIDDEN
+        )
+
+    def test_appsettings(self):
+        self.assertStatusCode(
+            self.client.get('/api/rest/appsettings/'),
             status.HTTP_403_FORBIDDEN
         )
 
@@ -223,7 +229,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
             status.HTTP_405_METHOD_NOT_ALLOWED
         )
 
-    def test_settings_get(self):
+    def test_user_settings_get(self):
         user_settings_resp = self.client.get(
             reverse('user-settings')
         )
@@ -238,6 +244,23 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
             json_settings,
             UserSettings.default(),
             'User default settings'
+        )
+
+    def test_app_settings_get(self):
+        app_settings_resp = self.client.get(
+            reverse('app-settings')
+        )
+        self.assertStatusOk(app_settings_resp)
+        json_settings = app_settings_resp.json()
+        self.assertEquals(
+            json_settings.keys(),
+            {'langs', 'max_reps', 'max_weight', 'min_reps', 'min_weight', 'set_types'},
+            'App settings keys'
+        )
+        self.assertEquals(
+            json_settings,
+            AppSettings.get(),
+            'App settings'
         )
 
 

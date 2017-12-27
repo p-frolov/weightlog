@@ -3,7 +3,7 @@ from django.utils.encoding import smart_text
 
 from rest_framework import serializers
 
-from wglog.models import Training, Set, User, TrainingName, UserSettings
+from wglog.models import Training, Set, User, TrainingName, AppSettings
 
 
 # https://stackoverflow.com/questions/28009829/creating-and-saving-foreign-key-objects-using-a-slugrelatedfield
@@ -75,10 +75,10 @@ class UserSerializer(serializers.ModelSerializer):
 class SettingsSerializer(serializers.Serializer):
 
     lang = serializers.ChoiceField(
-        list(UserSettings.LANGS.items())
+        list(AppSettings.LANGS.items())
     )
     set_type = serializers.ChoiceField(
-        list(UserSettings.SET_TYPES.items())
+        list(AppSettings.SET_TYPES.items())
     )
     set_weight = serializers.IntegerField(
         min_value=Set.MIN_WEIGHT,

@@ -5,6 +5,9 @@ from . import views
 
 
 rest_api_patterns = [
+
+    path('appsettings/', views.AppSettingsDetail.as_view(), name='app-settings'),
+
     re_path(r'^users/(?P<pk>([0-9]+|me))/$', views.UserDetail.as_view(), name='user-detail'),
     path('settings/', views.SettingsDetail.as_view(), name='user-settings'),
 

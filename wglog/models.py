@@ -12,7 +12,8 @@ from django.contrib.auth.models import User
 # https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
 
 
-class UserSettings:
+class AppSettings:
+    """Settings for whole applicaion"""
 
     LANGS = {
         'ru': 'Русский',
@@ -23,6 +24,20 @@ class UserSettings:
         'by_stop': _('By finish'),
         'by_start': _('By start')
     }
+
+    @staticmethod
+    def get():
+        return dict(
+            min_weight=Set.MIN_WEIGHT,
+            max_weight=Set.MAX_WEIGHT,
+            min_reps=Set.MIN_REPS,
+            max_reps=Set.MAX_REPS,
+            langs=AppSettings.LANGS,
+            set_types=AppSettings.SET_TYPES
+        )
+
+class UserSettings:
+    """User settings are stored in profile"""
 
     # https://docs.djangoproject.com/en/2.0/ref/contrib/postgres/fields/#django.contrib.postgres.fields.JSONField
     # default must be callable

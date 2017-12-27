@@ -7,7 +7,7 @@ from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 
-from wglog.models import Training, Set
+from wglog.models import Training, Set, AppSettings
 from .serializers import TrainingSerializer, SetSerializer, UserSerializer, SettingsSerializer
 
 
@@ -212,3 +212,10 @@ class SettingsDetail(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save(user=request.user)
         return Response()
+
+
+class AppSettingsDetail(APIView):
+    """Settings for whole app (for validation, lists, etc)"""
+
+    def get(self, request, format=None):
+        return Response(AppSettings.get())
