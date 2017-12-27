@@ -11,7 +11,7 @@ var TrainingPageModel = function () {
 
     //region SETTINGS
 
-    self.settings = new Settings({set: {type: 'by_start'}});
+    self.settings = new Settings({set_type: 'by_start'});
     self.settingsShown = ko.observable(false);
     self.langs = ko.observableArray([
         {value: 'ru', text: 'RU'},
@@ -126,7 +126,7 @@ var TrainingPageModel = function () {
 
     self.addSet = function () {
         var currentSet = self.currentSet();
-        var cannotAdd = self.settings.set.is_by_start()
+        var cannotAdd = self.settings.is_set_by_start()
                       && !currentSet.started_at();
 
         if (cannotAdd) {
@@ -189,7 +189,7 @@ var TrainingPageModel = function () {
         }
         else if (currentSets.length) {
             // time by last set in current training,
-            // also when settings.set.type is 'by stop'
+            // also when settings.set_type is 'by stop'
             self.pastFromLastSet(currentSets[0].stopped_at.utcdata())
         }
         else {
@@ -214,7 +214,7 @@ var TrainingPageModel = function () {
     //region UTILS
 
     self._highlightTrainingActions = function () {
-        var selectors = self.settings.set.is_by_start()
+        var selectors = self.settings.is_set_by_start()
                   ? ['.js-weight', '.js-start-btn', '.js-reps', '.js-add-btn']
                   : ['.js-weight', '.js-reps', '.js-add-btn'];
         self._highlightChain(

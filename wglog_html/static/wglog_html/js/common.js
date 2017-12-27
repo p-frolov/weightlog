@@ -19,27 +19,24 @@ function Settings(data) {
     // todo: validate settings
 
     var defaults = {
-        set: {
-            type: 'by_stop',
-            weight: 35,
-            reps: 10
-        },
+        set_type: 'by_stop',
+        set_weight: 35,
+        set_reps: 10,
         lang: 'ru' // todo: detect locale
     };
 
     $.extend(true, defaults, data);
 
-    self.set = {
-        // by_stop | by_start
-        type: ko.observable(defaults.set.type),
-        weight: ko.observable(defaults.set.weight),
-        reps: ko.observable(defaults.set.reps)
-    };
-    self.set.is_by_start = ko.computed(function () {
-        return this.set.type() === 'by_start';
+    // by_stop | by_start
+    self.set_type = ko.observable(defaults.set_type);
+    self.set_weight = ko.observable(defaults.set_weight);
+    self.set_reps = ko.observable(defaults.set_reps);
+
+    self.is_set_by_start = ko.computed(function () {
+        return this.set_type() === 'by_start';
     }, self);
-    self.set.is_by_stop = ko.computed(function () {
-        return this.set.type() === 'by_stop';
+    self.is_set_by_stop = ko.computed(function () {
+        return this.set_type() === 'by_stop';
     }, self);
 
     self.lang = ko.observable();
@@ -179,8 +176,8 @@ Set.prototype.fillBySet = function (set) {
  */
 Set.createBySettings = function(settings) {
     return new Set({
-        weight: settings.set.weight(),
-        reps: settings.set.reps()
+        weight: settings.set_weight(),
+        reps: settings.set_reps()
     });
 };
 
