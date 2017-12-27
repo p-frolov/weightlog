@@ -13,14 +13,10 @@ var TrainingPageModel = function () {
 
     self.settings = new Settings({set_type: 'by_start'});
     self.settingsShown = ko.observable(false);
-    self.langs = ko.observableArray([
-        {value: 'ru', text: 'RU'},
-        {value: 'en', text: 'EN'}
-    ]);
-    self.setTypes = ko.observableArray([
-        {value: 'by_stop', text: 'По окончанию'},
-        {value: 'by_start', text: 'Со стартом'}
-    ]);
+    // [{value: 'ru', text: 'RU'},]
+    self.langs = ko.observableArray();
+    // [{value: 'by_stop', text: 'По окончанию'},]
+    self.setTypes = ko.observableArray();
 
     //endregion
 
@@ -267,12 +263,16 @@ var pageModel = new TrainingPageModel();
  */
 
 var dataDeferred = {
+    appsettings: $.wgclient.appsettings.read(),
+    userSettings: $.wgclient.settings.read(),
     currentUser: $.wgclient.users.read('me'),
     startedTrainings: $.wgclient.trainings.read({status:'st'}),
     trainingNames: $.wgclient.trainingnames.read()
 };
 
 var $dataLoaded = $.when(
+    dataDeferred.appsettings,
+    dataDeferred.userSettings,
     dataDeferred.currentUser,
     dataDeferred.startedTrainings,
     dataDeferred.trainingNames
@@ -281,6 +281,24 @@ var $dataLoaded = $.when(
 /**
  * INIT DATA
   */
+
+dataDeferred.appsettings.done(function (data) {
+    pageModel.langs(
+        _(data.langs).map(function(v, k) {
+            return {value: k, text: v}
+        })
+    );
+    pageModel.setTypes(
+        _(data.set_types).map(function(v, k) {
+            return {value: k, text: v}
+        })
+    );
+});
+
+dataDeferred.userSettings.done(function (data) {
+    // console.log(data);
+});
+
 
 dataDeferred.currentUser.done(function (data) {
     pageModel.currentUser(new User(data));

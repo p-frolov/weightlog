@@ -219,6 +219,11 @@ function initRestClient() {
 
     var client = new $.RestClient('/api/rest/', {"ajax": ajaxOption});
 
+    client.add('appsettings');
+    // client.appsettings.read()
+    client.add('settings');
+    // client.settings.read()
+
     client.add('trainings');
     // client.trainings.read()
     // client.trainings.read(39)
