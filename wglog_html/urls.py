@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, re_path, include
+from django.views.generic import RedirectView
 
 from django.contrib.auth import views as auth_views
 
@@ -77,6 +78,8 @@ urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     re_path('^trainings/$', views.training_list, name='training_list'),
     re_path(r'^accounts/', include(auth_patterns)),
+    # http://wd5.ru/django/favicon-icon/
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url='/static/wglog_html/img/favicon.ico'), name='favicon')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
