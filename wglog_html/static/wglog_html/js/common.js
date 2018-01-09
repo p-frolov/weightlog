@@ -16,14 +16,17 @@ function User(data) {
 
 function Settings(userSettings) {
     var self = this;
+
+    self._keys = ['set_type', 'set_weight', 'set_reps', 'lang'];
+    self._initValues = {};
+
     // todo: validate settings
     // todo: detect locale
     $.extend(self, ko.mapping.fromJS(userSettings));
 
     // set_type: by_stop | by_start
-
     var parseError = false;
-    _(['set_type', 'set_weight', 'set_reps', 'lang']).each(function (key) {
+    _(self._keys).each(function (key) {
         if (_.has(self, key)){
             return;
         }
@@ -41,8 +44,35 @@ function Settings(userSettings) {
         return this.set_type() === 'by_stop';
     }, self);
 
+    // todo: extract to app
     self.lang.subscribe(function (newValue) {
         moment.locale(newValue);
+    });
+
+    self.cleanChanges = function (keys) {
+        if (_.isArray(keys)) {
+            // todo: additional checking keys
+            _.extend(self._initValues, ko.toJS(_.pick(self, keys)));
+        } else {
+            self._initValues = ko.toJS(_.pick(self, self._keys));
+        }
+    };
+    self.cleanChanges();
+
+    var fillChanged = function (object, key, value) {
+        if (self._initValues[key] != value) {
+            object[key] = value;
+        }
+    };
+
+    self.changedSettings = ko.computed(function () {
+        var changes = {};
+        // need to explicitly call properties for subscription
+        fillChanged(changes, 'set_type', self.set_type());
+        fillChanged(changes, 'set_weight', self.set_weight());
+        fillChanged(changes, 'set_reps', self.set_reps());
+        fillChanged(changes, 'lang', self.lang());
+        return changes;
     });
 }
 

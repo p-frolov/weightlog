@@ -272,10 +272,20 @@ var pageModel = new TrainingPageModel(
     getUserSettings()
 );
 
+//region SAVE DATA
 
-/**
- * LOAD DATA
- */
+pageModel.settings.changedSettings.subscribe(function (changed) {
+    $.wgclient.settings.update(changed).done(function () {
+        pageModel.settings.cleanChanges(_.keys(changed));
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        // todo: handle error
+        console.error('fail: ', textStatus, errorThrown);
+    });
+});
+
+//endregion
+
+//region LOAD DATA
 
 var dataDeferred = {
     currentUser: $.wgclient.users.read('me'),
@@ -289,9 +299,9 @@ var $dataLoaded = $.when(
     dataDeferred.trainingNames
 );
 
-/**
- * INIT DATA
-  */
+//endregion
+
+//region INIT DATA
 
 dataDeferred.currentUser.done(function (data) {
     pageModel.currentUser(new User(data));
@@ -318,6 +328,8 @@ var $dataInitialized = (function () {
     }).fail(dfd.reject);
     return dfd.promise();
 })();
+
+//endregion
 
 // todo: http://knockoutjs.com/documentation/asynchronous-error-handling.html
 // ko.onError = function(error) {

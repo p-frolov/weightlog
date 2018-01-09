@@ -211,7 +211,8 @@ class SettingsDetail(APIView):
         serializer = SettingsSerializer(data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(user=request.user)
-        return Response()
+        # for jquery json parser to avoid: parsererror SyntaxError: Unexpected end of JSON input
+        return Response({'status': 'ok'})
 
 
 class AppSettingsDetail(APIView):
