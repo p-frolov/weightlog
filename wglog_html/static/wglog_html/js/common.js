@@ -14,23 +14,25 @@ function User(data) {
     self.email = ko.observable(data.email);
 }
 
-function Settings(data) {
+function Settings(userSettings) {
     var self = this;
     // todo: validate settings
+    // todo: detect locale
+    $.extend(self, ko.mapping.fromJS(userSettings));
 
-    var defaults = {
-        set_type: 'by_stop',
-        set_weight: 35,
-        set_reps: 10,
-        lang: 'ru' // todo: detect locale
-    };
+    // set_type: by_stop | by_start
 
-    $.extend(true, defaults, data);
-
-    // by_stop | by_start
-    self.set_type = ko.observable(defaults.set_type);
-    self.set_weight = ko.observable(defaults.set_weight);
-    self.set_reps = ko.observable(defaults.set_reps);
+    var parseError = false;
+    _(['set_type', 'set_weight', 'set_reps', 'lang']).each(function (key) {
+        if (_.has(self, key)){
+            return;
+        }
+        console.error('No settings key: ' + key);
+        parseError = true;
+    });
+    if (parseError) {
+        // todo: stop the programm, show error message, send statistic
+    }
 
     self.is_set_by_start = ko.computed(function () {
         return this.set_type() === 'by_start';
@@ -39,11 +41,9 @@ function Settings(data) {
         return this.set_type() === 'by_stop';
     }, self);
 
-    self.lang = ko.observable();
     self.lang.subscribe(function (newValue) {
         moment.locale(newValue);
     });
-    self.lang(defaults.lang);
 }
 
 /**
@@ -144,9 +144,11 @@ var Set = function (data) {
     });
 
     self.weight = ko.observable(data.weight).extend({
+        // todo: init from app settings
         intCounter: {min:1, max: 600, step: 5}
     });
     self.reps = ko.observable(data.reps).extend({
+        // todo: init from app settings
         intCounter: {min: 1, max: 999}
     });
 
@@ -206,7 +208,7 @@ function initRestClient() {
     }
 
     // https://gist.github.com/alanhamlett/6316427
-    var ajaxOption = {
+    var ajaxOptions = {
         beforeSend: function(xhr, settings) {
             if (settings.type === 'POST' || settings.type === 'PUT' || settings.type === 'DELETE') {
                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
@@ -217,12 +219,14 @@ function initRestClient() {
         }
     };
 
-    var client = new $.RestClient('/api/rest/', {"ajax": ajaxOption});
+    var client = new $.RestClient('/api/rest/', {'ajax': ajaxOptions});
 
-    client.add('appsettings');
-    // client.appsettings.read()
-    client.add('settings');
-    // client.settings.read()
+    var syncAjaxOptions = $.extend({async: false}, ajaxOptions);
+
+    /** Synchronous request */
+    client.add('appsettings', {'ajax': syncAjaxOptions});
+    /** Synchronous request */
+    client.add('settings', {'ajax': syncAjaxOptions});
 
     client.add('trainings');
     // client.trainings.read()
@@ -245,4 +249,30 @@ function initRestClient() {
     // rest_client.users.read('me')
 
     $.wgclient = client;
+}
+
+/**
+ * Requests user settings synchronously
+ * @returns {object}
+ */
+function getUserSettings() {
+    var userSettings;
+    // todo: handle errors
+    $.wgclient.settings.read().done(function (data) {
+        userSettings = data;
+    });
+    return userSettings
+}
+
+/**
+ * Requests app settings synchronously
+ * @returns {object}
+ */
+function getAppSettings() {
+    var appSettings;
+    // todo: handle errors
+    $.wgclient.appsettings.read().done(function (data) {
+        appSettings = data;
+    });
+    return appSettings;
 }

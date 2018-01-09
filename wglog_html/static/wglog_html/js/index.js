@@ -4,19 +4,29 @@
 
 initRestClient();
 
-var TrainingPageModel = function () {
+var TrainingPageModel = function (appSettings, userSettings) {
     var self = this;
 
     self.currentUser = ko.observable();
 
     //region SETTINGS
 
-    self.settings = new Settings({set_type: 'by_start'});
+    self._appSettings = appSettings;
+
+    self.settings = new Settings(userSettings);
     self.settingsShown = ko.observable(false);
     // [{value: 'ru', text: 'RU'},]
-    self.langs = ko.observableArray();
+    self.langs = ko.observableArray(
+        _(appSettings.langs).map(function(v, k) {
+            return {value: k, text: v}
+        })
+    );
     // [{value: 'by_stop', text: 'По окончанию'},]
-    self.setTypes = ko.observableArray();
+    self.setTypes = ko.observableArray(
+        _(appSettings.set_types).map(function(v, k) {
+            return {value: k, text: v}
+        })
+    );
 
     //endregion
 
@@ -255,7 +265,12 @@ var TrainingPageModel = function () {
     //endregion
 };
 
-var pageModel = new TrainingPageModel();
+
+// todo: bad idea 2 sync requests - will be fixed by require.js
+var pageModel = new TrainingPageModel(
+    getAppSettings(),
+    getUserSettings()
+);
 
 
 /**
@@ -263,16 +278,12 @@ var pageModel = new TrainingPageModel();
  */
 
 var dataDeferred = {
-    appsettings: $.wgclient.appsettings.read(),
-    userSettings: $.wgclient.settings.read(),
     currentUser: $.wgclient.users.read('me'),
     startedTrainings: $.wgclient.trainings.read({status:'st'}),
     trainingNames: $.wgclient.trainingnames.read()
 };
 
 var $dataLoaded = $.when(
-    dataDeferred.appsettings,
-    dataDeferred.userSettings,
     dataDeferred.currentUser,
     dataDeferred.startedTrainings,
     dataDeferred.trainingNames
@@ -281,24 +292,6 @@ var $dataLoaded = $.when(
 /**
  * INIT DATA
   */
-
-dataDeferred.appsettings.done(function (data) {
-    pageModel.langs(
-        _(data.langs).map(function(v, k) {
-            return {value: k, text: v}
-        })
-    );
-    pageModel.setTypes(
-        _(data.set_types).map(function(v, k) {
-            return {value: k, text: v}
-        })
-    );
-});
-
-dataDeferred.userSettings.done(function (data) {
-    // console.log(data);
-});
-
 
 dataDeferred.currentUser.done(function (data) {
     pageModel.currentUser(new User(data));
