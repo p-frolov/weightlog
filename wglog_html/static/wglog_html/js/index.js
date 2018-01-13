@@ -45,23 +45,21 @@ var TrainingPageModel = function (appSettings, userSettings) {
             return;
         }
 
-        var training = new Training({
+        var training = Training.create({
             name: self.selectedTrainingName(),
             date: moment.utc().format()
         });
-        self.startedTrainings.push(training);
         self._setCurrentTraining(training);
         self.selectedTrainingName(undefined);
 
-        var set = Set.createBySettings(self.settings);
-        self.currentSet(set);
+        self.currentSet(Set.createBySettings(self.settings));
     };
 
     self.continueTraining = function (training) {
         var newSet = Set.createBySettings(self.settings);
         var sets = training.sets();
         if (sets.length) {
-            newSet.fillBySet(_(sets).first());
+            newSet.fillBySet(_(sets).last());
         }
         self.currentSet(newSet);
         self._setCurrentTraining(training);
@@ -74,9 +72,7 @@ var TrainingPageModel = function (appSettings, userSettings) {
     };
 
     self.finishTraining = function () {
-        self.startedTrainings.remove(
-            self.currentTraining()
-        );
+        self.currentTraining().status(Training.FINISHED);
         self.currentSet().started_at.stop();
         self.currentSet(null);
         self._setCurrentTraining(null);
@@ -84,7 +80,7 @@ var TrainingPageModel = function (appSettings, userSettings) {
 
     self.removeSet = function (set) {
         if (confirm('Удалить подход: "' + set.getSummary() + '"?')) {
-            self.currentTraining().sets.remove(set);
+            self.currentTraining().removeSet(set);
         }
     };
 
@@ -102,15 +98,20 @@ var TrainingPageModel = function (appSettings, userSettings) {
 
     //region STARTED TRAININGS
 
-    self.startedTrainings = ko.observableArray();
+    self.startedTrainings = ko.computed(function () {
+        // todo: reverse order
+        return ko.utils.arrayFilter(Training.all(), function (training) {
+            return training.status() === Training.STARTED;
+        })
+    });
 
     self.removeTraining = function (training) {
         if(!training.sets().length) {
-            self.startedTrainings.remove(training);
+            Training.remove(training);
             return;
         }
         if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
-            self.startedTrainings.remove(training);
+            Training.remove(training);
         }
     };
 
@@ -141,13 +142,12 @@ var TrainingPageModel = function (appSettings, userSettings) {
             return;
         }
 
-        // todo: extend training to add its id to set:
-        self.currentTraining().sets.unshift(currentSet);
-
         currentSet.started_at.stop();
         if ( !currentSet.stopped_at() ) {
             currentSet.stopped_at(moment.utc().format());
         }
+
+        self.currentTraining().addSet(currentSet);
 
         var newSet = Set.createBySettings(self.settings);
         newSet.fillBySet(currentSet);
@@ -204,7 +204,6 @@ var TrainingPageModel = function (appSettings, userSettings) {
     });
 
     //endregion
-
 
     self.contextHelp = function () {
         switch (self.state()) {
@@ -272,7 +271,7 @@ var pageModel = new TrainingPageModel(
     getUserSettings()
 );
 
-//region SAVE DATA
+//region SYNC DATA
 
 pageModel.settings.changedSettings.subscribe(function (changed) {
     $.wgclient.settings.update(changed).done(function () {
@@ -283,19 +282,103 @@ pageModel.settings.changedSettings.subscribe(function (changed) {
     });
 });
 
+Training.creating.subscribe(function(trainings) {
+    _.each(trainings, function (training) {
+        if (training.id() !== undefined) {
+            console.warn('Creating of existance (id) training', training);
+            // todo: error dump
+            return;
+        }
+        training._state(State.PROCESSING);
+        $.wgclient.trainings.create(training.toJS()).done(function (trainingData) {
+            training.id(trainingData.id);
+            training._state(State.SYNCED);
+            console.log('T created id', training.id());
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            // todo: handle error
+            console.error('fail: ', textStatus, errorThrown);
+        });
+        console.log('T creating data', training.toJS());
+    });
+    // todo: debug executions
+});
+
+Training.deleting.subscribe(function(trainings) {
+    _.each(trainings, function (training) {
+        if (training.id() === undefined) {
+            console.warn('Deleting of non-existnce (id) training', training);
+            // todo: error dump
+            return;
+        }
+        training._state(State.PROCESSING);
+        $.wgclient.trainings.del(training.id()).done(function () {
+            Training.all.remove(training);
+            console.log('T deleted', training.id());
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            // todo: handle error
+            console.error('fail: ', textStatus, errorThrown);
+        });
+        console.log('T deleting id', training.id());
+    });
+});
+
+Set.creating.subscribe(function(sets) {
+    _.each(sets, function (set) {
+        if (set.id() !== undefined) {
+            console.warn('Creating of existance (id) set', set);
+            // todo: error dump
+            return;
+        }
+        if (set.training() === undefined) {
+            console.warn('Creating of set without training', set);
+            // todo: error dump
+            return;
+        }
+        set._state(State.PROCESSING);
+        $.wgclient.sets.create(set.toJS()).done(function (setData) {
+            set.id(setData.id);
+            set._state(State.SYNCED);
+            console.log('S created id', set.id());
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            // todo: handle error
+            console.error('fail: ', textStatus, errorThrown);
+        });
+        console.log('S creating data', set.toJS());
+    });
+});
+
+Set.deleting.subscribe(function(sets) {
+    _.each(sets, function (set) {
+        if (set.id() === undefined) {
+            console.warn('Deleting of non-existance (id) set', set);
+            // todo: error dump
+            return;
+        }
+        set._state(State.PROCESSING);
+        $.wgclient.sets.del(set.id()).done(function () {
+            Set.all.remove(set);
+            console.log('S deleted', set.id());
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            // todo: handle error
+            console.error('fail: ', textStatus, errorThrown);
+        });
+        console.log('S deleting', set.id());
+    });
+});
+
 //endregion
 
 //region LOAD DATA
 
 var dataDeferred = {
     currentUser: $.wgclient.users.read('me'),
-    startedTrainings: $.wgclient.trainings.read({status:'st'}),
+    trainings: $.wgclient.trainings.read(),
     trainingNames: $.wgclient.trainingnames.read()
 };
 
 var $dataLoaded = $.when(
     dataDeferred.currentUser,
-    dataDeferred.startedTrainings,
+    dataDeferred.trainings,
     dataDeferred.trainingNames
 );
 
@@ -312,12 +395,8 @@ dataDeferred.trainingNames.done(function (data) {
     pageModel.trainingNames = data;
 });
 
-dataDeferred.startedTrainings.done(function (data) {
-    var trainings = pageModel.startedTrainings();
-    _.each(data, function (training_json) {
-        trainings.push( new Training(training_json) );
-    });
-    pageModel.startedTrainings(trainings);
+dataDeferred.trainings.done(function (data) {
+    Training.initAll(data);
 });
 
 

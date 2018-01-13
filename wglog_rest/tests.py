@@ -172,7 +172,7 @@ class RestGetTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
         json_detail = resp.json()
         self.assertGreaterEqual(
             set(json_detail.keys()),
-            {'id', 'date', 'name', 'sets'},
+            {'id', 'date', 'name', 'sets', 'status'},
             'Training: missed fields'
         )
         self.assertEqual(json_detail['id'], id_)
@@ -371,6 +371,7 @@ class RestTrainingAndSettingsChangesTestCase(RestAppTestCaseMixin, AuthTestCaseM
         # check from creation response
         created_json = create_resp.json()
         self.assertEqual(created_json['name'], training_name)
+        self.assertEqual(created_json['status'], 'st')
         training_id = created_json['id']
 
         # check from list resopnse
@@ -384,7 +385,7 @@ class RestTrainingAndSettingsChangesTestCase(RestAppTestCaseMixin, AuthTestCaseM
         training_name2 = 'gymchanged'
         update_resp = self.client.put(
             reverse('training-detail', kwargs={'pk': training_id}),
-            data=json.dumps({'name': training_name2}),
+            data=json.dumps({'name': training_name2, 'status': 'fn'}),
             content_type='application/json'
         )
         self.assertStatusOk(update_resp)
@@ -392,6 +393,7 @@ class RestTrainingAndSettingsChangesTestCase(RestAppTestCaseMixin, AuthTestCaseM
         # check from changing response
         updated_json = update_resp.json()
         self.assertEqual(updated_json['name'], training_name2)
+        self.assertEqual(updated_json['status'], 'fn')
 
         # check from list response
         self.assertEqual(self.get_trainings_json()[0]['name'], training_name2)

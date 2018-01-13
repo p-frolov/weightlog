@@ -127,7 +127,7 @@ class Set(models.Model):
 
     training = models.ForeignKey(
         Training,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='sets',
         verbose_name=_('training')
     )

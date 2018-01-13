@@ -11,36 +11,21 @@ function User(data) {
     self.username = ko.observable(data.username);
     self.firt_name = ko.observable(data.firt_name);
     self.last_name = ko.observable(data.last_name);
+    // todo: hide for security reason
     self.email = ko.observable(data.email);
 }
 
 function Settings(userSettings) {
     var self = this;
 
-    self._keys = ['set_type', 'set_weight', 'set_reps', 'lang'];
-    self._initValues = {};
-
     // todo: validate settings
     // todo: detect locale
     $.extend(self, ko.mapping.fromJS(userSettings));
 
-    // set_type: by_stop | by_start
-    var parseError = false;
-    _(self._keys).each(function (key) {
-        if (_.has(self, key)){
-            return;
-        }
-        console.error('No settings key: ' + key);
-        parseError = true;
-    });
-    if (parseError) {
-        // todo: stop the programm, show error message, send statistic
-    }
-
-    self.is_set_by_start = ko.computed(function () {
+    self.is_set_by_start = ko.pureComputed(function () {
         return this.set_type() === 'by_start';
     }, self);
-    self.is_set_by_stop = ko.computed(function () {
+    self.is_set_by_stop = ko.pureComputed(function () {
         return this.set_type() === 'by_stop';
     }, self);
 
@@ -48,6 +33,9 @@ function Settings(userSettings) {
     self.lang.subscribe(function (newValue) {
         moment.locale(newValue);
     });
+
+    self._keys = ['set_type', 'set_weight', 'set_reps', 'lang'];
+    self._initValues = {};
 
     self.cleanChanges = function (keys) {
         if (_.isArray(keys)) {
@@ -60,12 +48,12 @@ function Settings(userSettings) {
     self.cleanChanges();
 
     var fillChanged = function (object, key, value) {
-        if (self._initValues[key] != value) {
+        if (self._initValues[key] !== value) {
             object[key] = value;
         }
     };
 
-    self.changedSettings = ko.computed(function () {
+    self.changedSettings = ko.pureComputed(function () {
         var changes = {};
         // need to explicitly call properties for subscription
         fillChanged(changes, 'set_type', self.set_type());
@@ -76,83 +64,28 @@ function Settings(userSettings) {
     });
 }
 
-/**
- * Training model
- * @param data
- * @constructor
- */
-function Training(data) {
-    var self = this;
-
-    // todo: validation (name: required)
-
-    if (data === undefined) {
-        data = {};
-    }
-
-    self.id = ko.observable(data.id);
-
-    self.name = ko.observable(data.name);
-    self.sets = ko.observableArray([]);
-
-
-    self.date = ko.observable(data.date).extend({
-        datetime: {format: 'L'},
-        chronograph: null
-    });
-
-    // todo: investigate: http://knockoutjs.com/documentation/computed-pure.html
-    self.total_weight = ko.computed(function () {
-        return _.reduce(self.sets(), function (memo, set) {
-            return memo + set.total_weight();
-        }, 0);
-    });
-
-    self.sets_summary = ko.computed(function () {
-        var sets = self.sets();
-        var _sets = _(sets);
-        if (sets. length > 2) {
-            return [_sets.first().getSummary(), '...', _sets.last().getSummary()].join(', ');
-        }
-        if (sets.length === 2) {
-            return [_sets.first().getSummary(), _sets.last().getSummary()].join(', ');
-        }
-        if (sets.length === 1) {
-            return _sets.first().getSummary();
-        }
-        return '';
-    });
-
-    self.sets_full_summary = ko.computed({
-        read: function () {
-            var summaries = [];
-            _.each(self.sets(), function (set) {
-                summaries.push(set.getSummary());
-            });
-            return summaries.join(', ');
-        },
-        deferEvaluation: true
-    });
-
-    var sorted_sets = _.sortBy(data.sets, function (set_json) {
-        return -set_json.id
-    });
-    _.each(sorted_sets, function (set_json) {
-        self.sets.push(new Set(set_json))
-    });
-}
+State = {
+    SYNCED: 'synced',  // synchronized with server
+    PROCESSING: 'processing',  // synchronization in progress
+    CREATE: 'create',  // need to create
+    // UPDATE: 'update',  // need to update
+    DELETE: 'delete'   // need to delete
+};
 
 /**
  * Set model
  * @param data
  * @constructor
  */
-var Set = function (data) {
+Set = function (data) {
     var self = this;
 
     if(data === undefined) {
         data = {};
     }
+
+    // for saving process: synced|processing|create|update|delete
+    self._state = ko.observable();
 
     self.id = ko.observable(data.id);
 
@@ -163,7 +96,7 @@ var Set = function (data) {
     self.stopped_at = ko.observable(data.stopped_at).extend({
         datetime: {format: 'LTS'}
     });
-    self.duration = ko.computed(function () {
+    self.duration = ko.pureComputed(function () {
         if (self.started_at() && self.stopped_at()) {
             return timeDiffNonzeroFormat(
                 self.started_at._utcDatetime,
@@ -182,11 +115,18 @@ var Set = function (data) {
         intCounter: {min: 1, max: 999}
     });
 
-    self.total_weight = ko.computed(function () {
+    self.total_weight = ko.pureComputed(function () {
         return self.weight() * self.reps();
     });
 
     self.training = ko.observable(data.training);
+};
+
+Set.prototype.toJS = function () {
+    var data = ko.toJS(_.pick(this, 'training', 'weight', 'reps'));
+    data['started_at'] = this.started_at.utcdata();
+    data['stopped_at'] = this.stopped_at.utcdata();
+    return data;
 };
 
 Set.prototype.getSummary = function () {
@@ -211,6 +151,158 @@ Set.createBySettings = function(settings) {
         weight: settings.set_weight(),
         reps: settings.set_reps()
     });
+};
+
+/** All objects, copies from all Trainings */
+Set.all = ko.observableArray();
+
+Set.creating = ko.computed(function () {
+    return ko.utils.arrayFilter(Set.all(), function (set) {
+        return set._state() === State.CREATE;
+    });
+});
+
+Set.deleting = ko.computed(function () {
+    return ko.utils.arrayFilter(Set.all(), function (set) {
+        return set._state() === State.DELETE;
+    });
+});
+
+// Set.addToAll = function (sets) {
+//     var all_sets = Set.all();
+//     Array.prototype.push.apply(all_sets, sets);
+//     Set.all(all_sets);
+// };
+
+
+/**
+ * Training model
+ * @param data
+ * @constructor
+ */
+Training = function (data) {
+    var self = this;
+
+    // todo: validation (name: required)
+
+    if (data === undefined) {
+        data = {};
+    }
+
+    // for saving process: synced|processing|create|update|delete
+    self._state = ko.observable();
+
+    self.id = ko.observable(data.id);
+
+    self.name = ko.observable(data.name);
+    self.status = ko.observable(
+        data.status !== undefined ? data.status : Training.STARTED
+    );
+    self.sets = ko.observableArray([]);
+
+
+    self.date = ko.observable(data.date).extend({
+        datetime: {format: 'L'},
+        chronograph: null
+    });
+
+    self.total_weight = ko.pureComputed(function () {
+        return _.reduce(self.sets(), function (memo, set) {
+            return memo + set.total_weight();
+        }, 0);
+    });
+
+    self.sets_summary = ko.pureComputed(function () {
+        var sets = self.sets();
+        var _sets = _(sets);
+        if (sets. length > 2) {
+            return [_sets.first().getSummary(), '...', _sets.last().getSummary()].join(', ');
+        }
+        if (sets.length === 2) {
+            return [_sets.first().getSummary(), _sets.last().getSummary()].join(', ');
+        }
+        if (sets.length === 1) {
+            return _sets.first().getSummary();
+        }
+        return '';
+    });
+
+    self.sets_full_summary = ko.pureComputed({
+        read: function () {
+            var summaries = [];
+            _.each(self.sets(), function (set) {
+                summaries.push(set.getSummary());
+            });
+            return summaries.join(', ');
+        },
+        deferEvaluation: true
+    });
+
+    self.sets(_.map(data.sets, function (set_json) {
+        return new Set(set_json);
+    }));
+};
+
+Training.prototype.toJS = function () {
+    var data = ko.toJS(_.pick(this, 'name', 'status'));
+    data['date'] = this.date.utcdata();
+    return data;
+};
+
+Training.prototype.addSet = function (set) {
+    set.training(this.id());
+    this.sets.push(set);
+    Set.all.push(set);
+    set._state(State.CREATE)
+    // todo: subscribe to changes
+};
+
+Training.prototype.removeSet = function (set) {
+    this.sets.remove(set);
+    set._state(State.DELETE);
+};
+
+Training.all = ko.observableArray();
+
+Training.creating = ko.computed(function () {
+    return ko.utils.arrayFilter(Training.all(), function (training) {
+        return training._state() === State.CREATE;
+    });
+});
+
+Training.deleting = ko.computed(function () {
+    return ko.utils.arrayFilter(Training.all(), function (training) {
+        return training._state() === State.DELETE;
+    });
+});
+
+Training.STARTED = 'st';
+Training.FINISHED = 'fn';
+
+Training.initAll = function(trainingDataArray) {
+    var trainings = [];
+    _.each(trainingDataArray, function (trainingData) {
+        trainings.push( new Training(trainingData) );
+    });
+    _.each(trainings, function (t) { t._state(State.SYNCED) });
+    Training.all(trainings);
+    var sets = _.flatten(
+        _.map(trainings, function (training) { return training.sets() })
+    );
+    _.each(sets, function (s) { s._state(State.SYNCED) });
+    Set.all(sets);
+};
+
+Training.create = function(trainingData) {
+    var training = new Training(trainingData);
+    Training.all.push(training);
+    training._state(State.CREATE);
+    // todo: subscribe to changes
+    return training;
+};
+
+Training.remove = function (training) {
+    training._state(State.DELETE);
 };
 
 

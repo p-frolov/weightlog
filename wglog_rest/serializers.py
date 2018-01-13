@@ -35,7 +35,7 @@ class TrainingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Training
-        fields = ('id', 'date', 'name', 'sets',
+        fields = ('id', 'date', 'name', 'status', 'sets',
                   'url', 'sets_url', 'user')
         read_only_fields = ('date', 'sets')
         depth = 1  # show sets as objects instead of identifiers
