@@ -76,7 +76,6 @@ auth_patterns = [
 
 urlpatterns = [
     re_path(r'^$', views.index, name='index'),
-    re_path('^trainings/$', views.training_list, name='training_list'),
     re_path(r'^accounts/', include(auth_patterns)),
     # http://wd5.ru/django/favicon-icon/
     re_path(r'^favicon\.ico$', RedirectView.as_view(url='/static/wglog_html/img/favicon.ico'), name='favicon')

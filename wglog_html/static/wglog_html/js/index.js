@@ -5,16 +5,33 @@
 initRestClient();
 
 var TrainingPageModel = function (appSettings, userSettings) {
+    var logger = Logger.get('page');
+
     var self = this;
 
-    self.currentUser = ko.observable();
+    self.currentUser = ko.observable(null);
+
+    var _states = ['start', 'settings', 'training', 'trainings'];
+    self.state = ko.observable('start');
+    self._lastState = self.state();
+    self.statePrev = function () {
+        self.state(self._lastState);
+    };
+    self.state.subscribe(function(newState) {
+        console.assert(_.contains(_states, newState), 'Unexpected state: ' + newState);
+        logger.debug('Changed state', newState);
+    });
+    self.state.subscribe(function (oldState) {
+        if (oldState !== self._lastState) {
+            self._lastState = oldState;
+        }
+    }, null, 'beforeChange');
 
     //region SETTINGS
 
     self._appSettings = appSettings;
 
     self.settings = new Settings(userSettings);
-    self.settingsShown = ko.observable(false);
     // [{value: 'ru', text: 'RU'},]
     self.langs = ko.observableArray(
         _(appSettings.langs).map(function(v, k) {
@@ -33,12 +50,13 @@ var TrainingPageModel = function (appSettings, userSettings) {
     //region CURRENT TRAINING
 
     // todo: extract current training as a component
-    self.currentTraining = ko.observable();
+    self.currentTraining = ko.observable(null);
 
     self.trainingNames = ko.observableArray();
-    self.selectedTrainingName = ko.observable();
+    self.selectedTrainingName = ko.observable(null);
 
     self.startTraining = function () {
+        logger.info('Starting training');
         if (!self.selectedTrainingName()) {
             // self._highlight('.js-new-training-block .js-name'); todo: tooltips
             alert("Выберите название тренировки."); // todo: i18n
@@ -49,89 +67,85 @@ var TrainingPageModel = function (appSettings, userSettings) {
             name: self.selectedTrainingName(),
             date: moment.utc().format()
         });
-        self._setCurrentTraining(training);
-        self.selectedTrainingName(undefined);
+        self.currentTraining(training);
+        self.selectedTrainingName(null);
 
         self.currentSet(Set.createBySettings(self.settings));
+        logger.debug('Started training', training.toJS());
     };
 
     self.continueTraining = function (training) {
+        logger.info('Continuing training');
         var newSet = Set.createBySettings(self.settings);
         var sets = training.sets();
         if (sets.length) {
             newSet.fillBySet(_(sets).last());
         }
         self.currentSet(newSet);
-        self._setCurrentTraining(training);
+        self.currentTraining(training);
+        logger.debug('Continued training', training.toJS());
     };
 
     self.pauseTraining = function () {
-        self._setCurrentTraining(null);
-        self.currentSet().started_at.stop(); // todo: investigate: is it necessary?
+        logger.info('Pausing training');
+        self.currentTraining(null);
         self.currentSet(null);
     };
 
     self.finishTraining = function () {
+        logger.info('Finishing training');
         self.currentTraining().status(Training.FINISHED);
-        self.currentSet().started_at.stop();
         self.currentSet(null);
-        self._setCurrentTraining(null);
+        self.currentTraining(null);
     };
 
     self.removeSet = function (set) {
+        logger.info('Removing training');
         if (confirm('Удалить подход: "' + set.getSummary() + '"?')) {
             self.currentTraining().removeSet(set);
         }
     };
 
-    self._setCurrentTraining = function (training) {
-        if(training === null) {
-            self.currentTraining().date.stop();
-            self.currentTraining(undefined);
-            return;
+    self.currentTraining.subscribe(function (newTraining) {
+        logger.debug('Set current training');
+        if (newTraining === null) {
+            logger.debug('Training is null');
+            self.state('start');
+            self.currentSet(null);
+        } else {
+            logger.debug('Training data', newTraining.toJS());
+            newTraining.date.watch();
+            self.state('training');
         }
-        self.currentTraining(training);
-        self.currentTraining().date.watch();
-    };
-
-    //endregion
-
-    //region STARTED TRAININGS
-
-    self.startedTrainings = ko.computed(function () {
-        // todo: reverse order
-        return ko.utils.arrayFilter(Training.all(), function (training) {
-            return training.status() === Training.STARTED;
-        })
     });
 
-    self.removeTraining = function (training) {
-        if(!training.sets().length) {
-            Training.remove(training);
-            return;
+    self.currentTraining.subscribe(function (oldTraining) {
+        if (oldTraining !== null) {
+            logger.debug('Stopping old training date when set current', oldTraining.toJS());
+            oldTraining.date.stop();
         }
-        if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
-            Training.remove(training);
-        }
-    };
+    }, null, 'beforeChange');
 
     //endregion
 
     //region CURRENT SET
 
-    self.currentSet = ko.observable();
+    self.currentSet = ko.observable(null);
 
     self.startSet = function () {
+        logger.info('Starting current set');
         self.currentSet().started_at(moment.utc().format());
-        self.currentSet().started_at.watch()
+        self.currentSet().started_at.watch();
     };
 
     self.stopSet = function () {
+        logger.info('Stopping current set');
         self.currentSet().stopped_at(moment.utc().format());
         self.currentSet().started_at.stop();
     };
 
     self.addSet = function () {
+        logger.info('Adding set to current training');
         var currentSet = self.currentSet();
         var cannotAdd = self.settings.is_set_by_start()
                       && !currentSet.started_at();
@@ -152,33 +166,61 @@ var TrainingPageModel = function (appSettings, userSettings) {
         var newSet = Set.createBySettings(self.settings);
         newSet.fillBySet(currentSet);
         self.currentSet(newSet);
+        logger.debug('Added set to current training', newSet.toJS());
+    };
+
+    self.currentSet.subscribe(function (oldSet) {
+        if (oldSet !== null) {
+            logger.debug('Stopping started_at of old set when set current set');
+            oldSet.started_at.stop();
+        }
+    }, null, 'beforeChange');
+
+    //endregion
+
+    //region STARTED TRAININGS
+
+    self.startedTrainings = ko.computed(function () {
+        // todo: reverse order
+        return ko.utils.arrayFilter(Training.all(), function (training) {
+            return training.status() === Training.STARTED;
+        })
+    });
+
+    self.removeTraining = function (training) {
+        logger.info('Removing training');
+        if(!training.sets().length) {
+            Training.remove(training);
+            return;
+        }
+        if (confirm('Удалить "' + training.name() + '" от ' + training.date() + '"?')) {
+            Training.remove(training);
+        }
     };
 
     //endregion
 
-    /** start | settings | training */
-    self.state = ko.computed(function () {
-        if (self.settingsShown()) {
-            return 'settings';
-        } else if (self.currentTraining()) {
-            return 'training';
-        } else {
-            return 'start';
-        }
-    });
+    //region TRAININGS
 
+    self.trainings = ko.computed(function () {
+        return ko.utils.arrayFilter(Training.all(), function (training) {
+            return training.status() === Training.FINISHED;
+        })
+    }, {deferEvaluation: true}); // todo: investigate
+
+    //endregion
 
     //region PAST TIME FROM LAST SET
 
-    self.pastFromLastSet = ko.observable().extend({
+    self.pastFromLastSet = ko.observable(null).extend({
         datetime: {format: 'LTS'},
         chronograph: {format: 'nonzero'}
     });
     self.state.subscribe(function (newState) {
-        self.pastFromLastSet.watch(newState == 'training');
+        self.pastFromLastSet.watch(newState === 'training');
     });
     ko.computed(function () {
-        if (self.state() !== 'training') {
+        if (self.currentTraining() === null) {
             return;
         }
 
@@ -251,7 +293,7 @@ var TrainingPageModel = function (appSettings, userSettings) {
      */
     self._highlightChain = function (selectors) {
         if ( !_.isArray(selectors) || !selectors.length) {
-            console.warn('_highlightChain: empty selectors');
+            logger.warn('_highlightChain: empty selectors');
             return;
         }
         setTimeout(function () {
@@ -274,18 +316,23 @@ var pageModel = new TrainingPageModel(
 //region SYNC DATA
 
 pageModel.settings.changedSettings.subscribe(function (changed) {
+    var logger = Logger.get('ajax.settings');
+    logger.debug('Changing data', changed);
     $.wgclient.settings.update(changed).done(function () {
+        logger.debug('Changed');
         pageModel.settings.cleanChanges(_.keys(changed));
     }).fail(function (jqXHR, textStatus, errorThrown) {
         // todo: handle error
-        console.error('fail: ', textStatus, errorThrown);
+        logger.error('Changing fail', textStatus, errorThrown);
     });
 });
 
 Training.creating.subscribe(function(trainings) {
+    var logger = Logger.get('ajax.training');
     _.each(trainings, function (training) {
-        if (training.id() !== undefined) {
-            console.warn('Creating of existance (id) training', training);
+        logger.debug('Creating data', training.toJS());
+        if (training.id() !== undefined) {  // todo: refactoring: to null
+            logger.warn('Creating of existance', training.id(), training.toJS());
             // todo: error dump
             return;
         }
@@ -293,44 +340,45 @@ Training.creating.subscribe(function(trainings) {
         $.wgclient.trainings.create(training.toJS()).done(function (trainingData) {
             training.id(trainingData.id);
             training._state(State.SYNCED);
-            console.log('T created id', training.id());
+            logger.debug('Created id', training.id());
         }).fail(function (jqXHR, textStatus, errorThrown) {
             // todo: handle error
-            console.error('fail: ', textStatus, errorThrown);
+            logger.error('Creating fail', training.toJS(), textStatus, errorThrown);
         });
-        console.log('T creating data', training.toJS());
     });
-    // todo: debug executions
 });
 
 Training.deleting.subscribe(function(trainings) {
+    var logger = Logger.get('ajax.training');
     _.each(trainings, function (training) {
-        if (training.id() === undefined) {
-            console.warn('Deleting of non-existnce (id) training', training);
+        logger.debug('Deleting id', training.id());
+        if (training.id() === undefined) {  // todo: refactoring: to null
+            logger.warn('Deleting of non-existnce', training.toJS());
             // todo: error dump
             return;
         }
         training._state(State.PROCESSING);
         $.wgclient.trainings.del(training.id()).done(function () {
             Training.all.remove(training);
-            console.log('T deleted', training.id());
+            logger.debug('Deleted', training.id());
         }).fail(function (jqXHR, textStatus, errorThrown) {
             // todo: handle error
-            console.error('fail: ', textStatus, errorThrown);
+            logger.error('Deleting fail', training.id(), textStatus, errorThrown);
         });
-        console.log('T deleting id', training.id());
     });
 });
 
 Set.creating.subscribe(function(sets) {
+    var logger = Logger.get('ajax.set');
     _.each(sets, function (set) {
-        if (set.id() !== undefined) {
-            console.warn('Creating of existance (id) set', set);
+        logger.debug('Creating data', set.toJS());
+        if (set.id() !== undefined) {  // todo: refactoring: to null
+            logger.warn('Creating of existance', set.id(), set.toJS());
             // todo: error dump
             return;
         }
         if (set.training() === undefined) {
-            console.warn('Creating of set without training', set);
+            logger.warn('Creating without training', set.toJS());
             // todo: error dump
             return;
         }
@@ -338,31 +386,31 @@ Set.creating.subscribe(function(sets) {
         $.wgclient.sets.create(set.toJS()).done(function (setData) {
             set.id(setData.id);
             set._state(State.SYNCED);
-            console.log('S created id', set.id());
+            logger.debug('Created id', set.id());
         }).fail(function (jqXHR, textStatus, errorThrown) {
             // todo: handle error
-            console.error('fail: ', textStatus, errorThrown);
+            logger.error('Creating fail', set.toJS(), textStatus, errorThrown);
         });
-        console.log('S creating data', set.toJS());
     });
 });
 
 Set.deleting.subscribe(function(sets) {
+    var logger = Logger.get('ajax.set');
     _.each(sets, function (set) {
-        if (set.id() === undefined) {
-            console.warn('Deleting of non-existance (id) set', set);
+        logger.debug('Deleting id', set.id());
+        if (set.id() === undefined) {  // todo: refactoring: to null
+            logger.warn('Deleting of non-existance', set.toJS());
             // todo: error dump
             return;
         }
         set._state(State.PROCESSING);
         $.wgclient.sets.del(set.id()).done(function () {
             Set.all.remove(set);
-            console.log('S deleted', set.id());
+            logger.debug('Deleted', set.id());
         }).fail(function (jqXHR, textStatus, errorThrown) {
             // todo: handle error
-            console.error('fail: ', textStatus, errorThrown);
+            logger.error('Deleting fail', set.id(), textStatus, errorThrown);
         });
-        console.log('S deleting', set.id());
     });
 });
 

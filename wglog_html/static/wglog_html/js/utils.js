@@ -53,14 +53,16 @@ function chainEach(items, async) {
  * > a day: d.HH:mm
  *
  * @requires moment
+ * @requires js-logger
  *
  * @param start {moment}
  * @param stop {moment}
  */
 function timeDiffHumanFormat(start, stop) {
+    var logger = Logger.get('utils.timeDiffHumanFormat');
 
     if (stop.isBefore(start)) {
-        console.error('timeDiffHumanFormat: stop before start');
+        logger.error('stop before start');
         return '';
     }
 
@@ -88,14 +90,16 @@ function timeDiffHumanFormat(start, stop) {
  *
  * @requires moment
  * @requires underscore
+ * @requires js-logger
  *
  * @param start {moment}
  * @param stop {moment}
  */
 function timeDiffNonzeroFormat(start, stop) {
+    var logger = Logger.get('utils.timeDiffNonzeroFormat');
 
     if (stop.isBefore(start)) {
-        console.error('timeDiffNonzeroFormat: stop before start');
+        logger.error('stop before start');
         return '';
     }
 
@@ -114,4 +118,12 @@ function timeDiffNonzeroFormat(start, stop) {
     else {
         return padZero(d.seconds());
     }
+}
+
+// todo: implement and use asserts
+function assert(condition, message)
+{
+  if (!condition) {
+    throw "Assertion failed! See stack trace for details";
+  }
 }

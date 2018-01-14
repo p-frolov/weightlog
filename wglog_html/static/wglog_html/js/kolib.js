@@ -91,6 +91,8 @@ ko.extenders.intCounter = function(target, options) {
  * @param options {Object} - format
  */
 ko.extenders.datetime = function (target, options) {
+    var logger = Logger.get('kolib.datetime');
+
     var opt = _.extendOwn({
         format: 'L LT' // date time
     }, options);
@@ -114,7 +116,7 @@ ko.extenders.datetime = function (target, options) {
                     : moment.utc(newValue);
 
                 if ( !utcDatetime.isUtc() ) {
-                    console.error('Not valid utc datetime', utcDatetime);
+                    logger.error('Not valid utc datetime', utcDatetime);
                     // parsing error - prevent write
                     return;
                 }
@@ -173,6 +175,8 @@ ko.extenders.datetime = function (target, options) {
  * @returns {ko.observable}
  */
 ko.extenders.chronograph = function (target, options) {
+    var logger = Logger.get('kolib.chronograph');
+
     // todo: autostart when set
     var opt = _.extendOwn({
         empty: '00:00',
@@ -180,13 +184,13 @@ ko.extenders.chronograph = function (target, options) {
     }, options);
 
     if (!_(['human', 'nonzero']).contains(opt.format)) {
-        console.error('chronograph format must be "human" or "nonzero"');
+        logger.error('format must be "human" or "nonzero"');
         return;
     }
 
     if (!_.has(target, '_utcDatetime')) {
         // todo: handle error
-        console.error('chronograph must be applied to datetime extender');
+        logger.error('chronograph must be applied to datetime extender');
         return;
     }
 
@@ -206,7 +210,7 @@ ko.extenders.chronograph = function (target, options) {
         var now = moment.utc();
         if (now.isBefore(start)) {
             // todo: handle error
-            console.error('chronograph value can not be from future');
+            logger.error('pastFrom value can not be from future');
             // todo: auto stop
             return opt.empty;
         }
@@ -227,6 +231,7 @@ ko.extenders.chronograph = function (target, options) {
     target.stop = function () {
         window.clearInterval(timer);
         target.pastTime(opt.empty);
+        logger.debug('timer stopped', target());
     };
     /**
      * Starts watching
@@ -243,6 +248,7 @@ ko.extenders.chronograph = function (target, options) {
             target.pastTime(target._pastFrom(target._utcDatetime));
         }, 1000);
         target.pastTime(target._pastFrom(target._utcDatetime));
+        logger.debug('timer started', target());
     };
 
     return target;

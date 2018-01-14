@@ -20,11 +20,6 @@ class SmokeTestCase(TestCase):
             self.client.get('/'),
             '/accounts/login/?next=/'
         )
-        self.assertRedirects(
-            self.client.get('/trainings/'),
-            '/accounts/login/?next=/trainings/'
-        )
-
 
     def test_auth(self):
 
@@ -83,10 +78,6 @@ class PagesTestCase(AuthTestCaseMixin, AssertTestCaseMixin, TestCase):
     def test_pages(self):
         self.assertStatusCode(
             self.client.get(reverse('index')),
-            status.HTTP_200_OK
-        )
-        self.assertStatusCode(
-            self.client.get(reverse('training_list')),
             status.HTTP_200_OK
         )
 

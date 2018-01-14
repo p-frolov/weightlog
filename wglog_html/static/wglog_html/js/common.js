@@ -1,5 +1,8 @@
 // todo: http://knockoutjs.com/documentation/component-registration.html
 
+Logger.useDefaults();
+Logger.setLevel(Logger.WARN);
+
 /**
  * User model
  * @param {Object} data - user fields
@@ -16,6 +19,8 @@ function User(data) {
 }
 
 function Settings(userSettings) {
+    var logger = Logger.get('models');
+
     var self = this;
 
     // todo: validate settings
@@ -30,8 +35,9 @@ function Settings(userSettings) {
     }, self);
 
     // todo: extract to app
-    self.lang.subscribe(function (newValue) {
-        moment.locale(newValue);
+    self.lang.subscribe(function (newLang) {
+        logger.info('changed lang', newLang);
+        moment.locale(newLang);
     });
 
     self._keys = ['set_type', 'set_weight', 'set_reps', 'lang'];
@@ -80,6 +86,8 @@ State = {
 Set = function (data) {
     var self = this;
 
+    self._logger = Logger.get('models');
+
     if(data === undefined) {
         data = {};
     }
@@ -121,6 +129,8 @@ Set = function (data) {
 
     self.training = ko.observable(data.training);
 };
+
+Set._logger = Logger.get('models');
 
 Set.prototype.toJS = function () {
     var data = ko.toJS(_.pick(this, 'training', 'weight', 'reps'));
@@ -183,6 +193,8 @@ Set.deleting = ko.computed(function () {
 Training = function (data) {
     var self = this;
 
+    self._logger = Logger.get('models');
+
     // todo: validation (name: required)
 
     if (data === undefined) {
@@ -243,6 +255,8 @@ Training = function (data) {
     }));
 };
 
+Training._logger = Logger.get('models');
+
 Training.prototype.toJS = function () {
     var data = ko.toJS(_.pick(this, 'name', 'status'));
     data['date'] = this.date.utcdata();
@@ -253,13 +267,15 @@ Training.prototype.addSet = function (set) {
     set.training(this.id());
     this.sets.push(set);
     Set.all.push(set);
-    set._state(State.CREATE)
+    set._state(State.CREATE);
     // todo: subscribe to changes
+    this._logger.debug('Added set to training', set.toJS());
 };
 
 Training.prototype.removeSet = function (set) {
     this.sets.remove(set);
     set._state(State.DELETE);
+    this._logger.debug('Removed set from training', set.id(), set.toJS());
 };
 
 Training.all = ko.observableArray();
@@ -298,11 +314,13 @@ Training.create = function(trainingData) {
     Training.all.push(training);
     training._state(State.CREATE);
     // todo: subscribe to changes
+    Training._logger.debug('Created training', training.toJS());
     return training;
 };
 
 Training.remove = function (training) {
     training._state(State.DELETE);
+    Training._logger.debug('Removed training', training.id());
 };
 
 

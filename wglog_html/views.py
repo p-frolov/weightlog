@@ -20,11 +20,6 @@ def index(request):
     return render(request, 'wglog_html/index.html')
 
 
-@login_required(login_url='login')
-def training_list(request):
-    return render(request, 'wglog_html/training_list.html')
-
-
 @require_http_methods(['GET', 'POST'])
 def register(request):
     if request.method == 'POST':
