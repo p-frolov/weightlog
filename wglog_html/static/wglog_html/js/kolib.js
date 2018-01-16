@@ -1,3 +1,7 @@
+function isObservableArray(value) {
+    return ko.isObservable(value) && Array.isArray(ko.unwrap(value));
+}
+
 /**
  * Validates and increases/decreases value in accordance with options.
  *

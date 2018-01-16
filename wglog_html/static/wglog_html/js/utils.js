@@ -120,6 +120,21 @@ function timeDiffNonzeroFormat(start, stop) {
     }
 }
 
+/**
+ * Each reversed
+ *
+ * @param arr
+ * @param callback
+ */
+function eachReversed(arr, callback) {
+    // todo: validation: assert
+
+    // todo: test on unexpected behaviour, see each of underscore and jquery
+    for (var i = arr.length - 1; i >= 0; --i) {
+        callback(arr[i]);
+    }
+}
+
 // todo: implement and use asserts
 function assert(condition, message)
 {

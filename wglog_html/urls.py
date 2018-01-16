@@ -78,11 +78,13 @@ urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     re_path(r'^accounts/', include(auth_patterns)),
     # http://wd5.ru/django/favicon-icon/
-    re_path(r'^favicon\.ico$', RedirectView.as_view(url='/static/wglog_html/img/favicon.ico'), name='favicon')
+    re_path(r'^favicon.ico$', RedirectView.as_view(url='/static/wglog_html/img/favicon.ico'), name='favicon'),
+    path('tests.js', views.test_js),
+    path('tests', views.test)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
-        re_path(r'^__debug__/', include(debug_toolbar.urls)),
+        re_path(r'^__debug__/', include(debug_toolbar.urls))
     ] + urlpatterns

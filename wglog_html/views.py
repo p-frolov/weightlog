@@ -1,8 +1,13 @@
+import os
+import os.path
+
 from django.views.decorators.http import require_http_methods
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.http import FileResponse
+from django.apps import apps
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
@@ -12,6 +17,8 @@ from wglog.models import User
 from wglog.forms import UserCreationForm
 from wglog.tokens import account_activation_token
 
+
+app = apps.get_app_config('wglog_html')
 
 # https://docs.djangoproject.com/en/1.11/topics/auth/default/
 # The login_required decorator does NOT check the is_active flag on a user
@@ -68,3 +75,13 @@ def register_activate(request, uidb64, token):
         return redirect('index')
 
     return render(request, 'wglog_html/auth/register_activation_invalid.html')
+
+
+@login_required(login_url='login')
+def test(request):
+    return FileResponse(open(os.path.join(app.path, 'qunit/tests.html'), 'rb'))
+
+
+@login_required(login_url='login')
+def test_js(request):
+    return FileResponse(open(os.path.join(app.path, 'qunit/tests.js'), 'rb'))

@@ -163,7 +163,10 @@ Set.createBySettings = function(settings) {
     });
 };
 
-/** All objects, copies from all Trainings */
+/**
+ * All objects, copies from all Trainings
+ * sorted by id
+ */
 Set.all = ko.observableArray();
 
 Set.creating = ko.computed(function () {
@@ -177,12 +180,6 @@ Set.deleting = ko.computed(function () {
         return set._state() === State.DELETE;
     });
 });
-
-// Set.addToAll = function (sets) {
-//     var all_sets = Set.all();
-//     Array.prototype.push.apply(all_sets, sets);
-//     Set.all(all_sets);
-// };
 
 
 /**
@@ -210,7 +207,10 @@ Training = function (data) {
     self.status = ko.observable(
         data.status !== undefined ? data.status : Training.STARTED
     );
-    self.sets = ko.observableArray([]);
+    // reversed by id
+    self.sets = ko.observableArray().extend({
+        sortable: { key: 'id', descending: true }
+    });
 
 
     self.date = ko.observable(data.date).extend({
@@ -228,10 +228,10 @@ Training = function (data) {
         var sets = self.sets();
         var _sets = _(sets);
         if (sets. length > 2) {
-            return [_sets.first().getSummary(), '...', _sets.last().getSummary()].join(', ');
+            return [_sets.last().getSummary(), '...', _sets.first().getSummary()].join(', ');
         }
         if (sets.length === 2) {
-            return [_sets.first().getSummary(), _sets.last().getSummary()].join(', ');
+            return [_sets.last().getSummary(), _sets.first().getSummary()].join(', ');
         }
         if (sets.length === 1) {
             return _sets.first().getSummary();
@@ -242,7 +242,8 @@ Training = function (data) {
     self.sets_full_summary = ko.pureComputed({
         read: function () {
             var summaries = [];
-            _.each(self.sets(), function (set) {
+            var sets = self.sets();
+            eachReversed(sets, function (set) {
                 summaries.push(set.getSummary());
             });
             return summaries.join(', ');
@@ -265,7 +266,7 @@ Training.prototype.toJS = function () {
 
 Training.prototype.addSet = function (set) {
     set.training(this.id());
-    this.sets.push(set);
+    this.sets.unshift(set);
     Set.all.push(set);
     set._state(State.CREATE);
     // todo: subscribe to changes
@@ -278,7 +279,10 @@ Training.prototype.removeSet = function (set) {
     this._logger.debug('Removed set from training', set.id(), set.toJS());
 };
 
-Training.all = ko.observableArray();
+// reversed by id
+Training.all = ko.observableArray().extend({
+    sortable: { key: 'id', descending: true }
+});
 
 Training.creating = ko.computed(function () {
     return ko.utils.arrayFilter(Training.all(), function (training) {
@@ -301,9 +305,9 @@ Training.initAll = function(trainingDataArray) {
         trainings.push( new Training(trainingData) );
     });
     _.each(trainings, function (t) { t._state(State.SYNCED) });
-    Training.all(trainings);
+    Training.all(_.sortBy(trainings, function (t) { return -t.id() }));
     var sets = _.flatten(
-        _.map(trainings, function (training) { return training.sets() })
+        _.map(trainings, function (t) { return t.sets() })
     );
     _.each(sets, function (s) { s._state(State.SYNCED) });
     Set.all(sets);
@@ -311,7 +315,7 @@ Training.initAll = function(trainingDataArray) {
 
 Training.create = function(trainingData) {
     var training = new Training(trainingData);
-    Training.all.push(training);
+    Training.all.unshift(training);
     training._state(State.CREATE);
     // todo: subscribe to changes
     Training._logger.debug('Created training', training.toJS());

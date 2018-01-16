@@ -79,7 +79,7 @@ var TrainingPageModel = function (appSettings, userSettings) {
         var newSet = Set.createBySettings(self.settings);
         var sets = training.sets();
         if (sets.length) {
-            newSet.fillBySet(_(sets).last());
+            newSet.fillBySet(_(sets).first());
         }
         self.currentSet(newSet);
         self.currentTraining(training);
